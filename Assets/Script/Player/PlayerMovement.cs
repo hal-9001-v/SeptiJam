@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController => GetComponent<CharacterController>();
+    GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
     [Header("References")]
-    [SerializeField] Camera camera;
 
     [Header("Settings")]
     [SerializeField] [Range(1, 20)] float speed = 10;
@@ -42,11 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        if (camera == false)
-        {
-            camera = FindObjectOfType<Camera>();
-            Debug.LogWarning("No camera assigned in PlayerMovement: " + name + " !");
-        }
 
         input = new PlayerInput();
         input.Character.MovementAxis.performed += (axis) =>
@@ -90,14 +85,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (axisInUse)
         {
-            var axisInput = new Vector3(movementInput.x, 0, movementInput.y).normalized;
-
-            var cameraForward = camera.transform.forward;
-            cameraForward.y = 0;
-            cameraForward.Normalize();
-
-            var movementRotation = Quaternion.FromToRotation(camera.transform.up, floorUp) * camera.transform.rotation;
-            var direction = movementRotation * axisInput;
+            var direction = gameCamera.InputDirection(movementInput, floorUp);
 
             var horizontalDirection = direction;
             horizontalDirection.y = 0;
