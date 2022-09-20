@@ -655,6 +655,103 @@ Transform:
   m_Father: {fileID: 766733186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &189212949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189212950}
+  - component: {fileID: 189212953}
+  - component: {fileID: 189212952}
+  - component: {fileID: 189212951}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &189212950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189212949}
+  m_LocalRotation: {x: 0, y: -0.9185295, z: -0, w: -0.39535245}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 874140788}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &189212951
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189212949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &189212952
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189212949}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8a8cad42de85fad44866482f599e8ade, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &189212953
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189212949}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &213465171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1173,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.027822552, y: 0.8899961, z: -0.45180646, w: -0.054806575}
+  m_LocalRotation: {x: -0.027822535, y: 0.8899961, z: -0.4518065, w: -0.05480653}
   m_LocalPosition: {x: -1.3265475, y: 16.726206, z: 38.400505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2006,7 +2103,7 @@ GameObject:
   - component: {fileID: 874140790}
   - component: {fileID: 874140789}
   m_Layer: 0
-  m_Name: CheckPoint 2 (1)
+  m_Name: CheckPoint 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,7 +2120,8 @@ Transform:
   m_LocalPosition: {x: 23.2, y: 0, z: -47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 189212950}
   m_Father: {fileID: 536960664}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 226.576, z: 0}
@@ -2824,7 +2922,7 @@ GameObject:
   - component: {fileID: 1714894120}
   - component: {fileID: 1714894119}
   m_Layer: 0
-  m_Name: CheckPoint 2 (2)
+  m_Name: CheckPoint 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4051,12 +4149,12 @@ PrefabInstance:
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.054806575
+      value: -0.05480653
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.027822552
+      value: -0.027822535
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
@@ -4066,12 +4164,12 @@ PrefabInstance:
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.45180646
+      value: -0.4518065
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754620277802, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_PathPosition
-      value: 0.6513689
+      value: 2.937657
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754766276448, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
