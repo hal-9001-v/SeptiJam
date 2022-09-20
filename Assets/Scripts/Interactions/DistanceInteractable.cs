@@ -11,6 +11,8 @@ public class DistanceInteractable : MonoBehaviour
 
     [SerializeField] [Range(1, 20)] float range = 5;
 
+    public float Range { get { return range; } }
+
     public bool onlyOnce;
     [HideInInspector] public bool done;
 
