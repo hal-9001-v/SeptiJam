@@ -34,14 +34,13 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     Vector3 floorUp;
 
-    public float ySpeed = 0;
+    float ySpeed = 0;
 
     float rotationTime;
     float rotationElapsedTime;
 
     private void Awake()
     {
-
         input = new PlayerInput();
         input.Character.MovementAxis.performed += (axis) =>
         {
@@ -64,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
 
         SetTargetRotation(transform.rotation, 1);
     }
-
 
     // Update is called once per frame
     void Update()
