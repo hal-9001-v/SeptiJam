@@ -2630,7 +2630,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  ySpeed: 0
 --- !u!114 &1253523169
 MonoBehaviour:
   m_ObjectHideFlags: 0
