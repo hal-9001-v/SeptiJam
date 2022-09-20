@@ -14,10 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] [Range(1, 20)] float speed = 10;
     [SerializeField] [Range(1, 20)] float gravity = 10;
 
-    [SerializeField] [Range(5, 20)] float jumpHeight = 10;
+    [SerializeField] [Range(1, 20)] float jumpHeight = 10;
 
     [SerializeField] [Range(0.1f, 2)] float groundRaycastRange = 2;
-    [SerializeField] [Range(0.1f, 5)] float groundUpRaycastRange = 5;
 
     [SerializeField] [Range(1, 360)] float rotationSpeed = 90f;
 
@@ -58,10 +57,12 @@ public class PlayerMovement : MonoBehaviour
 
         input.Character.Jump.performed += (ctx) =>
         {
-            Jump(jumpHeight);
+            Jump(jumpHeight, false);
         };
 
         input.Enable();
+
+        SetTargetRotation(transform.rotation, 1);
     }
 
 
@@ -89,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
             var horizontalDirection = direction;
             horizontalDirection.y = 0;
-            
+
             SetTargetRotation(Quaternion.LookRotation(horizontalDirection, Vector3.up), 0.25f);
 
             return direction * speed;
@@ -151,22 +152,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isGrounded = false;
-
-            if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, groundUpRaycastRange, groundMask))
-            {
-                floorUp = raycastHit.normal;
-            }
-            else
-            {
-                floorUp = Vector3.up;
-            }
+            floorUp = Vector3.up;
         }
     }
 
-    void Jump(float height)
+    public void Jump(float height, bool force)
     {
 
-        if (isGrounded && ySpeed <= 0)
+        if ((isGrounded && ySpeed <= 0) || force)
         {
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
         }
@@ -178,10 +171,6 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundRaycastRange);
         Gizmos.DrawSphere(transform.position + Vector3.down * groundRaycastRange, 0.15f);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundUpRaycastRange);
-        Gizmos.DrawSphere(transform.position + Vector3.down * groundUpRaycastRange, 0.15f);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * jumpHeight);
