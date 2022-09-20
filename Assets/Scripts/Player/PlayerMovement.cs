@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum ControllerMode
+{
+    PLAYER = 0,
+    CAR = 1
+}
+
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     PlayerInput input;
-
+    private ControllerMode controllerMode; 
+    
     bool axisInUse;
     Vector2 movementInput;
 
@@ -38,10 +46,14 @@ public class PlayerMovement : MonoBehaviour
 
     float rotationTime;
     float rotationElapsedTime;
+    
+    //Car
+    [SerializeField] Car carReference;
 
     private void Awake()
     {
         input = new PlayerInput();
+        controllerMode =  ControllerMode.CAR;
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
@@ -67,16 +79,29 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateGrounded();
 
-        Vector3 velocity = Vector3.zero;
+        if (controllerMode == ControllerMode.PLAYER)
+        {   
+            //PLAYER INPUT
+            UpdateGrounded();
 
-        velocity += GravityVelocity();
-        velocity += AxisMovementVelocity();
+            Vector3 velocity = Vector3.zero;
 
-        characterController.Move(velocity * Time.deltaTime);
+            velocity += GravityVelocity();
+            velocity += AxisMovementVelocity();
+            
+            characterController.Move(velocity * Time.deltaTime);
+            
+            LerpRotation();
+        }
+        else
+        {
+            //CAR INPUT
+            carReference.Input.Steer = movementInput.x ;
+            carReference.Input.Forward = movementInput.y;
+        }
 
-        LerpRotation();
+
     }
 
 
