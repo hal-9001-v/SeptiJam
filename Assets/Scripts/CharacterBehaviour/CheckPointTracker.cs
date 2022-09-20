@@ -20,8 +20,17 @@ public class CheckPointTracker : MonoBehaviour
     public void Respawn()
     {
         var spawnPoint = currentCheckPoint.SpawnPoint + respawnOffset;
+
+        var characterController = GetComponent<CharacterController>();
+        
+        if (characterController)
+            characterController.enabled = false;
+        
         transform.position = spawnPoint;
         transform.forward = currentCheckPoint.SpawnDirection;
+        
+        if (characterController)
+            characterController.enabled = true;
 
         if (spawnCallback != null)
         {
