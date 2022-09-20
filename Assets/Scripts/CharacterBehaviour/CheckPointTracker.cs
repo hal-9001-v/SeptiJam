@@ -21,8 +21,8 @@ public class CheckPointTracker : MonoBehaviour
     {
         var spawnPoint = currentCheckPoint.SpawnPoint + respawnOffset;
 
+        //Disable CC if there is any to modify position
         var characterController = GetComponent<CharacterController>();
-        
         if (characterController)
             characterController.enabled = false;
         
