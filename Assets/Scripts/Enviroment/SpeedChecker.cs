@@ -14,32 +14,29 @@ public class SpeedChecker : MonoBehaviour
     [SerializeField] [Range(0, 200)] float requiredWeight;
 
     public UnityEvent speedEvent;
-    public Action speedCallback;
+    public Action<Car> speedCallback;
 
 
     private void Awake()
     {
-        interactable.enterTriggerCallback += (interactor) =>
-        {
-            var insertComponentWithSpeedHere = interactor.GetComponent<Transform>();
-
-            if (insertComponentWithSpeedHere)
-            {
-                CheckSpeed(insertComponentWithSpeedHere);
-            }
-        };
+        interactable.enterTriggerCallback += CheckSpeed;
     }
 
-    void CheckSpeed(Transform componentWithSpeedHere)
+    void CheckSpeed(Interactor interactor)
     {
-        //If(componentWithSpeed.speed >= requiredSpeed && componentWithSpeed.weight >= requiredWeight)
-        if (false)
-        {
-            speedEvent.Invoke();
+        var car = interactor.GetComponent<Car>();
 
-            if (speedCallback != null)
+        if (car)
+        {
+            if (car.CurrentSpeed >= requiredSpeed && car.CurrentWeight >= requiredWeight)
             {
-                speedCallback.Invoke();
+
+                speedEvent.Invoke();
+
+                if (speedCallback != null)
+                {
+                    speedCallback.Invoke(car);
+                }
             }
         }
     }

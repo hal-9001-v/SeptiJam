@@ -1,23 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
+
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour
 {
-    
+
     [Header("Spawn")]
     [SerializeField] Vector3 spawnOffset;
     [SerializeField] CheckPointTracker tracker;
 
     protected Rigidbody Rigidbody;
-    
+
     [Header("Wheels")]
     public WheelInfo[] Wheels;
-    
-    
+
+    public float CurrentSpeed { get { return Rigidbody.velocity.magnitude; } }
+    public float CurrentWeight { get { return MotorPower; } }
+
     [Header("Car Physics Variables")]
     //TODO: change these to be modified through code and add getters & stuff
     [SerializeField] Vector3 CenterOfMass;
@@ -38,40 +40,46 @@ public class Car : MonoBehaviour
         public float Forward;
         public float Steer;
     }
-        
-    void Awake () {
+
+    void Awake()
+    {
         tracker.spawnCallback += Spawn;
         Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.centerOfMass = CenterOfMass;
         SetCarModifierInfoDefaultStats();
         OnValidate();
     }
-    
+
 
     void Update()
     {
-        for(int i = 0; i < Wheels.Length; i++)
+        for (int i = 0; i < Wheels.Length; i++)
         {
             if (Wheels[i].Motor)
                 Wheels[i].WheelCollider.motorTorque = Input.Forward * MotorPower;
             if (Wheels[i].Steer)
                 Wheels[i].WheelCollider.steerAngle = Input.Steer * SteerAngle;
 
-            Wheels[i].Rotation += Wheels[i].WheelCollider   .rpm / 60 * 360 * Time.fixedDeltaTime;
+            Wheels[i].Rotation += Wheels[i].WheelCollider.rpm / 60 * 360 * Time.fixedDeltaTime;
             Wheels[i].MeshRenderer.localRotation = Wheels[i].MeshRenderer.parent.localRotation * Quaternion.Euler(Wheels[i].Rotation, -Wheels[i].WheelCollider.steerAngle, 0);
 
         }
 
         Rigidbody.AddForceAtPosition(transform.up * (Rigidbody.velocity.magnitude * -0.1f * Grip), transform.position + transform.rotation * CenterOfMass);
     }
-    
+
     void Spawn(Vector3 position, Vector3 direction)
     {
         transform.position = position + spawnOffset;
         transform.forward = direction;
     }
 
-    
+    public void Hurt()
+    {
+
+    }
+
+
     //TEMP QUICK AND DIRTY
     void SetCarModifierInfoDefaultStats()
     {
@@ -79,16 +87,16 @@ public class Car : MonoBehaviour
         carModifierInfo.damp = 4500f;
         carModifierInfo.springLength = 1f;
         carModifierInfo.wheelRadius = 0.3f;
-        
+
         carModifierInfo.motorForce = 5000f;
         carModifierInfo.steerAngle = 35f;
-        
+
         carModifierInfo.carMass = 2800f;
         carModifierInfo.centerOfMass = new Vector3(0f, -2f, 0.159f);
-        
+
         OnChangeCarPiece();
     }
-    
+
     //Call this when modifying any car attribs
     void OnChangeCarPiece()
     {
@@ -120,19 +128,19 @@ public class Car : MonoBehaviour
             Wheels[i].WheelCollider.forwardFriction = ffriction;
             Wheels[i].WheelCollider.sidewaysFriction = sfriction;
         }
-        
+
     }
 
-    private void ModifyWheelStats(float spring, float damp, float springLength, float wheelRadius)    
+    private void ModifyWheelStats(float spring, float damp, float springLength, float wheelRadius)
     {
-        for(int i = 0; i < Wheels.Length; i++)
+        for (int i = 0; i < Wheels.Length; i++)
         {
             var wheelColliderSuspensionSpring = Wheels[i].WheelCollider.suspensionSpring;
-            
+
             wheelColliderSuspensionSpring.spring = spring;
             wheelColliderSuspensionSpring.damper = damp;
             wheelColliderSuspensionSpring.targetPosition = Wheels[i].WheelCollider.suspensionSpring.targetPosition;
-            
+
             Wheels[i].WheelCollider.suspensionSpring = wheelColliderSuspensionSpring;
             Wheels[i].WheelCollider.radius = wheelRadius;
             Wheels[i].WheelCollider.suspensionDistance = springLength;

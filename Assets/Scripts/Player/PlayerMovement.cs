@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     PlayerInput input;
-    private ControllerMode controllerMode; 
-    
+    private ControllerMode controllerMode;
+
     bool axisInUse;
     Vector2 movementInput;
 
@@ -46,14 +46,14 @@ public class PlayerMovement : MonoBehaviour
 
     float rotationTime;
     float rotationElapsedTime;
-    
+
     //Car
     [SerializeField] Car carReference;
 
     private void Awake()
     {
         input = new PlayerInput();
-        controllerMode =  ControllerMode.CAR;
+        controllerMode = ControllerMode.CAR;
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if (controllerMode == ControllerMode.PLAYER)
-        {   
+        {
             //PLAYER INPUT
             UpdateGrounded();
 
@@ -89,16 +89,19 @@ public class PlayerMovement : MonoBehaviour
 
             velocity += GravityVelocity();
             velocity += AxisMovementVelocity();
-            
+
             characterController.Move(velocity * Time.deltaTime);
-            
+
             LerpRotation();
         }
         else
         {
-            //CAR INPUT
-            carReference.Input.Steer = movementInput.x ;
-            carReference.Input.Forward = movementInput.y;
+            if (carReference)
+            {
+                //CAR INPUT
+                carReference.Input.Steer = movementInput.x;
+                carReference.Input.Forward = movementInput.y;
+            }
         }
 
 
