@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LanguageNotifier : MonoBehaviour
 {
+    //Change for default language here!
+    Language currentLanguage = Language.Spanish;
+    
     public Language CurrentLanguage
     {
         get
@@ -15,7 +18,6 @@ public class LanguageNotifier : MonoBehaviour
         }
     }
 
-    Language currentLanguage;
 
     static LanguageNotifier languageNotifier;
 
