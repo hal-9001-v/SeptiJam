@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using static DataFileManager;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour
@@ -77,6 +78,19 @@ public class Car : MonoBehaviour
     public void Hurt()
     {
 
+    }
+
+    public CarData GetCarData()
+    {
+        CarData carData = new CarData();
+
+        return carData;
+
+    }
+
+    public void SetCarData(CarData carData)
+    {
+        //Game has been loaded!
     }
 
 
