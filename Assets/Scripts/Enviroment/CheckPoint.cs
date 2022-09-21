@@ -6,6 +6,15 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] string checkPointId = "CheckPoint_";
+    public string CheckPointId
+    {
+        get
+        {
+            return checkPointId;
+        }
+    }
+
     [SerializeField] Vector3 spawnPoint;
     [SerializeField] Vector3 spawnDirection = Vector3.forward;
     public Vector3 SpawnPoint { get { return transform.TransformPoint(spawnPoint); } }
@@ -16,7 +25,7 @@ public class CheckPoint : MonoBehaviour
 
     private void Awake()
     {
-        interactable.stayCallback += CheckInteractor;
+        interactable.enterCallback += CheckInteractor;
     }
 
     void CheckInteractor(Interactor interactor)

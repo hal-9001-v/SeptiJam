@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static DataFileManager;
 
 public enum ControllerMode
 {
-    PLAYER = 0,
-    CAR = 1
+    Player = 0,
+    Car = 1
 }
 
 [RequireComponent(typeof(CharacterController))]
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     PlayerInput input;
-    private ControllerMode controllerMode;
+    public ControllerMode controllerMode;
 
     bool axisInUse;
     Vector2 movementInput;
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         input = new PlayerInput();
-        controllerMode = ControllerMode.CAR;
+        controllerMode = ControllerMode.Car;
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (controllerMode == ControllerMode.PLAYER)
+        if (controllerMode == ControllerMode.Player)
         {
             //PLAYER INPUT
             UpdateGrounded();
@@ -106,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-
 
     Vector3 AxisMovementVelocity()
     {
