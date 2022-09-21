@@ -30,7 +30,7 @@ public class Car : MonoBehaviour
     [SerializeField] Vector3 spawnOffset;
     [SerializeField] CheckPointTracker tracker;
 
-    protected Rigidbody Rigidbody;
+    public Rigidbody Rigidbody;
 
     [Header("Wheels")]
     public WheelInfo[] Wheels;
