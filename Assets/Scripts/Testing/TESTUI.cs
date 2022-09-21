@@ -13,7 +13,7 @@ using UnityEngine;
 
         private void Update()
         {
-            velText.text = car.Rigidbody.velocity.magnitude.ToString(CultureInfo.InvariantCulture);
-            massText.text = car.Rigidbody.mass.ToString(CultureInfo.InvariantCulture);
+            velText.text = car.GetCurrentSpeed.ToString(CultureInfo.InvariantCulture);
+            massText.text = car.GetCurrentWeight.ToString(CultureInfo.InvariantCulture);
         }
     }

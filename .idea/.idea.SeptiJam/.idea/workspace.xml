@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleSceneCar.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleSceneCar.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enviroment/SpeedChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enviroment/SpeedChecker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Car.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,16 +23,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.2.11f1\Editor\Unity.exe" />
@@ -72,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663777821129</updated>
-      <workItem from="1663777823970" duration="5171000" />
+      <workItem from="1663777823970" duration="5494000" />
     </task>
     <servers />
   </component>

@@ -28,7 +28,7 @@ public class SpeedChecker : MonoBehaviour
 
         if (car)
         {
-            if (car.CurrentSpeed >= requiredSpeed && car.CurrentWeight >= requiredWeight)
+            if (car.GetCurrentSpeed >= requiredSpeed && car.GetCurrentWeight >= requiredWeight)
             {
 
                 speedEvent.Invoke();

@@ -29,13 +29,13 @@ public class Car : MonoBehaviour
     [SerializeField] Vector3 spawnOffset;
     [SerializeField] CheckPointTracker tracker;
 
-    public Rigidbody Rigidbody;
+    protected Rigidbody Rigidbody;
 
     [Header("Wheels")]
     public WheelInfo[] Wheels;
 
-    public float CurrentSpeed { get { return Rigidbody.velocity.magnitude; } }
-    public float CurrentWeight { get { return MotorPower; } }
+    public float GetCurrentSpeed { get { return Rigidbody.velocity.magnitude; } }
+    public float GetCurrentWeight { get { return Rigidbody.mass; } }
 
     [Header("Car Physics Variables")]
     //TODO: change these to be modified through code and add getters & stuff
