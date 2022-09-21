@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 1203380587542279103}
   - component: {fileID: 1203380587542279089}
   - component: {fileID: 1203380587542279091}
+  - component: {fileID: 2740647063747028453}
   - component: {fileID: 1203380587542279088}
   m_Layer: 0
   m_Name: Car Logic
@@ -542,7 +543,6 @@ MonoBehaviour:
     squareWheels: 0
   spawnOffset: {x: 2, y: 0, z: 2}
   tracker: {fileID: 0}
-  Rigidbody: {fileID: 0}
   Wheels:
   - WheelCollider: {fileID: 1203380588273169124}
     MeshRenderer: {fileID: 1663922845}
@@ -569,6 +569,30 @@ MonoBehaviour:
   SteerAngle: 35
   KeepGrip: 1
   Grip: 15
+--- !u!114 &2740647063747028453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203380587542279101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7e1a031e28cda46a88cc6ea49f1a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugDatabase:
+  - {fileID: 1309075311086426621, guid: 72c28111547f8714a80dadec9e2009fc, type: 3}
+  - {fileID: 2745950201952223105, guid: dfb1f16644a676f4abdc8790d0c4ac19, type: 3}
+  - {fileID: 6504043742309913002, guid: f1e9ac50869c7c848b58d08d2569172b, type: 3}
+  carAttributes:
+  - ParameterType: 0
+    BaseValue: 2800
+  - ParameterType: 1
+    BaseValue: 35
+  - ParameterType: 2
+    BaseValue: 5000
+  myCar: {fileID: 1203380587542279091}
 --- !u!54 &1203380587542279088
 Rigidbody:
   m_ObjectHideFlags: 0
