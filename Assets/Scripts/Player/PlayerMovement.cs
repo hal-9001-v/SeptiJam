@@ -13,6 +13,8 @@ public enum ControllerMode
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController => GetComponent<CharacterController>();
+    CheckPointTracker checkPointTracker => GetComponent<CheckPointTracker>();
+
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
     [Header("References")]
@@ -50,6 +52,19 @@ public class PlayerMovement : MonoBehaviour
     //Car
     [SerializeField] Car carReference;
 
+    bool respawning;
+    [SerializeField] [Range(0.1f, 5)] float respawnTime = 2;
+    float respawnElapsedTime;
+
+    public float respawnProgress
+    {
+        get
+        {
+            if (respawning == false) return 0;
+            return respawnElapsedTime / respawnTime;
+        }
+    }
+
     private void Awake()
     {
         input = new PlayerInput();
@@ -69,6 +84,17 @@ public class PlayerMovement : MonoBehaviour
         input.Character.Jump.performed += (ctx) =>
         {
             Jump(jumpHeight, false);
+        };
+
+        input.Character.Respawn.performed += (ctx) =>
+        {
+            respawning = true;
+        };
+
+        input.Character.Respawn.canceled += (ctx) =>
+        {
+            respawning = false;
+
         };
 
         input.Enable();
@@ -93,6 +119,8 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(velocity * Time.deltaTime);
 
             LerpRotation();
+
+            RespawnCountdown();
         }
         else
         {
@@ -105,6 +133,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+    }
+
+    void RespawnCountdown()
+    {
+        if (respawning)
+        {
+            respawnElapsedTime += Time.deltaTime;
+
+            if (respawnElapsedTime > respawnTime)
+            {
+                respawnElapsedTime = 0;
+                respawning = false;
+
+                checkPointTracker.Respawn();
+            }
+        }
     }
 
     Vector3 AxisMovementVelocity()

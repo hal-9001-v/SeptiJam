@@ -53,6 +53,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""41ba0c15-ded0-4455-b2e6-79a42ff8016c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -220,6 +229,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c84b51b-1841-41a6-a387-ecf57bb17bdf"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80213279-a4f4-40f5-af55-0a334765650a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -298,6 +329,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Character_MovementAxis = m_Character.FindAction("MovementAxis", throwIfNotFound: true);
         m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
         m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
+        m_Character_Respawn = m_Character.FindAction("Respawn", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_Newaction = m_Car.FindAction("New action", throwIfNotFound: true);
@@ -366,6 +398,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_MovementAxis;
     private readonly InputAction m_Character_Jump;
     private readonly InputAction m_Character_Interact;
+    private readonly InputAction m_Character_Respawn;
     public struct CharacterActions
     {
         private @PlayerInput m_Wrapper;
@@ -373,6 +406,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @MovementAxis => m_Wrapper.m_Character_MovementAxis;
         public InputAction @Jump => m_Wrapper.m_Character_Jump;
         public InputAction @Interact => m_Wrapper.m_Character_Interact;
+        public InputAction @Respawn => m_Wrapper.m_Character_Respawn;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +425,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
+                @Respawn.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRespawn;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -404,6 +441,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
             }
         }
     }
@@ -479,6 +519,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMovementAxis(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
     }
     public interface ICarActions
     {
