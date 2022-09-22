@@ -3,14 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarAccesory : MonoBehaviour
+public class CarAccessory : MonoBehaviour
 {
     [SerializeField]
     private CarAccessoryScriptable accesoryInformation;
 
     public CarAccessoryScriptable AccesoryInformation => accesoryInformation;
 
+    public CarAccessoryType currentPosition;
+
     private Dictionary<CarAccessoryType, CarAccessoryInPositionInfo> informationPerPositionMap;
+
+    
 
     private void Awake()
     {
@@ -38,6 +42,7 @@ public class CarAccesory : MonoBehaviour
 }
 public enum CarAccessoryType
 {
+    None,
     Engine,
     Wheels,
     Pipe,

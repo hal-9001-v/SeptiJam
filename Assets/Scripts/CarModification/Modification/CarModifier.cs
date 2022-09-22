@@ -8,6 +8,7 @@ public enum CarVarsType
    Weight,
    SteerAngle,
    MotorForce,
+   Turbo
 }
 
 [Serializable]

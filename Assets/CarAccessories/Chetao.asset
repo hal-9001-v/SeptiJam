@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AccessoryName: Estoy chetao
   AccessoryPositionInfo:
-  - TypeOfTheAccesory: 0
+  - TypeOfTheAccesory: 6
     ModificationsInThisType:
     - ParameterType: 2
       ModificationValue: 5
@@ -39,3 +39,4 @@ MonoBehaviour:
     - ParameterType: 2
       ModificationValue: 5
   AccessoryPrefab: {fileID: 0}
+  AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CarModificationManager : MonoBehaviour
 {
+
+    public static CarModificationManager instance;
     public Action<CarModifier> OnModifierAdded;
     public Action<CarModifier> OnModifierRemoved;
 
@@ -14,7 +16,7 @@ public class CarModificationManager : MonoBehaviour
     private List<CarModifier> carModifiers;
 
     private Dictionary<CarVarsType, CarAttribute> attributeDictionary;
-    private Dictionary<CarAccessoryType, CarAccesory> accesoriesAssigned;
+    private Dictionary<CarAccessoryType, CarAccessory> accesoriesAssigned;
 
     //References
     [SerializeField]
@@ -22,11 +24,18 @@ public class CarModificationManager : MonoBehaviour
 
     private void Awake()
     {
-
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         carModifiers = new List<CarModifier>();
 
-        accesoriesAssigned = new Dictionary<CarAccessoryType, CarAccesory>();
-        for (int i = 0; i < Enum.GetValues(typeof(CarAccessoryType)).Length; i++)
+        accesoriesAssigned = new Dictionary<CarAccessoryType, CarAccessory>();
+        for (int i = 1; i < Enum.GetValues(typeof(CarAccessoryType)).Length; i++)
         {
             accesoriesAssigned.Add((CarAccessoryType)i, null);
         }
@@ -55,18 +64,19 @@ public class CarModificationManager : MonoBehaviour
     {
         return attributeDictionary[parameterType].CurrentValue;
     }
-    public bool OnAddAccesory(CarAccesory accessory, CarAccessoryType typeOfAccessory)
+    public bool OnAddAccesory(CarAccessory accessory, CarAccessoryType typeOfAccessory)
     {
-        if (accesoriesAssigned[typeOfAccessory])
-        {
-            Debug.Log("Position occupied");
-            return false;
-        }
-    
+      
         if (!accessory.CanGoThere(typeOfAccessory))
         {
             Debug.Log("This accessory can't go here");
             return false;
+        }
+
+        if (accesoriesAssigned[typeOfAccessory])
+        {
+            Debug.Log("Position occupied");
+            OnRemoveAccessory(typeOfAccessory);
         }
 
         CarModifier[] modifiers = accessory.ModifiersInPosition(typeOfAccessory);
@@ -79,10 +89,11 @@ public class CarModificationManager : MonoBehaviour
         accesoriesAssigned[typeOfAccessory] = accessory;
         UpdateCarInformation();
         Debug.Log(accessory.AccesoryInformation.AccessoryName + " Added");
+        accessory.currentPosition = typeOfAccessory;
         return true;
 
     }
-    public CarAccesory OnRemoveAccessory(CarAccessoryType typeOfAccessory)
+    public CarAccessory OnRemoveAccessory(CarAccessoryType typeOfAccessory)
     {
         if (!accesoriesAssigned[typeOfAccessory])
         {
@@ -98,10 +109,11 @@ public class CarModificationManager : MonoBehaviour
             carModifiers.Remove(modifiers[i]);
         }
 
-        CarAccesory result = accesoriesAssigned[typeOfAccessory];
+        CarAccessory result = accesoriesAssigned[typeOfAccessory];
         Debug.Log(accesoriesAssigned[typeOfAccessory].AccesoryInformation.AccessoryName + " Removed");
         accesoriesAssigned[typeOfAccessory] = null;
         UpdateCarInformation();
+        result.currentPosition = CarAccessoryType.None;
         return result;
     }
     public CarAttributeInformation[] GetModificatorsInformation()

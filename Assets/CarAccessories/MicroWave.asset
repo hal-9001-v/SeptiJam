@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AccessoryName: Microwave
   AccessoryPositionInfo:
-  - TypeOfTheAccesory: 0
+  - TypeOfTheAccesory: 2
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 3
@@ -27,3 +27,4 @@ MonoBehaviour:
     - ParameterType: 1
       ModificationValue: 2
   AccessoryPrefab: {fileID: 0}
+  AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}

@@ -567,6 +567,7 @@ MonoBehaviour:
   CenterOfMass: {x: 0, y: -2, z: 0.159}
   MotorPower: 1000
   SteerAngle: 35
+  turboAmount: 0
   KeepGrip: 1
   Grip: 15
 --- !u!114 &2740647063747028453
@@ -581,10 +582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7e1a031e28cda46a88cc6ea49f1a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugDatabase:
-  - {fileID: 1309075311086426621, guid: 72c28111547f8714a80dadec9e2009fc, type: 3}
-  - {fileID: 2745950201952223105, guid: dfb1f16644a676f4abdc8790d0c4ac19, type: 3}
-  - {fileID: 6504043742309913002, guid: f1e9ac50869c7c848b58d08d2569172b, type: 3}
   carAttributes:
   - ParameterType: 0
     BaseValue: 2800
@@ -592,6 +589,8 @@ MonoBehaviour:
     BaseValue: 35
   - ParameterType: 2
     BaseValue: 5000
+  - ParameterType: 3
+    BaseValue: 0
   myCar: {fileID: 1203380587542279091}
 --- !u!54 &1203380587542279088
 Rigidbody:
