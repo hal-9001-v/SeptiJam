@@ -259,9 +259,63 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ""id"": ""9330fe65-3a0c-4719-b958-f92fa4c1279a"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""MovementAxis"",
+                    ""type"": ""Value"",
+                    ""id"": ""0becb817-c1bd-402f-b5df-de6bb80eef92"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Respawn"",
                     ""type"": ""Button"",
-                    ""id"": ""fc8927d3-c30b-4b23-97ef-30922160655d"",
+                    ""id"": ""faeecc3e-2007-4df1-beaa-f26e6384202b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Turbo"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4defcb1-58c5-49c5-8cc1-570fc475ebdd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Leave Car"",
+                    ""type"": ""Button"",
+                    ""id"": ""cdeddfda-92a6-4e77-80df-d8871e89e9b6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseSong"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c0bbf16-5964-473c-a413-b436b2d19faf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextSong"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c4b0d36-976a-4541-a5ca-733a3fc5e476"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PreviousSong"",
+                    ""type"": ""Button"",
+                    ""id"": ""008b03b0-c01c-4ee7-be46-523d32b0d990"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -270,13 +324,244 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""90754df8-263d-444d-84b2-ce8b83922be9"",
-                    ""path"": """",
+                    ""name"": ""Keyboard"",
+                    ""id"": ""fe88f7da-58a7-4ac7-8f56-76f54242e930"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5ca03511-99f2-4591-abce-e71916ad2a44"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""2a76dacf-9da0-4ca1-bf6e-e55f2fd0b4c2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a454ba4b-d02f-4b76-84c3-4ada437e6008"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e7d5852d-e7f7-496d-8235-4cdd5fc0fbe9"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""GamePad"",
+                    ""id"": ""00ce2123-ce50-408d-94d6-427f71943c9c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b1006ad4-8e4d-42ef-9f65-f729f8d31dea"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5b9e6bc3-5aa9-4fcb-abfd-906232eaee4c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""592bd883-2cae-41c4-b015-70bed94a96f2"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fc46bcce-019a-4855-8a3b-c641a312f306"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b82468b8-d253-40d7-ae25-d62347f26010"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turbo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a13b234-ce33-4e31-a8bc-2e8742843560"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turbo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2021e88-97f0-4e51-88b9-c617404dc735"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8d5b8b3-b5f0-47f3-b368-e987bdfa3f76"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eed12eea-3173-41dd-a7c9-005903eb6ec0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Leave Car"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dda42f0-fc37-4583-97e6-9ccdd7545a76"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Leave Car"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e4878ec-386b-4fad-8f7d-6c0449b175fa"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseSong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0ffa004-7f82-474c-ad27-98ce21378485"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseSong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5b20680-dff3-46af-85a0-ffac70541b97"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4c07fb5-408c-4975-9eb1-e133a0ad0c4f"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7e678c7-e3a0-42c6-843f-b26025b4257d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousSong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d644def-73e2-4d49-b138-07e4ca5062ed"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousSong"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -363,7 +648,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Character_Respawn = m_Character.FindAction("Respawn", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
-        m_Car_Newaction = m_Car.FindAction("New action", throwIfNotFound: true);
+        m_Car_MovementAxis = m_Car.FindAction("MovementAxis", throwIfNotFound: true);
+        m_Car_Respawn = m_Car.FindAction("Respawn", throwIfNotFound: true);
+        m_Car_Turbo = m_Car.FindAction("Turbo", throwIfNotFound: true);
+        m_Car_LeaveCar = m_Car.FindAction("Leave Car", throwIfNotFound: true);
+        m_Car_PauseSong = m_Car.FindAction("PauseSong", throwIfNotFound: true);
+        m_Car_NextSong = m_Car.FindAction("NextSong", throwIfNotFound: true);
+        m_Car_PreviousSong = m_Car.FindAction("PreviousSong", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -484,12 +775,24 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     // Car
     private readonly InputActionMap m_Car;
     private ICarActions m_CarActionsCallbackInterface;
-    private readonly InputAction m_Car_Newaction;
+    private readonly InputAction m_Car_MovementAxis;
+    private readonly InputAction m_Car_Respawn;
+    private readonly InputAction m_Car_Turbo;
+    private readonly InputAction m_Car_LeaveCar;
+    private readonly InputAction m_Car_PauseSong;
+    private readonly InputAction m_Car_NextSong;
+    private readonly InputAction m_Car_PreviousSong;
     public struct CarActions
     {
         private @PlayerInput m_Wrapper;
         public CarActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Car_Newaction;
+        public InputAction @MovementAxis => m_Wrapper.m_Car_MovementAxis;
+        public InputAction @Respawn => m_Wrapper.m_Car_Respawn;
+        public InputAction @Turbo => m_Wrapper.m_Car_Turbo;
+        public InputAction @LeaveCar => m_Wrapper.m_Car_LeaveCar;
+        public InputAction @PauseSong => m_Wrapper.m_Car_PauseSong;
+        public InputAction @NextSong => m_Wrapper.m_Car_NextSong;
+        public InputAction @PreviousSong => m_Wrapper.m_Car_PreviousSong;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -499,16 +802,52 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_CarActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_CarActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnNewaction;
+                @MovementAxis.started -= m_Wrapper.m_CarActionsCallbackInterface.OnMovementAxis;
+                @MovementAxis.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnMovementAxis;
+                @MovementAxis.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnMovementAxis;
+                @Respawn.started -= m_Wrapper.m_CarActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnRespawn;
+                @Turbo.started -= m_Wrapper.m_CarActionsCallbackInterface.OnTurbo;
+                @Turbo.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnTurbo;
+                @Turbo.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnTurbo;
+                @LeaveCar.started -= m_Wrapper.m_CarActionsCallbackInterface.OnLeaveCar;
+                @LeaveCar.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnLeaveCar;
+                @LeaveCar.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnLeaveCar;
+                @PauseSong.started -= m_Wrapper.m_CarActionsCallbackInterface.OnPauseSong;
+                @PauseSong.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnPauseSong;
+                @PauseSong.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnPauseSong;
+                @NextSong.started -= m_Wrapper.m_CarActionsCallbackInterface.OnNextSong;
+                @NextSong.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnNextSong;
+                @NextSong.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnNextSong;
+                @PreviousSong.started -= m_Wrapper.m_CarActionsCallbackInterface.OnPreviousSong;
+                @PreviousSong.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnPreviousSong;
+                @PreviousSong.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnPreviousSong;
             }
             m_Wrapper.m_CarActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @MovementAxis.started += instance.OnMovementAxis;
+                @MovementAxis.performed += instance.OnMovementAxis;
+                @MovementAxis.canceled += instance.OnMovementAxis;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
+                @Turbo.started += instance.OnTurbo;
+                @Turbo.performed += instance.OnTurbo;
+                @Turbo.canceled += instance.OnTurbo;
+                @LeaveCar.started += instance.OnLeaveCar;
+                @LeaveCar.performed += instance.OnLeaveCar;
+                @LeaveCar.canceled += instance.OnLeaveCar;
+                @PauseSong.started += instance.OnPauseSong;
+                @PauseSong.performed += instance.OnPauseSong;
+                @PauseSong.canceled += instance.OnPauseSong;
+                @NextSong.started += instance.OnNextSong;
+                @NextSong.performed += instance.OnNextSong;
+                @NextSong.canceled += instance.OnNextSong;
+                @PreviousSong.started += instance.OnPreviousSong;
+                @PreviousSong.performed += instance.OnPreviousSong;
+                @PreviousSong.canceled += instance.OnPreviousSong;
             }
         }
     }
@@ -563,7 +902,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     }
     public interface ICarActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMovementAxis(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
+        void OnTurbo(InputAction.CallbackContext context);
+        void OnLeaveCar(InputAction.CallbackContext context);
+        void OnPauseSong(InputAction.CallbackContext context);
+        void OnNextSong(InputAction.CallbackContext context);
+        void OnPreviousSong(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

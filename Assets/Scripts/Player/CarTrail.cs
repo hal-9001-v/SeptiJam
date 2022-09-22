@@ -29,7 +29,7 @@ public class CarTrail : MonoBehaviour
     {
         UpdateTrails();
     }
-
+    
     void UpdateTrails()
     {
         if (emit == false) return;

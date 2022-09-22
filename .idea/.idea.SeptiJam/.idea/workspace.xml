@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enviroment/SpeedChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enviroment/SpeedChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleSceneCar.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleSceneCar.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Car.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/CarTrail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/CarTrail.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663777821129</updated>
       <workItem from="1663777823970" duration="5494000" />
+      <workItem from="1663863153596" duration="2625000" />
     </task>
     <servers />
   </component>

@@ -16,40 +16,51 @@ public enum WheelSize
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour
 {
+    //Input
+    PlayerInput input;
+    private Vector2 movementInput;
+    private bool axisInUse;
 
-    [HideInInspector]
-    public const float DEFAULT_WHEEL_SIZE = 0.35f;
+    [HideInInspector] public const float DEFAULT_WHEEL_SIZE = 0.35f;
     public const float DEFAULT_WHEEL_SIZE_MODIFIER = 0.1f;
     public const float DEFAULT_SQUARE_WHEEL_CV_MODIFIER = 1.65f;
-    
-    [Header("Car Modifiers")]
-    public CarModifierInfo carModifierInfo;
 
-    [Header("Spawn")]
-    [SerializeField] Vector3 spawnOffset;
+    [Header("Car Modifiers")] public CarModifierInfo carModifierInfo;
+
+    [Header("Spawn")] [SerializeField] Vector3 spawnOffset;
     [SerializeField] CheckPointTracker tracker;
 
     protected Rigidbody Rigidbody;
 
-    [Header("Wheels")]
-    public WheelInfo[] Wheels;
+    [Header("Wheels")] public WheelInfo[] Wheels;
 
-    public float GetCurrentSpeed { get { return Rigidbody.velocity.magnitude; } }
-    public float GetCurrentWeight { get { return Rigidbody.mass; } }
+    public float GetCurrentSpeed
+    {
+        get { return Rigidbody.velocity.magnitude; }
+    }
 
-    [Header("Car Physics Variables")]
-    //TODO: change these to be modified through code and add getters & stuff
-    [SerializeField] Vector3 CenterOfMass;
+    public float GetCurrentWeight
+    {
+        get { return Rigidbody.mass; }
+    }
+
+    public float GetCurrentTurbo
+    {
+        get { return turboAmount; }
+    }
+
+    [Header("Car Physics Variables")] [SerializeField]
+    Vector3 CenterOfMass;
+
     [SerializeField] float MotorPower = 5000f;
     [SerializeField] float SteerAngle = 35f;
+    [SerializeField] float turboAmount;
+    [Range(0, 1)] public float KeepGrip = 1f;
+    [Range(0, 7)] public float Grip = 5f;
 
-    [Range(0, 1)]
-    public float KeepGrip = 1f;
-    public float Grip = 5f;
-    
 
-    [HideInInspector]
-    public InputStr Input;
+    [HideInInspector] public InputStr Input;
+
     public struct InputStr
     {
         public float Forward;
@@ -58,13 +69,38 @@ public class Car : MonoBehaviour
 
     void Awake()
     {
+        StartInput();
         tracker.spawnCallback += Spawn;
         Rigidbody = GetComponent<Rigidbody>();
-        Rigidbody.centerOfMass = CenterOfMass; 
-        
+        Rigidbody.centerOfMass = CenterOfMass;
+
         // SetCarModifierInfoDefaultStats();
         OnChangeCarPiece();
         OnValidate();
+    }
+
+    private void StartInput()
+    {
+        input = new PlayerInput();
+        input.Car.MovementAxis.performed += (axis) =>
+        {
+            movementInput = axis.ReadValue<Vector2>();
+            Input.Steer = movementInput.x;
+            Input.Forward = movementInput.y;
+            axisInUse = true;
+        };
+
+        input.Car.Turbo.performed += (ctx) =>
+        {
+            //turbo
+        };
+        input.Car.MovementAxis.canceled += (axis) =>
+        {
+            movementInput = Vector2.zero;
+            axisInUse = false;
+        };
+
+        input.Enable();
     }
 
 
@@ -78,11 +114,13 @@ public class Car : MonoBehaviour
                 Wheels[i].WheelCollider.steerAngle = Input.Steer * SteerAngle;
 
             Wheels[i].Rotation += Wheels[i].WheelCollider.rpm / 60 * 360 * Time.fixedDeltaTime;
-            Wheels[i].MeshRenderer.localRotation = Wheels[i].MeshRenderer.parent.localRotation * Quaternion.Euler(Wheels[i].Rotation, Wheels[i].WheelCollider.steerAngle, 0);
-
+            Wheels[i].MeshRenderer.localRotation = Wheels[i].MeshRenderer.parent.localRotation *
+                                                   Quaternion.Euler(Wheels[i].Rotation,
+                                                       Wheels[i].WheelCollider.steerAngle, 0);
         }
 
-        Rigidbody.AddForceAtPosition(transform.up * (Rigidbody.velocity.magnitude * -0.1f * Grip), transform.position + transform.rotation * CenterOfMass);
+        Rigidbody.AddForceAtPosition(transform.up * (Rigidbody.velocity.magnitude * -0.1f * Grip),
+            transform.position + transform.rotation * CenterOfMass);
     }
 
     void Spawn(Vector3 position, Vector3 direction)
@@ -93,7 +131,6 @@ public class Car : MonoBehaviour
 
     public void Hurt()
     {
-
     }
 
     public CarData GetCarData()
@@ -101,7 +138,6 @@ public class Car : MonoBehaviour
         CarData carData = new CarData();
 
         return carData;
-
     }
 
     public void SetCarData(CarData carData)
@@ -123,13 +159,11 @@ public class Car : MonoBehaviour
         carModifierInfo.springLength = 1f;
         carModifierInfo.wheelSize = WheelSize.MEDIUM;
         carModifierInfo.squareWheels = true;
-
     }
 
     //Call this when modifying any car attribs
     void OnChangeCarPiece()
     {
-        
         //Car stats
         Rigidbody.mass = carModifierInfo.carMass;
         SteerAngle = carModifierInfo.steerAngle;
@@ -139,13 +173,13 @@ public class Car : MonoBehaviour
             MotorPower = carModifierInfo.motorForce * DEFAULT_SQUARE_WHEEL_CV_MODIFIER;
         else
             MotorPower = carModifierInfo.motorForce;
-       
+
         //wheel stats
         float wheelRadius;
         switch (carModifierInfo.wheelSize)
         {
             case WheelSize.SMALL:
-                 wheelRadius = DEFAULT_WHEEL_SIZE - DEFAULT_WHEEL_SIZE_MODIFIER;
+                wheelRadius = DEFAULT_WHEEL_SIZE - DEFAULT_WHEEL_SIZE_MODIFIER;
                 break;
             case WheelSize.BIG:
                 wheelRadius = DEFAULT_WHEEL_SIZE + DEFAULT_WHEEL_SIZE_MODIFIER;
@@ -155,7 +189,9 @@ public class Car : MonoBehaviour
                 wheelRadius = DEFAULT_WHEEL_SIZE;
                 break;
         }
-        ModifyWheelStats(carModifierInfo.springForce, carModifierInfo.damp, carModifierInfo.springLength, wheelRadius,carModifierInfo.squareWheels);
+
+        ModifyWheelStats(carModifierInfo.springForce, carModifierInfo.damp, carModifierInfo.springLength, wheelRadius,
+            carModifierInfo.squareWheels);
     }
 
     void OnValidate()
@@ -166,20 +202,21 @@ public class Car : MonoBehaviour
             //settings
             var ffriction = Wheels[i].WheelCollider.forwardFriction;
             var sfriction = Wheels[i].WheelCollider.sidewaysFriction;
-            ffriction.asymptoteValue = Wheels[i].WheelCollider.forwardFriction.extremumValue * KeepGrip * 0.998f + 0.002f;
+            ffriction.asymptoteValue =
+                Wheels[i].WheelCollider.forwardFriction.extremumValue * KeepGrip * 0.998f + 0.002f;
             sfriction.extremumValue = 1f;
             ffriction.extremumSlip = 1f;
             ffriction.asymptoteSlip = 2f;
             ffriction.stiffness = Grip;
             sfriction.extremumValue = 1f;
-            sfriction.asymptoteValue = Wheels[i].WheelCollider.sidewaysFriction.extremumValue * KeepGrip * 0.998f + 0.002f;
+            sfriction.asymptoteValue =
+                Wheels[i].WheelCollider.sidewaysFriction.extremumValue * KeepGrip * 0.998f + 0.002f;
             sfriction.extremumSlip = 0.5f;
             sfriction.asymptoteSlip = 1f;
             sfriction.stiffness = Grip;
             Wheels[i].WheelCollider.forwardFriction = ffriction;
             Wheels[i].WheelCollider.sidewaysFriction = sfriction;
         }
-        
     }
 
     private void ModifyWheelStats(float spring, float damp, float springLength, float wheelRadius, bool squareWheels)
@@ -197,16 +234,13 @@ public class Car : MonoBehaviour
             Wheels[i].WheelCollider.suspensionDistance = springLength;
 
             Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
-            
+
             if (squareWheels)
             {
-                
-                float wheelSizeModifier = 1 - DEFAULT_WHEEL_SIZE  + wheelRadius; 
+                float wheelSizeModifier = 1 - DEFAULT_WHEEL_SIZE + wheelRadius;
                 Debug.Log(wheelSizeModifier + " " + wheelRadius);
                 Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().size *= wheelSizeModifier;
-                          
             }
-
         }
     }
 
@@ -224,28 +258,22 @@ public class Car : MonoBehaviour
         public Transform MeshRenderer;
         public bool Steer;
         public bool Motor;
-        [HideInInspector]
-        public float Rotation;
+        [HideInInspector] public float Rotation;
     }
 
     [System.Serializable]
     public struct CarModifierInfo
     {
-        
-        [Header("Car Stats")]
-        public float carMass; //base mass 2.800
+        [Header("Car Stats")] public float carMass; //base mass 2.800
         public float motorForce; // base force 5000
         public float steerAngle; // base angle 35
         public Vector3 centerOfMass; // base COM 0, -2, 0.159  WARNING: Tofu car TODO: CHANGE
-        
-        [Header("Wheel Stats")]
-        public float springForce; //base force 35.000
+
+        [Header("Wheel Stats")] public float springForce; //base force 35.000
         public float damp; //base damp 4.500
         public float springLength; //base length 1
         public WheelSize wheelSize;
         public bool squareWheels;
-
-
     }
 
 
@@ -254,5 +282,4 @@ public class Car : MonoBehaviour
     {
         OnChangeCarPiece();
     }
-
 }

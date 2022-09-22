@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static DataFileManager;
 
-public enum ControllerMode
-{
-    Player = 0,
-    Car = 1
-}
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -17,10 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
-    [Header("References")]
+    [Header("References")] [Header("Settings")] [SerializeField] [Range(1, 20)]
+    float speed = 10;
 
-    [Header("Settings")]
-    [SerializeField] [Range(1, 20)] float speed = 10;
     [SerializeField] [Range(1, 20)] float gravity = 10;
 
     [SerializeField] [Range(1, 20)] float jumpHeight = 10;
@@ -36,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     PlayerInput input;
-    public ControllerMode controllerMode;
 
     bool axisInUse;
     Vector2 movementInput;
@@ -48,9 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
     float rotationTime;
     float rotationElapsedTime;
-
-    //Car
-    [SerializeField] Car carReference;
 
     bool respawning;
     [SerializeField] [Range(0.1f, 5)] float respawnTime = 2;
@@ -68,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         input = new PlayerInput();
-        controllerMode = ControllerMode.Car;
+        input.Car.Disable();
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
@@ -81,21 +71,15 @@ public class PlayerMovement : MonoBehaviour
             axisInUse = false;
         };
 
-        input.Character.Jump.performed += (ctx) =>
-        {
-            Jump(jumpHeight, false);
-        };
+        input.Character.Jump.performed += (ctx) => { Jump(jumpHeight, false); };
 
-        input.Character.Respawn.performed += (ctx) =>
-        {
-            respawning = true;
-        };
+        input.Character.Respawn.performed += (ctx) => { respawning = true; };
 
-        input.Character.Respawn.canceled += (ctx) =>
-        {
-            respawning = false;
-
-        };
+        input.Character.Respawn.canceled += (ctx) => { respawning = false; };
+        input.Car.Respawn.performed += (ctx) => { respawning = true; };
+        input.Car.Respawn.canceled += (ctx) => { respawning = false; };
+        input.Character.Interact.performed += (ctx) => { ChangeControllerType(input); };
+        input.Car.LeaveCar.performed += (ctx) => { ChangeControllerType(input); };
 
         input.Enable();
 
@@ -105,34 +89,33 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //PLAYER INPUT
+        UpdateGrounded();
 
-        if (controllerMode == ControllerMode.Player)
+        Vector3 velocity = Vector3.zero;
+
+        velocity += GravityVelocity();
+        velocity += AxisMovementVelocity();
+
+        characterController.Move(velocity * Time.deltaTime);
+
+        LerpRotation();
+
+        RespawnCountdown();
+    }
+
+    void ChangeControllerType(PlayerInput input)
+    {
+        if (input.Character.enabled)
         {
-            //PLAYER INPUT
-            UpdateGrounded();
-
-            Vector3 velocity = Vector3.zero;
-
-            velocity += GravityVelocity();
-            velocity += AxisMovementVelocity();
-
-            characterController.Move(velocity * Time.deltaTime);
-
-            LerpRotation();
-
-            RespawnCountdown();
+            input.Car.Enable();
+            input.Character.Disable();
         }
         else
         {
-            if (carReference)
-            {
-                //CAR INPUT
-                carReference.Input.Steer = movementInput.x;
-                carReference.Input.Forward = movementInput.y;
-            }
+            input.Character.Enable();
+            input.Car.Disable();
         }
-
-
     }
 
     void RespawnCountdown()
@@ -166,8 +149,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return Vector3.zero;
-
     }
+
     Vector3 GravityVelocity()
     {
         if (isGrounded && ySpeed < 0)
@@ -227,12 +210,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(float height, bool force)
     {
-
         if ((isGrounded && ySpeed <= 0) || force)
         {
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
         }
-
     }
 
     private void OnDrawGizmos()
@@ -245,5 +226,4 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * jumpHeight);
         Gizmos.DrawSphere(transform.position + Vector3.up * jumpHeight, 0.15f);
     }
-
 }
