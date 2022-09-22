@@ -11,7 +11,8 @@ public class CarAccessoryScriptable : ScriptableObject
 
     public CarAccessoryInPositionInfo[] AccessoryPositionInfo;
     public GameObject AccessoryPrefab; //Quizás esto no haga falta, pero por si acaso
+    public Sprite AccessoryIcon;
 
-    //TODO: Diccionario con tipo de posicion y su informacion y un get desde ese diccionario
+
 }
 

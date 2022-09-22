@@ -48,4 +48,18 @@ public class CarAttribute
     {
         currentModifiers.Clear();
     }
+    public int GetTotalModificationValue()
+    {
+        int total = 0;
+        for (int i = 0; i < currentModifiers.Count; i++)
+        {
+            total += currentModifiers[i].ModificationValue;
+        }
+        return total;
+    }
+}
+public struct CarAttributeInformation
+{
+    public CarVarsType ParameterType;
+    public int TotalValue;
 }

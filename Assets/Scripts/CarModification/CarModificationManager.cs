@@ -45,15 +45,11 @@ public class CarModificationManager : MonoBehaviour
                 OnModifierRemoved += carAttributes[i].OnModifierRemoved;
             }
         }
-     
+
     }
     private void Start()
     {
         UpdateCarInformation();
-    }
-    private void Update()
-    {
-        Debug.Log("hola " + accesoriesAssigned.Count);
     }
     public float GetAttributeValue(CarVarsType parameterType)
     {
@@ -66,10 +62,15 @@ public class CarModificationManager : MonoBehaviour
             Debug.Log("Position occupied");
             return false;
         }
-        accesoriesAssigned[typeOfAccessory] = accessory;
+    
+        if (!accessory.CanGoThere(typeOfAccessory))
+        {
+            Debug.Log("This accessory can't go here");
+            return false;
+        }
 
         CarModifier[] modifiers = accessory.ModifiersInPosition(typeOfAccessory);
-
+        accesoriesAssigned[typeOfAccessory] = accessory;
         for (int i = 0; i < modifiers.Length; i++)
         {
             OnModifierAdded?.Invoke(modifiers[i]);
@@ -96,12 +97,27 @@ public class CarModificationManager : MonoBehaviour
             OnModifierRemoved?.Invoke(modifiers[i]);
             carModifiers.Remove(modifiers[i]);
         }
+
         CarAccesory result = accesoriesAssigned[typeOfAccessory];
         Debug.Log(accesoriesAssigned[typeOfAccessory].AccesoryInformation.AccessoryName + " Removed");
         accesoriesAssigned[typeOfAccessory] = null;
         UpdateCarInformation();
         return result;
     }
+    public CarAttributeInformation[] GetModificatorsInformation()
+    {
+        CarAttributeInformation[] carInformation = new CarAttributeInformation[attributeDictionary.Count];
+        for (int i = 0; i < attributeDictionary.Count; i++)
+        {
+            carInformation[i] = new CarAttributeInformation
+            {
+                ParameterType = (CarVarsType)i,
+                TotalValue = attributeDictionary[(CarVarsType)i].GetTotalModificationValue()
+            };
+        }
+        return carInformation;
+    }
+
     //Update the real information for the physics
     private void UpdateCarInformation()
     {

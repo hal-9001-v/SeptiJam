@@ -23,6 +23,10 @@ public class CarAccesory : MonoBehaviour
              }
         }
     }
+    public bool CanGoThere(CarAccessoryType accessoryType)
+    {
+        return informationPerPositionMap.ContainsKey(accessoryType);
+    }
     public CarModifier[] ModifiersInPosition(CarAccessoryType accessoryType)
     {
         if(informationPerPositionMap.TryGetValue(accessoryType, out CarAccessoryInPositionInfo value))

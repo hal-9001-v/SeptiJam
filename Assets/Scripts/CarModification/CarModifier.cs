@@ -14,7 +14,6 @@ public enum CarVarsType
 public class CarModifier
 {
     public CarVarsType ParameterType;
-    //public bool IsPositiveValue;
     [Range(1,5)]
     public int ModificationValue;
 }
