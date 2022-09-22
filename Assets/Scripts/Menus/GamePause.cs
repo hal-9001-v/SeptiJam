@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GamePause : MonoBehaviour
@@ -16,10 +17,14 @@ public class GamePause : MonoBehaviour
     SettingsMenu settingsMenu => FindObjectOfType<SettingsMenu>();
     LevelLoader levelLoader => FindObjectOfType<LevelLoader>();
 
+    EventSystem eventSystem => FindObjectOfType<EventSystem>();
+
     public Action pauseCallback;
     public Action resumeCallback;
 
     PlayerInput input;
+
+    bool paused;
 
     private void Awake()
     {
@@ -46,14 +51,23 @@ public class GamePause : MonoBehaviour
     // Let ctx there so it can be += and -= to avoid a nullPointer when reloading scenes. Dont make questions
     void Pause(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if (pauseCallback != null)
+        if (paused == false)
         {
-            pauseCallback.Invoke();
+            paused = true;
+
+            if (pauseCallback != null)
+            {
+                pauseCallback.Invoke();
+            }
+
+            Time.timeScale = 0;
+
+            Open();
         }
-
-        Time.timeScale = 0;
-
-        Open();
+        else
+        {
+            ResumeGame();
+        }
 
     }
 
@@ -61,19 +75,32 @@ public class GamePause : MonoBehaviour
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
+
+
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(resumeButton.gameObject);
     }
 
 
     void ResumeGame()
     {
-        if (resumeCallback != null)
+        if (paused)
         {
-            resumeCallback.Invoke();
+            paused = false;
+
+            if (resumeCallback != null)
+            {
+                resumeCallback.Invoke();
+            }
+
+            Time.timeScale = 1;
+
+            //Settings.close() and then this.Close(). Otherwise, settingsMenu.close will open this menu with its close callback
+            settingsMenu.Close();
+            Close();
+
+            eventSystem.SetSelectedGameObject(null);
         }
-
-        Time.timeScale = 1;
-
-        Close();
     }
 
     void Close()
@@ -95,7 +122,7 @@ public class GamePause : MonoBehaviour
     void GetToMainMenu()
     {
         Time.timeScale = 1;
-        
+
         input.UI.Pause.performed -= Pause;
 
         levelLoader.LoadLevel(LevelLoader.Levels.MainMenu);

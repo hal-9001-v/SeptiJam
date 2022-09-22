@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Credits : MonoBehaviour
@@ -7,10 +8,12 @@ public class Credits : MonoBehaviour
     [SerializeField] Button backToMenu;
 
     LevelLoader levelLoader => FindObjectOfType<LevelLoader>();
+    EventSystem eventSystem => FindObjectOfType<EventSystem>();
 
     private void Awake()
     {
         backToMenu.onClick.AddListener(BackToMenu);
+        eventSystem.SetSelectedGameObject(backToMenu.gameObject);
     }
 
     void BackToMenu()

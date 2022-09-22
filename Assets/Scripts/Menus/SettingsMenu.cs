@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
@@ -22,6 +23,7 @@ public class SettingsMenu : MonoBehaviour
     public Action closeCallback;
 
     LanguageNotifier languageNotifier => FindObjectOfType<LanguageNotifier>();
+    EventSystem eventSystem => FindObjectOfType<EventSystem>();
 
     private void Awake()
     {
@@ -88,7 +90,8 @@ public class SettingsMenu : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
 
-        Debug.Log("Open Settings");
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(volumeDown.gameObject);
     }
 
 }
