@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3533713909414119033}
   - component: {fileID: 3533713909414119034}
   - component: {fileID: 3533713909414119032}
+  - component: {fileID: 1064942670}
+  - component: {fileID: 1064942669}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -52,6 +54,10 @@ MonoBehaviour:
   speed: 2
   fleeSpeed: 5
   fleeRange: 4
+  launchSpeed: 15
+  rotationSpeed: 10
+  angle: 55
+  respawnTime: 10
   currentState: 
 --- !u!195 &3533713909414119032
 NavMeshAgent:
@@ -75,6 +81,43 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 1
+--- !u!135 &1064942670
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533713909414119035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.96
+  m_Center: {x: 0, y: 0.26, z: 0}
+--- !u!114 &1064942669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533713909414119035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab3b78fc6a6a743899fb8d1e9f4a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 1
+  onlyOnce: 0
+  done: 0
+  enterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  stayTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  exitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3533713910949082235
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +282,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3533713909688022757}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &5760936
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452705183780211636}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &3533713911060506038
 Animator:
   serializedVersion: 4

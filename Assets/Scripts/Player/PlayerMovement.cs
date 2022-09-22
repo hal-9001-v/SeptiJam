@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         input = new PlayerInput();
-        controllerMode = ControllerMode.Car;
+        
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();

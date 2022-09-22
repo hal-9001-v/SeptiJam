@@ -7,9 +7,14 @@ public class FSMachine
 {
     public FSMState currentState { get; private set; }
 
-    public FSMachine(FSMState startingState)
+    public FSMachine(FSMState startingState, bool executeCondition)
     {
         currentState = startingState;
+
+        if (executeCondition)
+        {
+            currentState.CheckCondition();
+        }
     }
 
     public void Update()
