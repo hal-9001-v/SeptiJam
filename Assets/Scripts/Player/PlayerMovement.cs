@@ -1,24 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DataFileManager;
 
-
-public enum ControllerMode
-{
-    PLAYER = 0,
-    CAR = 1
-}
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController => GetComponent<CharacterController>();
+    CheckPointTracker checkPointTracker => GetComponent<CheckPointTracker>();
+
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
-    [Header("References")]
+    [Header("References")] [Header("Settings")] [SerializeField] [Range(1, 20)]
+    float speed = 10;
 
-    [Header("Settings")]
-    [SerializeField] [Range(1, 20)] float speed = 10;
     [SerializeField] [Range(1, 20)] float gravity = 10;
 
     [SerializeField] [Range(1, 20)] float jumpHeight = 10;
@@ -34,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     PlayerInput input;
-    private ControllerMode controllerMode;
+    [SerializeField] Car car;
 
     bool axisInUse;
     Vector2 movementInput;
@@ -47,72 +43,124 @@ public class PlayerMovement : MonoBehaviour
     float rotationTime;
     float rotationElapsedTime;
 
-    //Car
-    [SerializeField] Car carReference;
+    bool respawning;
+    [SerializeField] [Range(0.1f, 5)] float respawnTime = 2;
+    float respawnElapsedTime;
+
+    public float respawnProgress
+    {
+        get
+        {
+            if (respawning == false) return 0;
+            return respawnElapsedTime / respawnTime;
+        }
+    }
 
     private void Awake()
     {
         input = new PlayerInput();
-        controllerMode = ControllerMode.CAR;
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
             axisInUse = true;
         };
-
         input.Character.MovementAxis.canceled += (axis) =>
         {
             movementInput = Vector2.zero;
             axisInUse = false;
         };
-
-        input.Character.Jump.performed += (ctx) =>
+        input.Car.MovementAxis.performed += (axis) =>
         {
-            Jump(jumpHeight, false);
+            car.Input.Steer = axis.ReadValue<Vector2>().x;
+            car.Input.Forward = axis.ReadValue<Vector2>().y;
+            axisInUse = true;
         };
+        input.Car.MovementAxis.canceled += (axis) =>
+        {
+            car.Input.Steer = 0f;
+            car.Input.Forward = 0f;
+            axisInUse = false;
+        };
+        input.Car.Turbo.performed += (ctx) =>
+        {
+            car.HandleTurbo();
+        };
+        input.Car.Turbo.canceled += (ctx) =>
+        {
+            car.StopTurbo();
+        };
+        
+        input.Character.Jump.performed += (ctx) => { Jump(jumpHeight, false); };
+
+        input.Character.Respawn.performed += (ctx) => { respawning = true; };
+
+        input.Character.Respawn.canceled += (ctx) => { respawning = false; };
+        input.Car.Respawn.performed += (ctx) => { respawning = true; };
+        input.Car.Respawn.canceled += (ctx) => { respawning = false; };
+        input.Character.Interact.performed += (ctx) => { ChangeControllerType(input); };
+        input.Car.LeaveCar.performed += (ctx) => { ChangeControllerType(input); };
+        
 
         input.Enable();
-
+        input.Car.Disable();
+        
         SetTargetRotation(transform.rotation, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //PLAYER INPUT
+        UpdateGrounded();
 
-        if (controllerMode == ControllerMode.PLAYER)
+        Vector3 velocity = Vector3.zero;
+
+        velocity += GravityVelocity();
+        velocity += AxisMovementVelocity();
+
+        characterController.Move(velocity * Time.deltaTime);
+
+        LerpRotation();
+
+        RespawnCountdown();
+    }
+
+    void ChangeControllerType(PlayerInput input)
+    {
+        if (input.Character.enabled)
         {
-            //PLAYER INPUT
-            UpdateGrounded();
-
-            Vector3 velocity = Vector3.zero;
-
-            velocity += GravityVelocity();
-            velocity += AxisMovementVelocity();
-
-            characterController.Move(velocity * Time.deltaTime);
-
-            LerpRotation();
+            input.Car.Enable();
+            input.Character.Disable();
+            
         }
         else
         {
-            if (carReference)
-            {
-                //CAR INPUT
-                carReference.Input.Steer = movementInput.x;
-                carReference.Input.Forward = movementInput.y;
-            }
+            input.Character.Enable();
+            input.Car.Disable();
         }
-
-
     }
 
+    void RespawnCountdown()
+    {
+        if (respawning)
+        {
+            respawnElapsedTime += Time.deltaTime;
+
+            if (respawnElapsedTime > respawnTime)
+            {
+                respawnElapsedTime = 0;
+                respawning = false;
+
+                checkPointTracker.Respawn();
+            }
+        }
+    }
 
     Vector3 AxisMovementVelocity()
     {
         if (axisInUse)
         {
-            var direction = gameCamera.InputDirection(movementInput, floorUp);
+            var direction = gameCamera.InputDirectionUnNormalized(movementInput, floorUp);
 
             var horizontalDirection = direction;
             horizontalDirection.y = 0;
@@ -123,8 +171,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return Vector3.zero;
-
     }
+
     Vector3 GravityVelocity()
     {
         if (isGrounded && ySpeed < 0)
@@ -184,12 +232,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(float height, bool force)
     {
-
         if ((isGrounded && ySpeed <= 0) || force)
         {
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
         }
-
     }
 
     private void OnDrawGizmos()
@@ -202,5 +248,4 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * jumpHeight);
         Gizmos.DrawSphere(transform.position + Vector3.up * jumpHeight, 0.15f);
     }
-
 }

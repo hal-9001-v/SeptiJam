@@ -10,10 +10,33 @@ public class CheckPointTracker : MonoBehaviour
     [SerializeField] Vector3 respawnOffset = new Vector3(0, 0.5f, 0);
     [SerializeField] CheckPoint currentCheckPoint;
 
+    public CheckPoint CurrentCheckPoint { get { return currentCheckPoint; } }
+
+    public Action enterCheckpointCallback;
     public Action<Vector3, Vector3> spawnCallback;
+
+    public void SetCheckPoint(string checkPointId)
+    {
+        foreach (var checkpoint in FindObjectsOfType<CheckPoint>())
+        {
+            if (checkpoint.CheckPointId == checkPointId)
+            {
+                SetCheckPoint(checkpoint);
+                return;
+            }
+        }
+
+        Debug.LogWarning("Cant find CheckPoint " + checkPointId + "!");
+    }
+
     public void SetCheckPoint(CheckPoint checkPoint)
     {
         currentCheckPoint = checkPoint;
+        
+        if (enterCheckpointCallback != null)
+        {
+            enterCheckpointCallback.Invoke();
+        }
     }
 
     [ContextMenu("Spawn")]
@@ -25,10 +48,10 @@ public class CheckPointTracker : MonoBehaviour
         var characterController = GetComponent<CharacterController>();
         if (characterController)
             characterController.enabled = false;
-        
+
         transform.position = spawnPoint;
         transform.forward = currentCheckPoint.SpawnDirection;
-        
+
         if (characterController)
             characterController.enabled = true;
 

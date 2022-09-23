@@ -18,8 +18,15 @@ public class DistanceInteractable : MonoBehaviour
 
     [SerializeField] Color color = Color.yellow;
 
+    [SerializeField] UnityEvent enterEvent;
     [SerializeField] UnityEvent stayEvent;
+    [SerializeField] UnityEvent exitEvent;
+
+    public Action<Interactor> enterCallback;
     public Action<Interactor> stayCallback;
+    public Action<Interactor> exitCallback;
+
+    List<Interactor> insideInteractors;
 
     Interactor[] interactors;
 
@@ -27,36 +34,66 @@ public class DistanceInteractable : MonoBehaviour
 
     private void Awake()
     {
+        insideInteractors = new List<Interactor>();
         UpdateInteractors();
     }
 
     private void Update()
     {
-        CheckInteractorsInRange();
+        CheckEnterInteractors();
+        CheckInsideInteractors();
     }
 
-    void CheckInteractorsInRange()
+    void CheckEnterInteractors()
     {
         if (onlyOnce && done) return;
 
-        interactorCount = 0;
+
         foreach (var interactor in interactors)
         {
+            if (insideInteractors.Contains(interactor)) continue;
+
             if (Vector3.Distance(transform.position, interactor.transform.position) <= range)
+            {
+                insideInteractors.Add(interactor);
+                enterEvent.Invoke();
+
+
+                if (enterCallback != null)
+                {
+                    enterCallback.Invoke(interactor);
+                }
+
+                done = true;
+                if (onlyOnce)
+                    break;
+            }
+        }
+    }
+
+    void CheckInsideInteractors()
+    {
+        for (int i = 0; i < insideInteractors.Count; i++)
+        {
+            if (Vector3.Distance(insideInteractors[i].transform.position, transform.position) > range)
+            {
+                exitEvent.Invoke();
+
+                if (exitCallback != null)
+                {
+                    exitCallback.Invoke(insideInteractors[i]);
+                }
+
+                insideInteractors.RemoveAt(i);
+            }
+            else
             {
                 stayEvent.Invoke();
 
                 if (stayCallback != null)
                 {
-                    stayCallback.Invoke(interactor);
+                    stayCallback.Invoke(insideInteractors[i]);
                 }
-
-                done = true;
-
-                interactorCount++;
-
-                if (onlyOnce)
-                    break;
             }
         }
     }

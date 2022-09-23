@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/[Aa]ssets/Ignore/
+Assets/Ignore/*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -59,3 +59,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/SomehowItWorks.json
+Assets/Ignore.meta
+Assets/Ignore/untitled.blend.meta
+Assets/Ignore/untitled.blend1.meta

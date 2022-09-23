@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -14,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     SettingsMenu settingsMenu => FindObjectOfType<SettingsMenu>();
     LevelLoader levelLoader => FindObjectOfType<LevelLoader>();
+    EventSystem eventSystem => FindObjectOfType<EventSystem>();
 
     private void Awake()
     {
@@ -21,7 +23,12 @@ public class MainMenu : MonoBehaviour
         settingsButton.onClick.AddListener(DisplaySettings);
         exitButton.onClick.AddListener(ExitGame);
 
+    }
+
+    private void Start()
+    {
         settingsMenu.closeCallback += Open;
+        Open();
     }
 
     void StartGame()
@@ -54,6 +61,8 @@ public class MainMenu : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
 
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(playButton.gameObject);
     }
 
 

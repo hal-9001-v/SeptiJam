@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class LanguageListener : MonoBehaviour
 {
-    public Language language { get; private set; }
+    public Language language{ get; private set; }
 
     [SerializeField] UnityEvent changeLanguageEvent;
     public Action<Language> changeLanguageCallback;
