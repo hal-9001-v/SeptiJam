@@ -14,6 +14,14 @@ public class GameCamera : MonoBehaviour
 
         return Quaternion.FromToRotation(transform.up, up) * transform.rotation * input;
     }
+    
+    public Vector3 InputDirectionUnNormalized(Vector2 axisInput, Vector3 up)
+    {        
+        var input = new Vector3(axisInput.x, 0, axisInput.y);
+
+        return Quaternion.FromToRotation(transform.up, up) * transform.rotation * input;
+    }
+    
 
     /// <summary>
     /// Get direction in World coordinates applying the camera rotation with World.up as Up

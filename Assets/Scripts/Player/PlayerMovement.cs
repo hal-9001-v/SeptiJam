@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     PlayerInput input;
+    [SerializeField] Car car;
 
     bool axisInUse;
     Vector2 movementInput;
@@ -58,19 +59,37 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         input = new PlayerInput();
-        input.Car.Disable();
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
             axisInUse = true;
         };
-
         input.Character.MovementAxis.canceled += (axis) =>
         {
             movementInput = Vector2.zero;
             axisInUse = false;
         };
-
+        input.Car.MovementAxis.performed += (axis) =>
+        {
+            car.Input.Steer = axis.ReadValue<Vector2>().x;
+            car.Input.Forward = axis.ReadValue<Vector2>().y;
+            axisInUse = true;
+        };
+        input.Car.MovementAxis.canceled += (axis) =>
+        {
+            car.Input.Steer = 0f;
+            car.Input.Forward = 0f;
+            axisInUse = false;
+        };
+        input.Car.Turbo.performed += (ctx) =>
+        {
+            car.HandleTurbo();
+        };
+        input.Car.Turbo.canceled += (ctx) =>
+        {
+            car.StopTurbo();
+        };
+        
         input.Character.Jump.performed += (ctx) => { Jump(jumpHeight, false); };
 
         input.Character.Respawn.performed += (ctx) => { respawning = true; };
@@ -80,9 +99,11 @@ public class PlayerMovement : MonoBehaviour
         input.Car.Respawn.canceled += (ctx) => { respawning = false; };
         input.Character.Interact.performed += (ctx) => { ChangeControllerType(input); };
         input.Car.LeaveCar.performed += (ctx) => { ChangeControllerType(input); };
+        
 
         input.Enable();
-
+        input.Car.Disable();
+        
         SetTargetRotation(transform.rotation, 1);
     }
 
@@ -110,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
         {
             input.Car.Enable();
             input.Character.Disable();
+            
         }
         else
         {
@@ -138,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (axisInUse)
         {
-            var direction = gameCamera.InputDirection(movementInput, floorUp);
+            var direction = gameCamera.InputDirectionUnNormalized(movementInput, floorUp);
 
             var horizontalDirection = direction;
             horizontalDirection.y = 0;
