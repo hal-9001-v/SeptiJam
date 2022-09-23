@@ -5,6 +5,7 @@ using UnityEngine;
 public struct CounterHelper
 {
     public float currentTime { private set; get; }
+    public float normalizedTime { get { return currentTime / targetTime; } }
     public float targetTime;
 
 
@@ -14,9 +15,11 @@ public struct CounterHelper
 
         if (targetTime <= currentTime)
         {
+            currentTime = targetTime;
             return true;
         }
 
+        if (currentTime < 0) currentTime = 0;
         return false;
     }
 

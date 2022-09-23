@@ -680,6 +680,140 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Carshop"",
+            ""id"": ""8962cb48-d662-4194-88b6-420556a6bdc4"",
+            ""actions"": [
+                {
+                    ""name"": ""RotateCar"",
+                    ""type"": ""Value"",
+                    ""id"": ""7c6738bd-8634-479b-a28c-2de3acd06b90"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotateCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""4d102650-b954-4aaf-8c3b-537d5eabc1b3"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ExitCarshop"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbdaa39e-f536-4f13-beb3-804c55b4ebd6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""37df3b42-3682-4745-a7fd-3ea172445302"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""bcdb84fe-fdaa-49b1-8c80-9b6edea53cb6"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""1781352b-5c4e-433e-8122-d437c99147ec"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e4d64008-8f1a-4d35-ad92-3e256ffac063"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f8fcc00-5e55-4d6d-a080-320365aade55"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""53d986c4-28e1-455a-8bee-77952b5c6cc8"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""fc5f1651-30ec-4cf6-8d7d-00b97a06a152"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""87462457-8496-4874-98f5-d831ed3a2480"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e87440a-44be-4f2a-849f-9fda3192d5e5"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitCarshop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -703,6 +837,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
+        // Carshop
+        m_Carshop = asset.FindActionMap("Carshop", throwIfNotFound: true);
+        m_Carshop_RotateCar = m_Carshop.FindAction("RotateCar", throwIfNotFound: true);
+        m_Carshop_RotateCamera = m_Carshop.FindAction("RotateCamera", throwIfNotFound: true);
+        m_Carshop_ExitCarshop = m_Carshop.FindAction("ExitCarshop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -937,6 +1076,55 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Carshop
+    private readonly InputActionMap m_Carshop;
+    private ICarshopActions m_CarshopActionsCallbackInterface;
+    private readonly InputAction m_Carshop_RotateCar;
+    private readonly InputAction m_Carshop_RotateCamera;
+    private readonly InputAction m_Carshop_ExitCarshop;
+    public struct CarshopActions
+    {
+        private @PlayerInput m_Wrapper;
+        public CarshopActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @RotateCar => m_Wrapper.m_Carshop_RotateCar;
+        public InputAction @RotateCamera => m_Wrapper.m_Carshop_RotateCamera;
+        public InputAction @ExitCarshop => m_Wrapper.m_Carshop_ExitCarshop;
+        public InputActionMap Get() { return m_Wrapper.m_Carshop; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CarshopActions set) { return set.Get(); }
+        public void SetCallbacks(ICarshopActions instance)
+        {
+            if (m_Wrapper.m_CarshopActionsCallbackInterface != null)
+            {
+                @RotateCar.started -= m_Wrapper.m_CarshopActionsCallbackInterface.OnRotateCar;
+                @RotateCar.performed -= m_Wrapper.m_CarshopActionsCallbackInterface.OnRotateCar;
+                @RotateCar.canceled -= m_Wrapper.m_CarshopActionsCallbackInterface.OnRotateCar;
+                @RotateCamera.started -= m_Wrapper.m_CarshopActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.performed -= m_Wrapper.m_CarshopActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.canceled -= m_Wrapper.m_CarshopActionsCallbackInterface.OnRotateCamera;
+                @ExitCarshop.started -= m_Wrapper.m_CarshopActionsCallbackInterface.OnExitCarshop;
+                @ExitCarshop.performed -= m_Wrapper.m_CarshopActionsCallbackInterface.OnExitCarshop;
+                @ExitCarshop.canceled -= m_Wrapper.m_CarshopActionsCallbackInterface.OnExitCarshop;
+            }
+            m_Wrapper.m_CarshopActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @RotateCar.started += instance.OnRotateCar;
+                @RotateCar.performed += instance.OnRotateCar;
+                @RotateCar.canceled += instance.OnRotateCar;
+                @RotateCamera.started += instance.OnRotateCamera;
+                @RotateCamera.performed += instance.OnRotateCamera;
+                @RotateCamera.canceled += instance.OnRotateCamera;
+                @ExitCarshop.started += instance.OnExitCarshop;
+                @ExitCarshop.performed += instance.OnExitCarshop;
+                @ExitCarshop.canceled += instance.OnExitCarshop;
+            }
+        }
+    }
+    public CarshopActions @Carshop => new CarshopActions(this);
     public interface ICharacterActions
     {
         void OnMovementAxis(InputAction.CallbackContext context);
@@ -958,5 +1146,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnPause(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
+    }
+    public interface ICarshopActions
+    {
+        void OnRotateCar(InputAction.CallbackContext context);
+        void OnRotateCamera(InputAction.CallbackContext context);
+        void OnExitCarshop(InputAction.CallbackContext context);
     }
 }

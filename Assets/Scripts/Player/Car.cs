@@ -16,6 +16,7 @@ public enum WheelSize
 }
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CheckPointTracker))]
 public class Car : MonoBehaviour
 {
     //Input
@@ -66,7 +67,8 @@ public class Car : MonoBehaviour
         get { return turboLength; }
     }
 
-    [Header("Car Physics Variables")] [SerializeField]
+    [Header("Car Physics Variables")]
+    [SerializeField]
     Vector3 CenterOfMass;
 
     [SerializeField] float MotorPower = 5000f;
@@ -78,6 +80,13 @@ public class Car : MonoBehaviour
 
     [HideInInspector] private float currentTurbo;
     [HideInInspector] public InputStr Input;
+
+    bool followingCurve;
+    CurveFollower curveFollower;
+    float workshopSpeed = 5;
+    public LayerMask groundLayer;
+    public float yOffset;
+    public float raycastRange;
 
     public struct InputStr
     {
@@ -97,36 +106,94 @@ public class Car : MonoBehaviour
     }
 
 
-
     void FixedUpdate()
     {
-        for (int i = 0; i < Wheels.Length; i++)
+        if (followingCurve)
         {
-            if (Wheels[i].Motor)
-                Wheels[i].WheelCollider.motorTorque = Input.Forward * MotorPower;
-            if (Wheels[i].Steer)
-                Wheels[i].WheelCollider.steerAngle = Input.Steer * SteerAngle;
+            MoveInCurve();
+        }
+        else
+        {
 
-            Wheels[i].Rotation += Wheels[i].WheelCollider.rpm / 60 * 360 * Time.fixedDeltaTime;
-            Wheels[i].MeshRenderer.localRotation = Wheels[i].MeshRenderer.parent.localRotation *
-                                                   Quaternion.Euler(Wheels[i].Rotation,
-                                                       Wheels[i].WheelCollider.steerAngle, 0);
+            for (int i = 0; i < Wheels.Length; i++)
+            {
+                if (Wheels[i].Motor)
+                    Wheels[i].WheelCollider.motorTorque = Input.Forward * MotorPower;
+                if (Wheels[i].Steer)
+                    Wheels[i].WheelCollider.steerAngle = Input.Steer * SteerAngle;
+
+                Wheels[i].Rotation += Wheels[i].WheelCollider.rpm / 60 * 360 * Time.fixedDeltaTime;
+                Wheels[i].MeshRenderer.localRotation = Wheels[i].MeshRenderer.parent.localRotation *
+                                                       Quaternion.Euler(Wheels[i].Rotation,
+                                                           Wheels[i].WheelCollider.steerAngle, 0);
+            }
+
+            Rigidbody.AddForceAtPosition(transform.up * (Rigidbody.velocity.magnitude * -0.1f * Grip),
+                transform.position + transform.rotation * CenterOfMass);
         }
 
-        Rigidbody.AddForceAtPosition(transform.up * (Rigidbody.velocity.magnitude * -0.1f * Grip),
-            transform.position + transform.rotation * CenterOfMass);
+    }
+    void MoveInCurve()
+    {
+
+        if (curveFollower.t >= 1) return;
+        float y = transform.position.y;
+        var curvePos = curveFollower.UpdateTimeWithDistance(workshopSpeed * Time.fixedDeltaTime);
+        var up = Vector3.up;
+        var forward = curveFollower.direction;
+        forward.y = 0;
+        forward.Normalize();
+
+        if (Physics.Raycast(curvePos, Vector3.down, out var raycastHit, raycastRange, groundLayer))
+        {
+            curvePos = raycastHit.point + raycastHit.normal * yOffset;
+            up = raycastHit.normal;
+        }
+
+        transform.position = curvePos;
+        transform.rotation = Quaternion.LookRotation(forward, up);
+
+        Rigidbody.AddForce(curveFollower.direction * workshopSpeed, ForceMode.VelocityChange);
     }
 
     void Spawn(Vector3 position, Vector3 direction)
     {
         transform.position = position + spawnOffset;
         transform.forward = direction;
+
+        Rigidbody.velocity = Vector3.zero;
     }
 
     public void Hurt()
     {
     }
 
+    public float EnterCarshop(CurveFollower follower)
+    {
+        return FollowCurve(follower);
+    }
+
+    public float FollowCurve(CurveFollower follower)
+    {
+        Rigidbody.isKinematic = true;
+        curveFollower = follower;
+        followingCurve = true;
+
+        return follower.length / workshopSpeed;
+    }
+
+    public void StopCurve()
+    {
+        Rigidbody.isKinematic = false;
+        followingCurve = false;
+    }
+
+    public void LeaveCarshop()
+    {
+        StopCurve();
+
+        transform.parent = null;
+    }
     public CarData GetCarData()
     {
         CarData carData = new CarData();
@@ -264,11 +331,15 @@ public class Car : MonoBehaviour
         }
     }
 
+
+
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + CenterOfMass, .1f);
         Gizmos.DrawWireSphere(transform.position + CenterOfMass, .11f);
+        Gizmos.DrawLine(transform.position, transform.position + yOffset * Vector3.down);
     }
 
     [System.Serializable]
