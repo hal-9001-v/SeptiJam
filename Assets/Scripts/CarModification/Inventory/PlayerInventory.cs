@@ -18,7 +18,7 @@ public class PlayerInventory : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            playerInventory = new List<CarAccessory>();
+            //playerInventory = new List<CarAccessory>();
         }
         else
         {

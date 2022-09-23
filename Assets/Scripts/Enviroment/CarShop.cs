@@ -18,6 +18,7 @@ public class CarShop : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera showcaseCamera;
 
     [SerializeField] CanvasGroup carshopCanvas;
+    [SerializeField] InventoryUI inventoryUI;
 
     DistanceInteractable distanceInteractable => GetComponent<DistanceInteractable>();
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
@@ -233,6 +234,7 @@ public class CarShop : MonoBehaviour
         car.transform.parent = carPivot;
         this.car = car;
         carshopCanvas.alpha = 1;
+        inventoryUI.OnOpen();
 
     }
 

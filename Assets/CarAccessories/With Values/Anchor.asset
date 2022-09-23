@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Anchor
   m_EditorClassIdentifier: 
   AccessoryName: 
-  AccessoryPositionInfo: []
-  AccessoryIcon: {fileID: 0}
+  AccessoryPositionInfo:
+  - TypeOfTheAccesory: 5
+    ModificationsInThisType:
+    - ParameterType: 0
+      ModificationValue: 4
+  AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
   MeshMaterials: []
-  AccessoryMesh: {fileID: 0}
+  AccessoryMesh: {fileID: 1292036834617771344, guid: 8120085971d841f44a2aac3294b4733b,
+    type: 3}

@@ -8,14 +8,15 @@ public class InventoryUI : MonoBehaviour
 
     public Action OnUpdateInformation;
 
-    [SerializeField]
     private InventorySlot[] inventorySlots;
     List<CarAccessory> currentDisplay;
 
     private void Awake()
     {
-        for(int i =0; i< inventorySlots.Length; i++)
+        inventorySlots = new InventorySlot[transform.childCount];
+        for(int i =0; i< transform.childCount; i++)
         {
+            inventorySlots[i] = transform.GetChild(i).GetComponent<InventorySlot>();
             inventorySlots[i].Init(this);
         }
         OnUpdateInformation += OnUpdate;
@@ -49,6 +50,13 @@ public class InventoryUI : MonoBehaviour
         }
        
       
+    }
+    public void OnChangeWindow(int i)
+    {
+        CarAccessoryType objectsFilter = (CarAccessoryType)i;
+        OnChangeWindow(objectsFilter);
+
+
     }
     private void OnClear()
     {
