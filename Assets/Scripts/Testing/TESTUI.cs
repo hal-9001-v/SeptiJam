@@ -7,14 +7,20 @@ using UnityEngine.UI;
     {
         [SerializeField] TextMeshProUGUI velText;
         [SerializeField] TextMeshProUGUI massText;
+        [SerializeField] private TextMeshProUGUI acccText;
         [SerializeField] Slider slider;
         [SerializeField] Car car;
-    
 
-        private void Update()
+
+        private Vector2 lastVelocity;
+
+        private void FixedUpdate()
         {
-            velText.text = car.GetCurrentSpeed.ToString(CultureInfo.InvariantCulture);
+            acccText.text = ((int)((car.GetCurrentVelocity - lastVelocity) / Time.deltaTime).magnitude).ToString();
+            velText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
             massText.text = car.GetCurrentWeight.ToString(CultureInfo.InvariantCulture);
-            slider.value = car.GetCurrentTurbo;
+            slider.value = car.GetCurrentTurbo/car.GetTurboLength;
+
+            lastVelocity = car.GetCurrentVelocity;
         }
     }

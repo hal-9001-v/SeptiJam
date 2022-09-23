@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using static DataFileManager;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public enum WheelSize
 {
@@ -12,18 +15,21 @@ public enum WheelSize
     BIG = 3
 }
 
-
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour
 {
     //Input
-    PlayerInput input;
     private Vector2 movementInput;
     private bool axisInUse;
-
+    
+    //Turbo
+    private bool activeTurbo;
+    private float turboFinishedDelay = 0.1f;
+    
     [HideInInspector] public const float DEFAULT_WHEEL_SIZE = 0.35f;
     public const float DEFAULT_WHEEL_SIZE_MODIFIER = 0.1f;
     public const float DEFAULT_SQUARE_WHEEL_CV_MODIFIER = 1.65f;
+    public const float MOTORFORCE_TURBO_MODIFIER = 2;
 
     [Header("Car Modifiers")] public CarModifierInfo carModifierInfo;
 
@@ -39,6 +45,12 @@ public class Car : MonoBehaviour
         get { return Rigidbody.velocity.magnitude; }
     }
 
+    public Vector2 GetCurrentVelocity
+    {
+        get { return new Vector2(Rigidbody.velocity.x, Rigidbody.velocity.z); }
+    }
+
+
     public float GetCurrentWeight
     {
         get { return Rigidbody.mass; }
@@ -46,7 +58,12 @@ public class Car : MonoBehaviour
 
     public float GetCurrentTurbo
     {
-        get { return turboAmount; }
+        get { return currentTurbo; }
+    }
+
+    public float GetTurboLength
+    {
+        get { return turboLength; }
     }
 
     [Header("Car Physics Variables")] [SerializeField]
@@ -54,11 +71,12 @@ public class Car : MonoBehaviour
 
     [SerializeField] float MotorPower = 5000f;
     [SerializeField] float SteerAngle = 35f;
-    [SerializeField] float turboAmount;
+    [SerializeField] float turboLength;
     [Range(0, 1)] public float KeepGrip = 1f;
-    [Range(0, 7)] public float Grip = 5f;
+    [Range(0, 15)] public float Grip = 5f;
 
 
+    [HideInInspector] private float currentTurbo;
     [HideInInspector] public InputStr Input;
 
     public struct InputStr
@@ -69,7 +87,6 @@ public class Car : MonoBehaviour
 
     void Awake()
     {
-        StartInput();
         tracker.spawnCallback += Spawn;
         Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.centerOfMass = CenterOfMass;
@@ -79,29 +96,6 @@ public class Car : MonoBehaviour
         OnValidate();
     }
 
-    private void StartInput()
-    {
-        input = new PlayerInput();
-        input.Car.MovementAxis.performed += (axis) =>
-        {
-            movementInput = axis.ReadValue<Vector2>();
-            Input.Steer = movementInput.x;
-            Input.Forward = movementInput.y;
-            axisInUse = true;
-        };
-
-        input.Car.Turbo.performed += (ctx) =>
-        {
-            //turbo
-        };
-        input.Car.MovementAxis.canceled += (axis) =>
-        {
-            movementInput = Vector2.zero;
-            axisInUse = false;
-        };
-
-        input.Enable();
-    }
 
 
     void FixedUpdate()
@@ -145,35 +139,61 @@ public class Car : MonoBehaviour
         //Game has been loaded!
     }
 
-
-    //TEMP QUICK AND DIRTY
-    void SetCarModifierInfoDefaultStats()
+    public void HandleTurbo()
     {
-        carModifierInfo.carMass = 2800f;
-        carModifierInfo.motorForce = 5000f;
-        carModifierInfo.steerAngle = 35f;
-        carModifierInfo.centerOfMass = new Vector3(0f, -2f, 0.159f);
-
-        carModifierInfo.springForce = 35000f;
-        carModifierInfo.damp = 4500f;
-        carModifierInfo.springLength = 1f;
-        carModifierInfo.wheelSize = WheelSize.MEDIUM;
-        carModifierInfo.squareWheels = true;
+        activeTurbo = true;
+        StartCoroutine(DecreaseTurboCharge());
+        if (currentTurbo > 0)
+            MotorPower = carModifierInfo.motorForce * MOTORFORCE_TURBO_MODIFIER;
+        else
+            MotorPower = carModifierInfo.motorForce;
     }
 
-    //Call this when modifying any car attribs
+    public void StopTurbo()
+    {
+        activeTurbo = false;
+        StartCoroutine(StartTurboCharge());
+        MotorPower = carModifierInfo.motorForce;
+    }
+
+
+    IEnumerator DecreaseTurboCharge()
+    {
+        while (currentTurbo > 0 && activeTurbo)
+        {
+            yield return new WaitForSeconds(0.01f);
+            currentTurbo -= 0.01f;
+        }
+        MotorPower = carModifierInfo.motorForce;
+
+    }
+
+    IEnumerator StartTurboCharge()
+    {
+        yield return new WaitForSeconds(turboFinishedDelay);
+        while (currentTurbo < turboLength && !activeTurbo)
+        {
+            yield return new WaitForSeconds(0.01f);
+            currentTurbo += 0.01f;
+        }
+
+    }
+
+
+//Call this when modifying any car attribs
     void OnChangeCarPiece()
     {
         //Car stats
         Rigidbody.mass = carModifierInfo.carMass;
         SteerAngle = carModifierInfo.steerAngle;
         CenterOfMass = carModifierInfo.centerOfMass;
-
+        turboLength = carModifierInfo.turboLength;
+        currentTurbo = turboLength;
         if (carModifierInfo.squareWheels)
             MotorPower = carModifierInfo.motorForce * DEFAULT_SQUARE_WHEEL_CV_MODIFIER;
         else
             MotorPower = carModifierInfo.motorForce;
-
+        
         //wheel stats
         float wheelRadius;
         switch (carModifierInfo.wheelSize)
@@ -268,7 +288,8 @@ public class Car : MonoBehaviour
         public float motorForce; // base force 5000
         public float steerAngle; // base angle 35
         public Vector3 centerOfMass; // base COM 0, -2, 0.159  WARNING: Tofu car TODO: CHANGE
-
+        public float turboLength;  
+        
         [Header("Wheel Stats")] public float springForce; //base force 35.000
         public float damp; //base damp 4.500
         public float springLength; //base length 1
