@@ -22,6 +22,8 @@ public class CarModificationManager : MonoBehaviour
     [SerializeField]
     private Car myCar;
 
+    public static Action<CarAccessoryType, CarAccessory> OnCarModification;
+
     private void Awake()
     {
         if(instance == null)
@@ -90,6 +92,7 @@ public class CarModificationManager : MonoBehaviour
         UpdateCarInformation();
         Debug.Log(accessory.AccesoryInformation.AccessoryName + " Added");
         accessory.currentPosition = typeOfAccessory;
+        OnCarModification?.Invoke(typeOfAccessory, accessory);
         return true;
 
     }
@@ -114,6 +117,7 @@ public class CarModificationManager : MonoBehaviour
         accesoriesAssigned[typeOfAccessory] = null;
         UpdateCarInformation();
         result.currentPosition = CarAccessoryType.None;
+        OnCarModification?.Invoke(typeOfAccessory, null);
         return result;
     }
     public CarAttributeInformation[] GetModificatorsInformation()
@@ -136,6 +140,7 @@ public class CarModificationManager : MonoBehaviour
         myCar.carModifierInfo.carMass = attributeDictionary[CarVarsType.Weight].CurrentValue;
         myCar.carModifierInfo.motorForce = attributeDictionary[CarVarsType.MotorForce].CurrentValue;
         myCar.carModifierInfo.steerAngle = attributeDictionary[CarVarsType.SteerAngle].CurrentValue;
+        myCar.carModifierInfo.turboLength = attributeDictionary[CarVarsType.Turbo].CurrentValue;
         myCar.UdpateCarDebug();
     }
 

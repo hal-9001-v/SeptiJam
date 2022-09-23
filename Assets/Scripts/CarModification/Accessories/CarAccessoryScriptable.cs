@@ -10,8 +10,10 @@ public class CarAccessoryScriptable : ScriptableObject
     public string AccessoryName;
 
     public CarAccessoryInPositionInfo[] AccessoryPositionInfo;
-    public GameObject AccessoryPrefab; //Quizás esto no haga falta, pero por si acaso
+
     public Sprite AccessoryIcon;
+    public Material[] MeshMaterials; //Quizás esto no haga falta, pero por si acaso
+    public Mesh AccessoryMesh;
 
 
 }
