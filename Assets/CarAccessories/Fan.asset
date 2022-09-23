@@ -18,9 +18,19 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 3
+    - ParameterType: 2
+      ModificationValue: 1
+    - ParameterType: 3
+      ModificationValue: 3
   - TypeOfTheAccesory: 1
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 3
-  AccessoryPrefab: {fileID: 0}
+    - ParameterType: 2
+      ModificationValue: 1
+    - ParameterType: 3
+      ModificationValue: 3
   AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
+  MeshMaterials:
+  - {fileID: 2100000, guid: ae3f3972b3565b04bab0a3b7e63395dc, type: 2}
+  AccessoryMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
