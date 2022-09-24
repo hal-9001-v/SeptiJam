@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 337e40a65f5757a4b89d48c6cf3dd5a2
+guid: 168af93882237c841ac7403d6a1abf25
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: carritoMercadona
-    second: {fileID: 2100000, guid: 04074e6f25102854a9523dd7e1fdb8d6, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
