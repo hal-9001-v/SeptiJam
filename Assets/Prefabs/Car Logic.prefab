@@ -595,7 +595,6 @@ MonoBehaviour:
     carMass: 2800
     motorForce: 5000
     steerAngle: 35
-    centerOfMass: {x: 0, y: -2, z: 0.159}
     turboLength: 0
     springForce: 35000
     damp: 4500
@@ -1127,6 +1126,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1203380587542279100}
     m_Modifications:
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007965917076135461, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 3413251819433072699, guid: 807bdcf92136e584087d51cc8299876c,
         type: 3}
       propertyPath: m_Name
@@ -1211,6 +1245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023734800813244537, guid: 807bdcf92136e584087d51cc8299876c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 807bdcf92136e584087d51cc8299876c, type: 3}

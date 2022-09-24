@@ -38,7 +38,15 @@ public class CarVisualSpot : MonoBehaviour
         {
             myMeshRenderer.enabled = true;
             myMeshRenderer.materials = accessory.AccesoryInformation.MeshMaterials;
-            myMeshFilter.mesh = accessory.AccesoryInformation.AccessoryMesh;
+            if(type.Equals(CarAccessoryType.BodyWork) && accessory.AccesoryInformation.AccessoryMeshChasisVariant)
+            {
+                myMeshFilter.mesh = accessory.AccesoryInformation.AccessoryMeshChasisVariant;
+            }
+            else
+            {
+                myMeshFilter.mesh = accessory.AccesoryInformation.AccessoryMesh;
+            }
+           
             //transform.rotation = accessory.AccesoryInformation.OriginalTransform.rotation;
             
             transform.localScale = accessory.AccesoryInformation.OriginalTransform.localScale;
@@ -54,10 +62,6 @@ public class CarVisualSpot : MonoBehaviour
     }
     private void ChangeOrientation(AccessoryOrientation forward,AccessoryOrientation up )
     {
-        if(forward == AccessoryOrientation.None)
-        {
-            return;
-        }
         if (up != AccessoryOrientation.None)
         {
             transform.localRotation = Quaternion.LookRotation(orientations[(int)forward], orientations[(int)up]);

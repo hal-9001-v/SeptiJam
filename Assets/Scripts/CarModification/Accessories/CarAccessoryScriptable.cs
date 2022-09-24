@@ -16,6 +16,7 @@ public class CarAccessoryScriptable : ScriptableObject
     public Mesh AccessoryMesh;
     public Transform OriginalTransform;
     public WheelSize WheelSize;
+    public Mesh AccessoryMeshChasisVariant;
 
 
 }
