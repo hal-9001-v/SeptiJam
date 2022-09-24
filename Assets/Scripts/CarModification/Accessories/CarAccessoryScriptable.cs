@@ -14,6 +14,7 @@ public class CarAccessoryScriptable : ScriptableObject
     public Sprite AccessoryIcon;
     public Material[] MeshMaterials; //Quizás esto no haga falta, pero por si acaso
     public Mesh AccessoryMesh;
+    public WheelSize WheelSize;
 
 
 }

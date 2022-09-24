@@ -56,9 +56,20 @@ public struct CarAccesoryPosition
     public CarAccessoryType AccessoryType;
     public Vector3 position; //O un transform 
 }
+public enum AccessoryOrientation
+{
+    XPositive,
+    YPositive,
+    ZPositive,
+    XNegative,
+    YNegative,
+    ZNegative
+}
 [Serializable]
 public struct CarAccessoryInPositionInfo
 {
     public CarAccessoryType TypeOfTheAccesory;
     public CarModifier[] ModificationsInThisType;
+    public AccessoryOrientation ForwardInPosition;
+
 }

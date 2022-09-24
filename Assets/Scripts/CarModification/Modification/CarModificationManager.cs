@@ -141,6 +141,10 @@ public class CarModificationManager : MonoBehaviour
         myCar.carModifierInfo.motorForce = attributeDictionary[CarVarsType.MotorForce].CurrentValue;
         myCar.carModifierInfo.steerAngle = attributeDictionary[CarVarsType.SteerAngle].CurrentValue;
         myCar.carModifierInfo.turboLength = attributeDictionary[CarVarsType.Turbo].CurrentValue;
+        if (accesoriesAssigned[CarAccessoryType.Wheels])
+        {
+            myCar.carModifierInfo.wheelSize = accesoriesAssigned[CarAccessoryType.Wheels].AccesoryInformation.WheelSize;
+        }
         myCar.UdpateCarDebug();
     }
 
