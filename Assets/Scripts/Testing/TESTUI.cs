@@ -34,8 +34,8 @@ using UnityEngine.UI;
             steerText.text = car.GetSteerStars().ToString();
             maxVelText.text = ((int)car.GetMaxVelocity()).ToString();
         }
-
         
+
         IEnumerator UpdateUI()
          {
              while (true)

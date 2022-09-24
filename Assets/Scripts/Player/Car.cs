@@ -301,7 +301,7 @@ public class Car : MonoBehaviour
         float wheelModifier = carModifierInfo.wheelSize == WheelSize.BIG ? 0.75f :
             carModifierInfo.wheelSize == WheelSize.SMALL ? 1.25f : 1f;
 
-        float acceleration = (normalizedMotor / normalizedMass) * wheelModifier;
+        float acceleration = (normalizedMotor * normalizedMotor / normalizedMass) * wheelModifier;
         
         float normalizedAcc = ProcessAndNormalize(acceleration, MAX_ACCELERATION, MIN_ACCELERATION, MAX_STAR_VAL);
         return Mathf.RoundToInt(normalizedAcc);
