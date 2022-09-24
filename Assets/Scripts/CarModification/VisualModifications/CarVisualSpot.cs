@@ -45,13 +45,29 @@ public class CarVisualSpot : MonoBehaviour
             //Bounds customBounds = myMeshFilter.mesh.bounds;
             //customBounds.size = new Vector3(1, 1, 1);
             //myMeshFilter.mesh.bounds = customBounds;
-            ChangeOrientation(accessory.GetOrientationInPosition(type));
+            (AccessoryOrientation forward, AccessoryOrientation up) = accessory.GetOrientationInPosition(type);
+
+
+            ChangeOrientation(forward,up);
         }
   
     }
-    private void ChangeOrientation(AccessoryOrientation forward)
+    private void ChangeOrientation(AccessoryOrientation forward,AccessoryOrientation up )
     {
-        transform.localRotation = Quaternion.LookRotation(orientations[(int)forward]);
+        if(forward == AccessoryOrientation.None)
+        {
+            return;
+        }
+        if (up != AccessoryOrientation.None)
+        {
+            transform.localRotation = Quaternion.LookRotation(orientations[(int)forward], orientations[(int)up]);
+        }
+        else
+        {
+            transform.localRotation = Quaternion.LookRotation(orientations[(int)forward]);
+        }
+       
+
     }
     private void OnDestroy()
     {

@@ -19,11 +19,13 @@ MonoBehaviour:
     - ParameterType: 0
       ModificationValue: 1
     ForwardInPosition: 0
+    UpInPosition: 6
   - TypeOfTheAccesory: 5
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 1
     ForwardInPosition: 0
+    UpInPosition: 6
   AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
   MeshMaterials:
   - {fileID: 2100000, guid: aaf3d3378de670c44a016185255e6a5a, type: 2}
