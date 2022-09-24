@@ -52,6 +52,8 @@ public class CarShop : MonoBehaviour
     CounterHelper rotationHelper;
     CounterHelper elevationHelper;
 
+    bool rotatePlatform;
+
     private void Awake()
     {
         input = new PlayerInput();
@@ -105,7 +107,7 @@ public class CarShop : MonoBehaviour
 
     private void Update()
     {
-        if (isOpen)
+        if (rotatePlatform)
             OpenRotations();
         else
             CloseRotation();
@@ -154,7 +156,7 @@ public class CarShop : MonoBehaviour
 
     void PlatformElevation()
     {
-        if (isOpen)
+        if (rotatePlatform)
         {
             elevationHelper.Update(Time.deltaTime);
         }
@@ -179,15 +181,24 @@ public class CarShop : MonoBehaviour
 
     void StartWorkShop(Car car)
     {
-        gameCamera.UseCamera(showcaseCamera);
 
-        enterPath.a = car.transform.position;
-        enterPath.c = carPivot.position;
-        enterPath.SetBInMiddleAlongDirection(car.transform.forward);
+        if (isOpen == false)
+        {
+            isOpen = true;
+            rotatePlatform = false;
 
-        var time = car.EnterCarshop(enterPath.curveFollower);
 
-        StartCoroutine(CarshopEnterTimeline(time, car));
+            gameCamera.UseCamera(showcaseCamera);
+
+            enterPath.a = car.transform.position;
+            enterPath.c = carPivot.position;
+            enterPath.SetBInMiddleAlongDirection(car.transform.forward);
+
+
+            var time = car.EnterCarshop(enterPath.curveFollower);
+
+            StartCoroutine(CarshopEnterTimeline(time, car));
+        }
 
     }
 
@@ -196,6 +207,9 @@ public class CarShop : MonoBehaviour
     {
         if (isOpen)
         {
+            isOpen = false;
+            rotatePlatform = false;
+
             gameCamera.UseDefaultCamera();
 
             isOpen = false;
@@ -230,7 +244,7 @@ public class CarShop : MonoBehaviour
         //Stop Car Input Here!
 
         yield return new WaitForSeconds(time);
-        isOpen = true;
+        rotatePlatform = true;
         car.transform.parent = carPivot;
         this.car = car;
         carshopCanvas.alpha = 1;
