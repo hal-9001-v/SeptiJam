@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: radio
     second: {fileID: 2100000, guid: 5db90b2b5b4d24a41959a3a5c6661abc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: radio.002
+    second: {fileID: 2100000, guid: 03f0d52f927413b45a1a1cc4fd5ecbc5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

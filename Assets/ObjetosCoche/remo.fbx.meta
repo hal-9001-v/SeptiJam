@@ -3,7 +3,12 @@ guid: fb8d484c88e3aed4e85715ed56737826
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rowing.001
+    second: {fileID: 2100000, guid: 41ffa305b6025f64dbf07b09a8e2af1c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

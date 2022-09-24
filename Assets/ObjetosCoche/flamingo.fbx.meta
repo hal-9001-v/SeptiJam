@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: flamingo
     second: {fileID: 2100000, guid: 292eef456bba85947a3455f4fdb3edfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: flamingo.001
+    second: {fileID: 2100000, guid: 35b71a9f3b069ed428d15d3d48156c97, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: wineBottle
     second: {fileID: 2100000, guid: bd948ee231e898244af8a8f529169833, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wineBottle.001
+    second: {fileID: 2100000, guid: a0eba1d3720769347968a260c11bb7ee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

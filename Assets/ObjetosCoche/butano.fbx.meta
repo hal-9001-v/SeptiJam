@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: butano
     second: {fileID: 2100000, guid: 03bfa2810099fdb48814ea9374d36d29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: butano.001
+    second: {fileID: 2100000, guid: ed68803c35674d848bacb20692f5b34e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

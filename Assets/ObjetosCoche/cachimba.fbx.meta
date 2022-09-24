@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: cachimba
     second: {fileID: 2100000, guid: 188f2f753b60d7a458b56ec1e4edc9f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cachimba.002
+    second: {fileID: 2100000, guid: f788f14e77e89ef4991c7a13cb021186, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

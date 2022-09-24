@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: surfTable
     second: {fileID: 2100000, guid: 000adf358c865be47b93842105dc7d7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: surfTable.002
+    second: {fileID: 2100000, guid: 18ba79fd16d13774c94252b53e31b5d8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AccessoryName: 
   AccessoryPositionInfo: []
-  AccessoryIcon: {fileID: 0}
-  MeshMaterials: []
-  AccessoryMesh: {fileID: 0}
+  AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
+  MeshMaterials:
+  - {fileID: 2100000, guid: b8ec8a122cb409a4f92a636d50e52d0f, type: 2}
+  AccessoryMesh: {fileID: 4711208715938537054, guid: 9a00b60d1e33c4f4ea307e5e438c54a3,
+    type: 3}
+  OriginalTransform: {fileID: 0}
+  WheelSize: 0

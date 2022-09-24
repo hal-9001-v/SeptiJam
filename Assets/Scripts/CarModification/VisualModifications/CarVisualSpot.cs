@@ -7,12 +7,11 @@ public class CarVisualSpot : MonoBehaviour
     [SerializeField]
     private CarAccessoryType accesoryType;
 
-    private float scaleFactor;
-
     //References
     private MeshRenderer myMeshRenderer;
     private MeshFilter myMeshFilter;
 
+    private  Vector3[] orientations = { new Vector3 (1, 0, 0 ), new Vector3(0, 1, 0), new Vector3(0, 0, 1), new Vector3(-1, 0, 0), new Vector3(0, -1, 0), new Vector3(0, 0, -1), };
 
 
     //We will have defaults??
@@ -23,7 +22,6 @@ public class CarVisualSpot : MonoBehaviour
         myMeshFilter = GetComponent<MeshFilter>();
         CarModificationManager.OnCarModification -= OnCarChanged;
         CarModificationManager.OnCarModification += OnCarChanged;
-        scaleFactor = transform.localScale.magnitude;
     }
     private void OnCarChanged(CarAccessoryType type, CarAccessory accessory)
     {
@@ -43,7 +41,7 @@ public class CarVisualSpot : MonoBehaviour
             myMeshFilter.mesh = accessory.AccesoryInformation.AccessoryMesh;
             //transform.rotation = accessory.AccesoryInformation.OriginalTransform.rotation;
             
-            transform.localScale = accessory.AccesoryInformation.OriginalTransform.localScale*scaleFactor;
+            transform.localScale = accessory.AccesoryInformation.OriginalTransform.localScale;
             //Bounds customBounds = myMeshFilter.mesh.bounds;
             //customBounds.size = new Vector3(1, 1, 1);
             //myMeshFilter.mesh.bounds = customBounds;
@@ -53,21 +51,11 @@ public class CarVisualSpot : MonoBehaviour
     }
     private void ChangeOrientation(AccessoryOrientation forward)
     {
-        switch (forward)
-        {
-            case AccessoryOrientation.XPositive:
-                break;
-            case AccessoryOrientation.YPositive:
-                break;
-            case AccessoryOrientation.ZPositive:
-                break;
-            case AccessoryOrientation.XNegative:
-                break;
-            case AccessoryOrientation.YNegative:
-                break;
-            case AccessoryOrientation.ZNegative:
-                break;
-        }
+        //transform.forward =  orientations[(int)forward];
+        transform.forward = transform.TransformDirection(orientations[(int)forward]);
+        //transform.forward = transform.TransformDirection(orientations[(int)forward+1]);
+        //transform.forward = transform.TransformDirection(orientations[(int)forward+2]);
+        //transform.localRotation.SetLookRotation(orientations[(int)forward]);
     }
     private void OnDestroy()
     {

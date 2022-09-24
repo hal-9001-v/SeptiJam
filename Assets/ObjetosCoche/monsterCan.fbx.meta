@@ -3,7 +3,22 @@ guid: ad099b3923d30ac41a0d96f35d82120c
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hebilla.001
+    second: {fileID: 2100000, guid: ccd083673edb4d743a5557f0e8463744, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_gris.001
+    second: {fileID: 2100000, guid: c497b98fec3698543a0ebbd9e5e04c0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_marca.001
+    second: {fileID: 2100000, guid: 9563bbfee8894a64ea387db600affc38, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

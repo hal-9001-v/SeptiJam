@@ -20,7 +20,7 @@ MonoBehaviour:
       ModificationValue: 2
     - ParameterType: 2
       ModificationValue: 1
-    ForwardInPosition: 0
+    ForwardInPosition: 1
   - TypeOfTheAccesory: 2
     ModificationsInThisType:
     - ParameterType: 0

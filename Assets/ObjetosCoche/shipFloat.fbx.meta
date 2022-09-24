@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: shipFloat
     second: {fileID: 2100000, guid: b671cc7792725dc478295d20cc4ec1b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shipFloat.001
+    second: {fileID: 2100000, guid: 03757e6ccc795424e807f39492317711, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
