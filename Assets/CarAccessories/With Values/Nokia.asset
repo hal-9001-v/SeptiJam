@@ -10,18 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abe5fd6fcfce2904bb87a274f96a2363, type: 3}
-  m_Name: Shovel
+  m_Name: Nokia
   m_EditorClassIdentifier: 
   AccessoryName: 
   AccessoryPositionInfo:
-  - TypeOfTheAccesory: 5
+  - TypeOfTheAccesory: 1
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 2
+    - ParameterType: 2
+      ModificationValue: 3
     ForwardInPosition: 0
+  - TypeOfTheAccesory: 4
+    ModificationsInThisType:
+    - ParameterType: 0
+      ModificationValue: 2
+    - ParameterType: 2
+      ModificationValue: 3
+    ForwardInPosition: 1
   AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
   MeshMaterials:
-  - {fileID: 0}
-  AccessoryMesh: {fileID: 0}
-  OriginalTransform: {fileID: 0}
+  - {fileID: 2100000, guid: 41d1c5194aab75e47886891d1040409c, type: 2}
+  AccessoryMesh: {fileID: 4493585093827132993, guid: 5a740b28dc95aa04f83d99152eabe5ca,
+    type: 3}
+  OriginalTransform: {fileID: -8679921383154817045, guid: 276407c105100d246ab93f0cf626a428,
+    type: 3}
   WheelSize: 2
