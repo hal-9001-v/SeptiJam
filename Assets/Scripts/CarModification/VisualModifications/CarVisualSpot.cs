@@ -7,9 +7,13 @@ public class CarVisualSpot : MonoBehaviour
     [SerializeField]
     private CarAccessoryType accesoryType;
 
+    private float scaleFactor;
+
     //References
     private MeshRenderer myMeshRenderer;
     private MeshFilter myMeshFilter;
+
+
 
     //We will have defaults??
 
@@ -19,6 +23,7 @@ public class CarVisualSpot : MonoBehaviour
         myMeshFilter = GetComponent<MeshFilter>();
         CarModificationManager.OnCarModification -= OnCarChanged;
         CarModificationManager.OnCarModification += OnCarChanged;
+        scaleFactor = transform.localScale.magnitude;
     }
     private void OnCarChanged(CarAccessoryType type, CarAccessory accessory)
     {
@@ -36,9 +41,12 @@ public class CarVisualSpot : MonoBehaviour
             myMeshRenderer.enabled = true;
             myMeshRenderer.materials = accessory.AccesoryInformation.MeshMaterials;
             myMeshFilter.mesh = accessory.AccesoryInformation.AccessoryMesh;
-            Bounds customBounds = myMeshFilter.mesh.bounds;
-            customBounds.size = new Vector3(1, 1, 1);
-            myMeshFilter.mesh.bounds = customBounds;
+            //transform.rotation = accessory.AccesoryInformation.OriginalTransform.rotation;
+            
+            transform.localScale = accessory.AccesoryInformation.OriginalTransform.localScale*scaleFactor;
+            //Bounds customBounds = myMeshFilter.mesh.bounds;
+            //customBounds.size = new Vector3(1, 1, 1);
+            //myMeshFilter.mesh.bounds = customBounds;
             ChangeOrientation(accessory.GetOrientationInPosition(type));
         }
   
@@ -60,5 +68,9 @@ public class CarVisualSpot : MonoBehaviour
             case AccessoryOrientation.ZNegative:
                 break;
         }
+    }
+    private void OnDestroy()
+    {
+        CarModificationManager.OnCarModification -= OnCarChanged;
     }
 }

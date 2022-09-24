@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: f0b3ee516d05dce47bdebbd06ea095c9
+guid: 1a7faa8f7169bdd4fb5432087ede55c2
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: barrel
-    second: {fileID: 2100000, guid: 498feea49daf2d34c988109fcb39118b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -71,7 +66,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
