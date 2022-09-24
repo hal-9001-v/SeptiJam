@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 {
     //Singleton
     private static PlayerInventory instance;
-    [SerializeField] //TODO: This is for debug purposes, remove serialized field later
+   // [SerializeField] //TODO: This is for debug purposes, remove serialized field later
     private List<CarAccessory> playerInventory;
 
     public static List<CarAccessory> Objects => instance.playerInventory;
@@ -18,7 +18,12 @@ public class PlayerInventory : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            //playerInventory = new List<CarAccessory>();
+            playerInventory = new List<CarAccessory>();
+            //DEBUG
+            for(int i =0; i< transform.childCount; i++)
+            {
+                OnAddObject(transform.GetChild(i).GetComponent<CarAccessory>());
+            }
         }
         else
         {
