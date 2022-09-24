@@ -18,12 +18,12 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 4
-    ForwardInPosition: 2
+    ForwardInPosition: 0
   AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
   MeshMaterials:
   - {fileID: 2100000, guid: e0520e2656b006a4cbd2a84b55b16acf, type: 2}
-  AccessoryMesh: {fileID: 1292036834617771344, guid: 8120085971d841f44a2aac3294b4733b,
+  AccessoryMesh: {fileID: 1292036834617771344, guid: 44272f1f4e6d5854f865589d3faec7f0,
     type: 3}
-  OriginalTransform: {fileID: -8679921383154817045, guid: 8120085971d841f44a2aac3294b4733b,
+  OriginalTransform: {fileID: -8679921383154817045, guid: 44272f1f4e6d5854f865589d3faec7f0,
     type: 3}
   WheelSize: 3
