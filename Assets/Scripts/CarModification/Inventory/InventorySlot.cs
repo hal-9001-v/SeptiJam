@@ -99,6 +99,7 @@ public class InventorySlot : Button
         CurrentSlotState = SlotState.Empty;
         accesoryReference = null;
         accessoryIcon.sprite = null;
+        accessoryIcon.color = new Color(0, 0, 0, 0);
     }
 
     private void OnChangeState()
