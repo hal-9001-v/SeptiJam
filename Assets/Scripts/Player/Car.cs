@@ -23,18 +23,35 @@ public class Car : MonoBehaviour
     private Vector2 movementInput;
     private bool axisInUse;
     private float maxSpeed = 100;
+    private bool braking;
     private Vector2 currentMaxVel;
+
+
     //Turbo
     private bool activeTurbo;
-
-    [HideInInspector] public const float DEFAULT_WHEEL_SIZE = 0.35f;
+    private bool usingTurbo;
+    public const float DEFAULT_WHEEL_SIZE = 0.35f;
     public const float DEFAULT_WHEEL_SIZE_MODIFIER = 0.1f;
     public const float DEFAULT_SQUARE_WHEEL_CV_MODIFIER = 1.65f;
+
     public const float MOTORFORCE_TURBO_MODIFIER = 1.65f;
     public const float TURBO_FINISH_DELAY = 0.2f;
-    public const float TURBO_CHARGE_SPEED = 0.001f;
+    public const float TURBO_CHARGE_SPEED = 0.005f;
     public const float TURBO_DEPLETE_SPEED = 0.01f;
+
+    public const float MAX_MOTORFORCE = 5000f;
+    public const float MIN_MOTORFORCE = 500f;
+    public const float MAX_STEER = 40f;
+    public const float MIN_STEER = 20f;
+    public const float MAX_MASS = 5000f;
+    public const float MIN_MASS = 1000f;
+    public const float MAX_ACCELERATION = 5f;
+    public const float MIN_ACCELERATION = 0.75f;
+    public const float MAX_STAR_VAL = 4;
+
+    public const float MIN_SPEED = 20f;
     
+
     [Header("Car Modifiers")] public CarModifierInfo carModifierInfo;
 
     [Header("Spawn")] [SerializeField] Vector3 spawnOffset;
@@ -43,6 +60,7 @@ public class Car : MonoBehaviour
     protected Rigidbody Rigidbody;
 
     [Header("Wheels")] public WheelInfo[] Wheels;
+
 
     public float GetCurrentSpeed
     {
@@ -63,7 +81,6 @@ public class Car : MonoBehaviour
             return new Vector2(velocity.x, velocity.z);
         }
     }
-
 
     public float GetCurrentWeight => Rigidbody.mass;
 
@@ -91,6 +108,7 @@ public class Car : MonoBehaviour
     public float yOffset;
     public float raycastRange;
 
+
     public struct InputStr
     {
         public float Forward;
@@ -108,12 +126,6 @@ public class Car : MonoBehaviour
         OnValidate();
     }
 
-    private void Update()
-    {
-        UpdateMaxSpeed();
-        CapMaxSpeed();
-    }
-
     void FixedUpdate()
     {
         if (followingCurve)
@@ -124,16 +136,17 @@ public class Car : MonoBehaviour
         {
             for (int i = 0; i < Wheels.Length; i++)
             {
+                Debug.Log("Fuersas" + GetCurrentSpeed + " " + maxSpeed + " " + Wheels[i].WheelCollider.motorTorque);
                 if (Wheels[i].Motor)
-                    if (GetCurrentSpeed < maxSpeed)
+                    if (GetCurrentSpeed < maxSpeed || usingTurbo)
                     {
                         Wheels[i].WheelCollider.motorTorque = Input.Forward * MotorPower;
-                        Debug.Log("Añadimos fuersa");
                     }
-                    else
+                    else if (!braking)
                     {
-                        
+                        Wheels[i].WheelCollider.motorTorque = 0;
                     }
+
                 if (Wheels[i].Steer)
                     Wheels[i].WheelCollider.steerAngle = Input.Steer * SteerAngle;
 
@@ -226,9 +239,15 @@ public class Car : MonoBehaviour
         activeTurbo = true;
         StartCoroutine(DecreaseTurboCharge());
         if (currentTurbo > 0)
+        {
+            usingTurbo = true;
             MotorPower = carModifierInfo.motorForce * MOTORFORCE_TURBO_MODIFIER;
+        }
         else
+        {
+            usingTurbo = false;
             MotorPower = carModifierInfo.motorForce;
+        }
     }
 
     public void StopTurbo()
@@ -238,7 +257,6 @@ public class Car : MonoBehaviour
         MotorPower = carModifierInfo.motorForce;
     }
 
-
     IEnumerator DecreaseTurboCharge()
     {
         while (currentTurbo > 0 && activeTurbo)
@@ -247,7 +265,21 @@ public class Car : MonoBehaviour
             currentTurbo -= TURBO_DEPLETE_SPEED;
         }
 
+        usingTurbo = false;
+        StartCoroutine(Brake());
         MotorPower = carModifierInfo.motorForce;
+    }
+
+    IEnumerator Brake()
+    {
+        for (int i = 0; i < Wheels.Length; i++)
+        {
+            Wheels[i].WheelCollider.motorTorque = -carModifierInfo.motorForce * MOTORFORCE_TURBO_MODIFIER;
+        }
+
+        braking = true;
+        yield return new WaitForSeconds(TURBO_FINISH_DELAY);
+        braking = false;
     }
 
     IEnumerator StartTurboCharge()
@@ -260,16 +292,52 @@ public class Car : MonoBehaviour
         }
     }
 
-    public void CapMaxSpeed()
+
+    public int GetAccelerationStars()
     {
-        if(GetCurrentSpeed > maxSpeed);
-            
+        float normalizedMotor = ProcessAndNormalize(carModifierInfo.motorForce, MAX_MOTORFORCE, MIN_MOTORFORCE, MAX_STAR_VAL);
+        float normalizedMass = ProcessAndNormalize(carModifierInfo.carMass,MAX_MASS, MIN_MASS,MAX_STAR_VAL);
+        
+        float wheelModifier = carModifierInfo.wheelSize == WheelSize.BIG ? 0.75f :
+            carModifierInfo.wheelSize == WheelSize.SMALL ? 1.25f : 1f;
+
+        float acceleration = (normalizedMotor / normalizedMass) * wheelModifier;
+        
+        float normalizedAcc = ProcessAndNormalize(acceleration, MAX_ACCELERATION, MIN_ACCELERATION, MAX_STAR_VAL);
+        return Mathf.RoundToInt(normalizedAcc);
     }
 
-    private void UpdateMaxSpeed()
+    public int GetSpeedStars()
     {
-        maxSpeed = (carModifierInfo.motorForce - 500) / (5000 - 500) * 100 + 0.1f;
-        Debug.Log(maxSpeed);
+        return Mathf.RoundToInt(ProcessAndNormalize(carModifierInfo.motorForce, MAX_MOTORFORCE, MIN_MOTORFORCE, MAX_STAR_VAL));
+    }
+
+    public int GetMassStars()
+    {
+        return Mathf.RoundToInt(ProcessAndNormalize(carModifierInfo.carMass, MAX_MASS, MIN_MASS, MAX_STAR_VAL));
+    }
+
+    public int GetSteerStars()
+    {
+        return Mathf.RoundToInt(ProcessAndNormalize(carModifierInfo.steerAngle, MAX_STEER, MIN_STEER, MAX_STAR_VAL));
+    }
+
+    private float NormalizeVal(float val, float max, float min)
+    {
+        return (val - min) / (max - min);
+    }
+
+    private float ProcessAndNormalize(float val, float max, float min, float maxVal)
+    {
+        float normalized = NormalizeVal(val, max, min) * maxVal;
+        return normalized > maxVal ? maxVal + 1 : normalized + 1;
+    }
+
+    public float GetMaxVelocity()
+    {
+        // + 100km h + 20 km/h of min velocity
+        maxSpeed = (carModifierInfo.motorForce - MIN_MOTORFORCE) / (MAX_MOTORFORCE - MIN_MOTORFORCE) * 100 + MIN_SPEED;
+        return maxSpeed;
     }
 
 

@@ -5,15 +5,19 @@ using System.Globalization;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
     public class TESTUI : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI velText;
+        [SerializeField] private TextMeshProUGUI accText;
+        [SerializeField] TextMeshProUGUI speedText;
         [SerializeField] TextMeshProUGUI massText;
+        [SerializeField] TextMeshProUGUI velText;
+        [SerializeField] TextMeshProUGUI steerText;
+        [SerializeField] TextMeshProUGUI maxVelText;
         [SerializeField] Slider slider;
         [SerializeField] Car car;
-        
         private float speed;
         
         private void Start()
@@ -24,7 +28,11 @@ using UnityEngine.UI;
         private void FixedUpdate()
         {
             slider.value = car.GetCurrentTurbo / car.GetTurboLength;
-            massText.text = car.GetCurrentWeight.ToString(CultureInfo.InvariantCulture);
+            massText.text = car.GetMassStars().ToString();
+            accText.text = car.GetAccelerationStars().ToString();
+            velText.text = car.GetSpeedStars().ToString();
+            steerText.text = car.GetSteerStars().ToString();
+            maxVelText.text = ((int)car.GetMaxVelocity()).ToString();
         }
 
         
@@ -33,7 +41,7 @@ using UnityEngine.UI;
              while (true)
              {
                  yield return new WaitForSeconds(0.1f);
-                 velText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
+                 speedText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
              }
          }
 
