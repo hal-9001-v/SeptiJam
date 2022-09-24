@@ -15,7 +15,6 @@ public class CurveFollower : MonoBehaviour
         get
         {
             if (curvePath == null) return 0;
-
             return curvePath.GetLength();
         }
     }

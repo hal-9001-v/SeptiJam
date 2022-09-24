@@ -136,7 +136,7 @@ public class Car : MonoBehaviour
         {
             for (int i = 0; i < Wheels.Length; i++)
             {
-                Debug.Log("Fuersas" + GetCurrentSpeed + " " + maxSpeed + " " + Wheels[i].WheelCollider.motorTorque);
+                //Debug.Log("Fuersas" + GetCurrentSpeed + " " + maxSpeed + " " + Wheels[i].WheelCollider.motorTorque);
                 if (Wheels[i].Motor)
                     if (GetCurrentSpeed < maxSpeed || usingTurbo)
                     {
@@ -197,6 +197,8 @@ public class Car : MonoBehaviour
 
     public float EnterCarshop(CurveFollower follower)
     {
+        follower.t = 0;
+
         return FollowCurve(follower);
     }
 
