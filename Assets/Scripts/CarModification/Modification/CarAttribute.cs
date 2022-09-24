@@ -11,7 +11,7 @@ public class CarAttribute
     private static Dictionary<CarVarsType, float> CAR_VAR_MULTIPLIERS = new Dictionary<CarVarsType, float>() {
         { CarVarsType.MotorForce, 750 },
         { CarVarsType.SteerAngle, 10 },
-        { CarVarsType.Weight, 500 },
+        { CarVarsType.Weight, 250 },
         {CarVarsType.Turbo,500 }
     };
 
