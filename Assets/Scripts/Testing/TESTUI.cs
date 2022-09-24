@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,20 +11,32 @@ using UnityEngine.UI;
     {
         [SerializeField] TextMeshProUGUI velText;
         [SerializeField] TextMeshProUGUI massText;
-        [SerializeField] private TextMeshProUGUI acccText;
         [SerializeField] Slider slider;
         [SerializeField] Car car;
-
-
-        private Vector2 lastVelocity;
+        
+        private float speed;
+        
+        private void Start()
+        {
+            StartCoroutine(UpdateUI());
+        }
 
         private void FixedUpdate()
         {
-            acccText.text = ((int)((car.GetCurrentVelocity - lastVelocity) / Time.deltaTime).magnitude).ToString();
-            velText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
+            slider.value = car.GetCurrentTurbo / car.GetTurboLength;
             massText.text = car.GetCurrentWeight.ToString(CultureInfo.InvariantCulture);
-            slider.value = car.GetCurrentTurbo/car.GetTurboLength;
-
-            lastVelocity = car.GetCurrentVelocity;
         }
+
+        
+        IEnumerator UpdateUI()
+         {
+             while (true)
+             {
+                 yield return new WaitForSeconds(0.1f);
+                 velText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
+             }
+         }
+
+
+
     }

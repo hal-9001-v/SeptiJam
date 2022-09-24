@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameCamera.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleSceneCar.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleSceneCar.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Car.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +76,7 @@
       <updated>1663777821129</updated>
       <workItem from="1663777823970" duration="5494000" />
       <workItem from="1663863153596" duration="11005000" />
+      <workItem from="1664007214329" duration="5599000" />
     </task>
     <servers />
   </component>

@@ -22,16 +22,19 @@ public class Car : MonoBehaviour
     //Input
     private Vector2 movementInput;
     private bool axisInUse;
-    
+    private float maxSpeed = 100;
+    private Vector2 currentMaxVel;
     //Turbo
     private bool activeTurbo;
-    private float turboFinishedDelay = 0.1f;
-    
+
     [HideInInspector] public const float DEFAULT_WHEEL_SIZE = 0.35f;
     public const float DEFAULT_WHEEL_SIZE_MODIFIER = 0.1f;
     public const float DEFAULT_SQUARE_WHEEL_CV_MODIFIER = 1.65f;
-    public const float MOTORFORCE_TURBO_MODIFIER = 2;
-
+    public const float MOTORFORCE_TURBO_MODIFIER = 1.65f;
+    public const float TURBO_FINISH_DELAY = 0.2f;
+    public const float TURBO_CHARGE_SPEED = 0.001f;
+    public const float TURBO_DEPLETE_SPEED = 0.01f;
+    
     [Header("Car Modifiers")] public CarModifierInfo carModifierInfo;
 
     [Header("Spawn")] [SerializeField] Vector3 spawnOffset;
@@ -43,32 +46,32 @@ public class Car : MonoBehaviour
 
     public float GetCurrentSpeed
     {
-        get { return Rigidbody.velocity.magnitude; }
+        get
+        {
+            if (Rigidbody.velocity.magnitude > 1)
+                return Rigidbody.velocity.magnitude;
+            else
+                return 0;
+        }
     }
 
     public Vector2 GetCurrentVelocity
     {
-        get { return new Vector2(Rigidbody.velocity.x, Rigidbody.velocity.z); }
+        get
+        {
+            var velocity = Rigidbody.velocity;
+            return new Vector2(velocity.x, velocity.z);
+        }
     }
 
 
-    public float GetCurrentWeight
-    {
-        get { return Rigidbody.mass; }
-    }
+    public float GetCurrentWeight => Rigidbody.mass;
 
-    public float GetCurrentTurbo
-    {
-        get { return currentTurbo; }
-    }
+    public float GetCurrentTurbo => currentTurbo;
 
-    public float GetTurboLength
-    {
-        get { return turboLength; }
-    }
+    public float GetTurboLength => turboLength;
 
-    [Header("Car Physics Variables")]
-    [SerializeField]
+    [Header("Car Physics Variables")] [SerializeField]
     Vector3 CenterOfMass;
 
     [SerializeField] float MotorPower = 5000f;
@@ -105,6 +108,11 @@ public class Car : MonoBehaviour
         OnValidate();
     }
 
+    private void Update()
+    {
+        UpdateMaxSpeed();
+        CapMaxSpeed();
+    }
 
     void FixedUpdate()
     {
@@ -114,11 +122,18 @@ public class Car : MonoBehaviour
         }
         else
         {
-
             for (int i = 0; i < Wheels.Length; i++)
             {
                 if (Wheels[i].Motor)
-                    Wheels[i].WheelCollider.motorTorque = Input.Forward * MotorPower;
+                    if (GetCurrentSpeed < maxSpeed)
+                    {
+                        Wheels[i].WheelCollider.motorTorque = Input.Forward * MotorPower;
+                        Debug.Log("Añadimos fuersa");
+                    }
+                    else
+                    {
+                        
+                    }
                 if (Wheels[i].Steer)
                     Wheels[i].WheelCollider.steerAngle = Input.Steer * SteerAngle;
 
@@ -131,11 +146,10 @@ public class Car : MonoBehaviour
             Rigidbody.AddForceAtPosition(transform.up * (Rigidbody.velocity.magnitude * -0.1f * Grip),
                 transform.position + transform.rotation * CenterOfMass);
         }
-
     }
+
     void MoveInCurve()
     {
-
         if (curveFollower.t >= 1) return;
         float y = transform.position.y;
         var curvePos = curveFollower.UpdateTimeWithDistance(workshopSpeed * Time.fixedDeltaTime);
@@ -194,6 +208,7 @@ public class Car : MonoBehaviour
 
         transform.parent = null;
     }
+
     public CarData GetCarData()
     {
         CarData carData = new CarData();
@@ -229,21 +244,32 @@ public class Car : MonoBehaviour
         while (currentTurbo > 0 && activeTurbo)
         {
             yield return new WaitForSeconds(0.01f);
-            currentTurbo -= 0.01f;
+            currentTurbo -= TURBO_DEPLETE_SPEED;
         }
-        MotorPower = carModifierInfo.motorForce;
 
+        MotorPower = carModifierInfo.motorForce;
     }
 
     IEnumerator StartTurboCharge()
     {
-        yield return new WaitForSeconds(turboFinishedDelay);
+        yield return new WaitForSeconds(TURBO_FINISH_DELAY);
         while (currentTurbo < turboLength && !activeTurbo)
         {
             yield return new WaitForSeconds(0.01f);
-            currentTurbo += 0.01f;
+            currentTurbo += TURBO_CHARGE_SPEED;
         }
+    }
 
+    public void CapMaxSpeed()
+    {
+        if(GetCurrentSpeed > maxSpeed);
+            
+    }
+
+    private void UpdateMaxSpeed()
+    {
+        maxSpeed = (carModifierInfo.motorForce - 500) / (5000 - 500) * 100 + 0.1f;
+        Debug.Log(maxSpeed);
     }
 
 
@@ -260,7 +286,7 @@ public class Car : MonoBehaviour
             MotorPower = carModifierInfo.motorForce * DEFAULT_SQUARE_WHEEL_CV_MODIFIER;
         else
             MotorPower = carModifierInfo.motorForce;
-        
+
         //wheel stats
         float wheelRadius;
         switch (carModifierInfo.wheelSize)
@@ -332,8 +358,6 @@ public class Car : MonoBehaviour
     }
 
 
-
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -359,8 +383,8 @@ public class Car : MonoBehaviour
         public float motorForce; // base force 5000
         public float steerAngle; // base angle 35
         public Vector3 centerOfMass; // base COM 0, -2, 0.159  WARNING: Tofu car TODO: CHANGE
-        public float turboLength;  
-        
+        public float turboLength;
+
         [Header("Wheel Stats")] public float springForce; //base force 35.000
         public float damp; //base damp 4.500
         public float springLength; //base length 1
