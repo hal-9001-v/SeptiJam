@@ -34,7 +34,7 @@ MonoBehaviour:
     ForwardInPosition: 1
   AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
   MeshMaterials:
-  - {fileID: 2100000, guid: 2356376b32134274e9b1476f8a257aba, type: 2}
+  - {fileID: 2100000, guid: 47e42662f81af784f90f6c14c612274c, type: 2}
   AccessoryMesh: {fileID: 6255687079079774844, guid: 1a7faa8f7169bdd4fb5432087ede55c2,
     type: 3}
   OriginalTransform: {fileID: -8679921383154817045, guid: 1a7faa8f7169bdd4fb5432087ede55c2,

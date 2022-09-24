@@ -13,7 +13,22 @@ MonoBehaviour:
   m_Name: Flemish
   m_EditorClassIdentifier: 
   AccessoryName: 
-  AccessoryPositionInfo: []
-  AccessoryIcon: {fileID: 0}
-  MeshMaterials: []
-  AccessoryMesh: {fileID: 0}
+  AccessoryPositionInfo:
+  - TypeOfTheAccesory: 5
+    ModificationsInThisType:
+    - ParameterType: 0
+      ModificationValue: 1
+    ForwardInPosition: 0
+  - TypeOfTheAccesory: 4
+    ModificationsInThisType:
+    - ParameterType: 0
+      ModificationValue: 1
+    ForwardInPosition: 0
+  AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
+  MeshMaterials:
+  - {fileID: 2100000, guid: 35b71a9f3b069ed428d15d3d48156c97, type: 2}
+  AccessoryMesh: {fileID: 5336012995049291918, guid: fe8e0d351022d3f4db85d3f34d7168e7,
+    type: 3}
+  OriginalTransform: {fileID: -8679921383154817045, guid: fe8e0d351022d3f4db85d3f34d7168e7,
+    type: 3}
+  WheelSize: 2
