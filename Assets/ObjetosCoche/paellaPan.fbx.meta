@@ -3,7 +3,12 @@ guid: 530ee1d5ce3ea234b9882ecf50427790
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paellaPan
+    second: {fileID: 2100000, guid: 0347c7d6afb177246acdd0dd9fcb4abb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

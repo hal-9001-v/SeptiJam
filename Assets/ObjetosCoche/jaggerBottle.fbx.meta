@@ -3,7 +3,12 @@ guid: 0831dd3bfea69164d88868d0ade7e0d5
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jaggerBottle
+    second: {fileID: 2100000, guid: f11828ebb9cf7ff4381e5abe0d8cb472, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

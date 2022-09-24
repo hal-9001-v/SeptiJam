@@ -3,7 +3,12 @@ guid: fe8e0d351022d3f4db85d3f34d7168e7
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: flamingo
+    second: {fileID: 2100000, guid: 292eef456bba85947a3455f4fdb3edfa, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

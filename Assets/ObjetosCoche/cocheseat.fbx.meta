@@ -3,7 +3,62 @@ guid: b7a937bd0d7314b488ef3ede7d33e5e1
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blanco
+    second: {fileID: 2100000, guid: c83081298b08d8842ac72db5a8b835b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blanco1
+    second: {fileID: 2100000, guid: d1d098efa9c97b944981e32c7dc34fc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cristal1
+    second: {fileID: 2100000, guid: d324a1a2c2477c844ad569f78ebf36da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emisivo_azul
+    second: {fileID: 2100000, guid: c3960f1fe3289ce4d9e8ef1fbfa34b46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emisivo_morado1
+    second: {fileID: 2100000, guid: 0a9a611f97a065642b7a20104433ae3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: faros
+    second: {fileID: 2100000, guid: 229a73576101b8840a8c5e3050c300a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_negro1
+    second: {fileID: 2100000, guid: b40d9722a6abcda4e90f51ae2764dd8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong2
+    second: {fileID: 2100000, guid: f0e56dd399a96f74d8d705cb97639db5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rejilla
+    second: {fileID: 2100000, guid: 39e6bd9d79915724ca67c55e77a0d760, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rosa_metalico
+    second: {fileID: 2100000, guid: 2494094e374f4f545ae701a54d5789dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruedas
+    second: {fileID: 2100000, guid: 4eb0d105629d19644a39106b282a2630, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

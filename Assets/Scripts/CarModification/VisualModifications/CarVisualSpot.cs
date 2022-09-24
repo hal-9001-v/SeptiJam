@@ -39,12 +39,13 @@ public class CarVisualSpot : MonoBehaviour
             Bounds customBounds = myMeshFilter.mesh.bounds;
             customBounds.size = new Vector3(1, 1, 1);
             myMeshFilter.mesh.bounds = customBounds;
+            ChangeOrientation(accessory.GetOrientationInPosition(type));
         }
   
     }
-    private void ChangeOrientation(CarAccessoryInPositionInfo accessoryInfo)
+    private void ChangeOrientation(AccessoryOrientation forward)
     {
-        switch (accessoryInfo.ForwardInPosition)
+        switch (forward)
         {
             case AccessoryOrientation.XPositive:
                 break;

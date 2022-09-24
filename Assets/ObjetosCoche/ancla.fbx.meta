@@ -3,7 +3,12 @@ guid: 8120085971d841f44a2aac3294b4733b
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ancla
+    second: {fileID: 2100000, guid: e0520e2656b006a4cbd2a84b55b16acf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

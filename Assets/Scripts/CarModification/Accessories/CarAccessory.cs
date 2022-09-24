@@ -39,6 +39,14 @@ public class CarAccessory : MonoBehaviour
         }
         return new CarModifier[0];
     }
+    public AccessoryOrientation GetOrientationInPosition(CarAccessoryType accessoryType)
+    {
+        if (informationPerPositionMap.TryGetValue(accessoryType, out CarAccessoryInPositionInfo value))
+        {
+            return value.ForwardInPosition;
+        }
+        return AccessoryOrientation.XPositive;
+    }
 }
 public enum CarAccessoryType
 {

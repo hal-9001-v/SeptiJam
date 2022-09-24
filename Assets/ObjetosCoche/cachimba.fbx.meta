@@ -3,7 +3,12 @@ guid: 1abdb87045fd57f4dbaaddaeb10175ce
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cachimba
+    second: {fileID: 2100000, guid: 188f2f753b60d7a458b56ec1e4edc9f9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

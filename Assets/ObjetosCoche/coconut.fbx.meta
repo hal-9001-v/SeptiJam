@@ -3,7 +3,12 @@ guid: 3a93b35cda63f15438dc2c4fb82b8e4d
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coconut
+    second: {fileID: 2100000, guid: 7df375aa26292c24b903d708d6c394fb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
