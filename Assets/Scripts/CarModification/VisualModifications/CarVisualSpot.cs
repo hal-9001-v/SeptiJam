@@ -51,8 +51,7 @@ public class CarVisualSpot : MonoBehaviour
     }
     private void ChangeOrientation(AccessoryOrientation forward)
     {
-        transform.forward = transform.parent.TransformDirection(orientations[(int)forward]);
-       
+        transform.localRotation = Quaternion.LookRotation(orientations[(int)forward]);
     }
     private void OnDestroy()
     {

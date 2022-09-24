@@ -66,12 +66,12 @@ public struct CarAccesoryPosition
 }
 public enum AccessoryOrientation
 {
-    XPositive,
-    YPositive,
     ZPositive,
-    XNegative,
+    YPositive,
+    XPositive,
+    ZNegative,
     YNegative,
-    ZNegative
+    XNegative
 }
 [Serializable]
 public struct CarAccessoryInPositionInfo
