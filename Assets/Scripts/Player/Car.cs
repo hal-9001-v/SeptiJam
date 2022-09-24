@@ -347,7 +347,6 @@ public class Car : MonoBehaviour
         //Car stats
         Rigidbody.mass = carModifierInfo.carMass;
         SteerAngle = carModifierInfo.steerAngle;
-        CenterOfMass = carModifierInfo.centerOfMass;
         turboLength = carModifierInfo.turboLength;
         currentTurbo = turboLength;
         if (carModifierInfo.squareWheels)
@@ -450,7 +449,6 @@ public class Car : MonoBehaviour
         [Header("Car Stats")] public float carMass; //base mass 2.800
         public float motorForce; // base force 5000
         public float steerAngle; // base angle 35
-        public Vector3 centerOfMass; // base COM 0, -2, 0.159  WARNING: Tofu car TODO: CHANGE
         public float turboLength;
 
         [Header("Wheel Stats")] public float springForce; //base force 35.000
