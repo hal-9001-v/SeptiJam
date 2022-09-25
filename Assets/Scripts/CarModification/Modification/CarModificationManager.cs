@@ -168,6 +168,7 @@ public class CarModificationManager : MonoBehaviour
         if (accesoriesAssigned[CarAccessoryType.Wheels])
         {
             myCar.carModifierInfo.wheelSize = accesoriesAssigned[CarAccessoryType.Wheels].AccesoryInformation.WheelSize;
+            myCar.carModifierInfo.squareWheels = accesoriesAssigned[CarAccessoryType.Wheels].AccesoryInformation.IsSquareWheel;
         }
         myCar.OnChangeCarPiece();
     }

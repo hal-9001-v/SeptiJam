@@ -17,6 +17,7 @@ public class CarAccessoryScriptable : ScriptableObject
     public Transform OriginalTransform;
     public WheelSize WheelSize;
     public Mesh AccessoryMeshChasisVariant;
+    public bool IsSquareWheel;
 
 
 }
