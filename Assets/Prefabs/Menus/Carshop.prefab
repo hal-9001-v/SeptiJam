@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 6036774223932188199}
   - component: {fileID: 3091933283879418305}
   - component: {fileID: 4550442614090040115}
+  - component: {fileID: 1223812593988710031}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -601,6 +602,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   englishText: Handle
   spanishText: Volante
+--- !u!114 &1223812593988710031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957933675166214714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 
+  spanishText: 
 --- !u!1 &2205962430166941569
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +842,7 @@ GameObject:
   - component: {fileID: 3940291848139751154}
   - component: {fileID: 7741559567871835708}
   - component: {fileID: 2171839567914951281}
+  - component: {fileID: 4489344186414121235}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -980,6 +996,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   englishText: Engine
   spanishText: Motor
+--- !u!114 &4489344186414121235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2588090092328543435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 
+  spanishText: 
 --- !u!1 &2709381339529495826
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1023,7 @@ GameObject:
   - component: {fileID: 3180409164885991477}
   - component: {fileID: 1519548765730827789}
   - component: {fileID: 3531635596551104870}
+  - component: {fileID: 121783278086644596}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1146,6 +1177,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   englishText: Wheels
   spanishText: Ruedas
+--- !u!114 &121783278086644596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2709381339529495826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 
+  spanishText: 
 --- !u!1 &3398783242964075162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,6 +1338,7 @@ GameObject:
   - component: {fileID: 6336631356305877902}
   - component: {fileID: 4113612850310011070}
   - component: {fileID: 580923322070242384}
+  - component: {fileID: 5881738854279070765}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1446,6 +1492,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   englishText: Pipe
   spanishText: Tubo
+--- !u!114 &5881738854279070765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081084447228392237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 
+  spanishText: 
 --- !u!1 &4101577957000668575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +2004,8 @@ GameObject:
   - component: {fileID: 7721387416978142905}
   - component: {fileID: 858912530621422186}
   - component: {fileID: 911418113604414497}
+  - component: {fileID: 3910753888291081036}
+  - component: {fileID: 1564654361109179269}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2068,6 +2130,35 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3910753888291081036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6727415930871320891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc887eb187fae344ba3d1b39475ae2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeLanguageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1564654361109179269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6727415930871320891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: X
+  spanishText: X
 --- !u!1 &6963624087338159955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2306,7 @@ GameObject:
   - component: {fileID: 71908058934127073}
   - component: {fileID: 6026022423253571635}
   - component: {fileID: 8566077289144385180}
+  - component: {fileID: 8760171436017626075}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2368,6 +2460,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   englishText: Gas
   spanishText: Combustible
+--- !u!114 &8760171436017626075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470503705816327639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 
+  spanishText: 
 --- !u!1 &7583097014637013001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2487,7 @@ GameObject:
   - component: {fileID: 6585582755560664657}
   - component: {fileID: 8595313634672408138}
   - component: {fileID: 113743073851413199}
+  - component: {fileID: 4185932706096995307}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2534,6 +2641,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   englishText: Chasis
   spanishText: Chasis
+--- !u!114 &4185932706096995307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583097014637013001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 
+  spanishText: 
 --- !u!1 &7928979820263970516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2697,6 +2818,8 @@ GameObject:
   - component: {fileID: 3385904101391013959}
   - component: {fileID: 6784318732019566732}
   - component: {fileID: 7393295301281668947}
+  - component: {fileID: 7403908961625512777}
+  - component: {fileID: 3762341307005297148}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2821,6 +2944,35 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7403908961625512777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200245717728323920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc887eb187fae344ba3d1b39475ae2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeLanguageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3762341307005297148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200245717728323920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f8e137ac9c10f4381d9bb673d8aaf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: All
+  spanishText: General
 --- !u!1001 &103960112920983206
 PrefabInstance:
   m_ObjectHideFlags: 0
