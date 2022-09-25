@@ -12,8 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
-    [Header("References")] [Header("Settings")] [SerializeField] [Range(1, 20)]
-    float speed = 10;
+    [Header("References")]
+    [SerializeField] Transform model;
+    [Header("Settings")] 
+    [SerializeField] [Range(1, 20)] float speed = 10;
 
     [SerializeField] [Range(1, 20)] float gravity = 10;
 
@@ -189,8 +191,8 @@ public class PlayerMovement : MonoBehaviour
 
     void SetTargetRotation(Quaternion target, float lerpFactor)
     {
-        targetRotation = Quaternion.Lerp(transform.rotation, target, lerpFactor);
-        startingRotation = transform.rotation;
+        targetRotation = Quaternion.Lerp(model.transform.rotation, target, lerpFactor);
+        startingRotation = model.transform.rotation;
 
         rotationTime = Quaternion.Angle(startingRotation, targetRotation) / rotationSpeed;
         rotationElapsedTime = 0;
@@ -207,12 +209,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rotationElapsedTime > rotationTime)
         {
-            transform.rotation = targetRotation;
+            model.transform.rotation = targetRotation;
         }
         else
         {
             rotationElapsedTime += Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(startingRotation, targetRotation, rotationElapsedTime / rotationTime);
+            model.transform.rotation = Quaternion.Lerp(startingRotation, targetRotation, rotationElapsedTime / rotationTime);
         }
     }
 

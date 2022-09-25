@@ -17,4 +17,5 @@ public class ItemCollector : MonoBehaviour
         PlayerInventory.OnAddObject(accesory);
         Debug.LogWarning("Collected!");
     }
+
 }

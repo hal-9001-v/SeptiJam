@@ -5,6 +5,8 @@ public class GameCamera : MonoBehaviour
 {
     public CinemachineVirtualCamera defaultCamera;
 
+    CinemachineVirtualCamera currentCamera;
+
     private void Start()
     {
         UseDefaultCamera();
@@ -20,14 +22,14 @@ public class GameCamera : MonoBehaviour
     {
         var input = new Vector3(axisInput.x, 0, axisInput.y).normalized;
 
-        return Quaternion.FromToRotation(transform.up, up) * transform.rotation * input;
+        return Quaternion.FromToRotation(currentCamera.transform.up, up) * currentCamera.transform.rotation * input;
     }
     
     public Vector3 InputDirectionUnNormalized(Vector2 axisInput, Vector3 up)
     {        
         var input = new Vector3(axisInput.x, 0, axisInput.y);
 
-        return Quaternion.FromToRotation(transform.up, up) * transform.rotation * input;
+        return Quaternion.FromToRotation(currentCamera.transform.up, up) * currentCamera.transform.rotation * input;
     }
     
 
@@ -43,11 +45,14 @@ public class GameCamera : MonoBehaviour
 
     public void UseCamera(CinemachineVirtualCamera cameraToUse)
     {
+        currentCamera = cameraToUse;
+
         foreach (var camera in FindObjectsOfType<CinemachineVirtualCamera>())
         {
             camera.enabled = false;
         }
-        cameraToUse.enabled = true;
+
+        cameraToUse.enabled = true;        
     }
 
     public void UseDefaultCamera()
