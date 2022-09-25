@@ -7,19 +7,33 @@ public class Radio : MonoBehaviour
 {
 
     [SerializeField] List<RadioClip> radioClips;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource radioSource;
+    [SerializeField] AudioSource ambientSource;
 
     int currentIndex = 0;
 
+    float originalAmbientVolume;
+    AudioListener listener => FindObjectOfType<AudioListener>();
+
     private void Awake()
     {
-        //radioClips = new List<RadioClip>();
-
         PlayerInput input = new PlayerInput();
         SetInput(input);
         input.Enable();
 
+        originalAmbientVolume = ambientSource.volume;
+
         StartPlaying();
+    }
+
+
+    private void Update()
+    {
+        var curve = radioSource.GetCustomCurve(AudioSourceCurveType.CustomRolloff);
+        var curveValue = curve.Evaluate(Vector3.Distance(listener.transform.position, transform.position) / radioSource.maxDistance);
+
+        ambientSource.volume = (1 - curveValue) * originalAmbientVolume;
+        Debug.Log(ambientSource.volume + " " + originalAmbientVolume);
     }
 
     public void SetInput(PlayerInput input)
@@ -66,22 +80,22 @@ public class Radio : MonoBehaviour
     [ContextMenu("Play Radio")]
     public void StartPlaying()
     {
-        audioSource.clip = radioClips[currentIndex].clip;
-        audioSource.Play();
+        radioSource.clip = radioClips[currentIndex].clip;
+        radioSource.Play();
     }
 
     [ContextMenu("Stop Radio")]
     public void StopPlaying()
     {
-        audioSource.Stop();
+        radioSource.Stop();
 
     }
 
     public void PlayClip(RadioClip clip)
     {
-        audioSource.clip = clip.clip;
-        audioSource.volume = clip.volume;
-        audioSource.Play();
+        radioSource.clip = clip.clip;
+        radioSource.volume = clip.volume;
+        radioSource.Play();
     }
 
 

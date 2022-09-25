@@ -174,14 +174,10 @@ public class CarShop : MonoBehaviour
         //Reset Camera
         cameraFollower.rotation = Quaternion.AngleAxis(-cameraDegrees, Vector3.up) * cameraFollower.rotation;
         cameraDegrees = 0;
-
-
-
     }
 
     void StartWorkShop(Car car)
     {
-
         if (isOpen == false)
         {
             isOpen = true;
@@ -200,7 +196,6 @@ public class CarShop : MonoBehaviour
 
             StartCoroutine(CarshopEnterTimeline(time, car));
         }
-
     }
 
     [ContextMenu("Exit CarShop")]
