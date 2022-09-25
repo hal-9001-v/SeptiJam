@@ -18,8 +18,6 @@ public class DialogueBox : MonoBehaviour
 
         this.endCallback = endCallback;
         typeCoroutine = StartCoroutine(TypeDialogue(dialogue, endCallback));
-
-
     }
 
     void StopDialogue()
