@@ -23,6 +23,7 @@ public class CarModificationManager : MonoBehaviour
     private Car myCar;
 
     public static Action<CarAccessoryType, CarAccessory> OnCarModification;
+    public static Action<Car> OnCarUpdate;
 
     private void Awake()
     {
@@ -93,6 +94,7 @@ public class CarModificationManager : MonoBehaviour
         Debug.Log(accessory.AccesoryInformation.AccessoryName + " Added");
         accessory.currentPosition = typeOfAccessory;
         OnCarModification?.Invoke(typeOfAccessory, accessory);
+        OnCarUpdate?.Invoke(myCar);
         return true;
 
     }
@@ -118,6 +120,7 @@ public class CarModificationManager : MonoBehaviour
         UpdateCarInformation();
         result.currentPosition = CarAccessoryType.None;
         OnCarModification?.Invoke(typeOfAccessory, null);
+        OnCarUpdate?.Invoke(myCar);
         return result;
     }
     public CarAttributeInformation[] GetModificatorsInformation()
