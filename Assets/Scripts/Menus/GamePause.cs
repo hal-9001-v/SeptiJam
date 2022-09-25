@@ -17,6 +17,8 @@ public class GamePause : MonoBehaviour
     SettingsMenu settingsMenu => FindObjectOfType<SettingsMenu>();
     LevelLoader levelLoader => FindObjectOfType<LevelLoader>();
 
+    InventoryInGame inventoryGame => FindObjectOfType<InventoryInGame>();
+
     EventSystem eventSystem => FindObjectOfType<EventSystem>();
 
     public Action pauseCallback;
@@ -35,6 +37,7 @@ public class GamePause : MonoBehaviour
         input = new PlayerInput();
 
         input.UI.Pause.performed += Pause;
+        input.Carshop.OpenInventory.performed += Inventory;
         input.Enable();
 
 
@@ -123,10 +126,13 @@ public class GamePause : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        input.UI.Pause.performed -= Pause;
+        input.UI.Pause.performed -= Pause; 
+        input.Carshop.OpenInventory.performed -= Inventory;
 
         levelLoader.LoadLevel(LevelLoader.Levels.MainMenu);
     }
-
-
+    void Inventory(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        inventoryGame.OnSelectPressed();
+    }
 }
