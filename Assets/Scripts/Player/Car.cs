@@ -412,7 +412,7 @@ public class Car : MonoBehaviour
             Wheels[i].WheelCollider.suspensionSpring = wheelColliderSuspensionSpring;
             Wheels[i].WheelCollider.radius = wheelRadius;
 
-          //  Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
+           Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
 
             if (squareWheels)
             {
