@@ -68,8 +68,7 @@ public class Car : MonoBehaviour
         {
             if (Rigidbody.velocity.magnitude > 1)
                 return Rigidbody.velocity.magnitude;
-            else
-                return 0;
+            return 0;
         }
     }
 
@@ -98,8 +97,8 @@ public class Car : MonoBehaviour
     [Range(0, 15)] public float Grip = 5f;
 
 
-    [HideInInspector] private float currentTurbo;
-    [HideInInspector] public InputStr Input;
+    private float currentTurbo;
+    public InputStr Input;
 
     bool followingCurve;
     CurveFollower curveFollower;
