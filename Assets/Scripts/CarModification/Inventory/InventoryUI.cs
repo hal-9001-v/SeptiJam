@@ -29,6 +29,7 @@ public class InventoryUI : MonoBehaviour
         FindObjectOfType<Speedometer>().HideUI();
         OnChangeWindow(CarAccessoryType.None);
         EventSystem.current.SetSelectedGameObject(inventorySlots[0].gameObject);
+        CarModificationManager.UpdateCar();
     }
     public void OnChangeWindow(CarAccessoryType objectFilter)
     {

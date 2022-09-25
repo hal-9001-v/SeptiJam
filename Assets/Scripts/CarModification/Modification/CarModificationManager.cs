@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CarModificationManager : MonoBehaviour
 {
@@ -24,10 +25,12 @@ public class CarModificationManager : MonoBehaviour
 
     public static Action<CarAccessoryType, CarAccessory> OnCarModification;
     public static Action<Car> OnCarUpdate;
+    public static Action<Car, CarAccessory, Car.CarModifierInfo, CarAccessoryType, CarModifier[]> OnAccesorySelectedAction;
+    public static Action OnAccessoryDeselected;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -69,7 +72,7 @@ public class CarModificationManager : MonoBehaviour
     }
     public bool OnAddAccesory(CarAccessory accessory, CarAccessoryType typeOfAccessory)
     {
-      
+
         if (!accessory.CanGoThere(typeOfAccessory))
         {
             Debug.Log("This accessory can't go here");
@@ -95,6 +98,7 @@ public class CarModificationManager : MonoBehaviour
         accessory.currentPosition = typeOfAccessory;
         OnCarModification?.Invoke(typeOfAccessory, accessory);
         OnCarUpdate?.Invoke(myCar);
+        OnAccessoryDeselected?.Invoke();
         return true;
 
     }
@@ -122,6 +126,23 @@ public class CarModificationManager : MonoBehaviour
         OnCarModification?.Invoke(typeOfAccessory, null);
         OnCarUpdate?.Invoke(myCar);
         return result;
+    }
+    public static void UpdateCar()
+    {
+        OnCarUpdate?.Invoke(instance.myCar);
+    }
+
+    public void OnAccesorySelected(CarAccessory accessory, CarAccessoryType type)
+    {
+        if (!type.Equals(CarAccessoryType.None) && accesoriesAssigned[type])
+        {
+            OnAccesorySelectedAction?.Invoke(myCar, accessory, myCar.carModifierInfo, type, accesoriesAssigned[type].ModifiersInPosition(type));
+        }
+        else
+        {
+            OnAccesorySelectedAction?.Invoke(myCar, accessory, myCar.carModifierInfo, type, null);
+        }
+
     }
     public CarAttributeInformation[] GetModificatorsInformation()
     {
