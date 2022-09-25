@@ -127,7 +127,7 @@ MonoBehaviour:
   onSelectFrame: {fileID: 5858700038712587067}
   onAddedFrame: {fileID: 4917856481081693621}
   colorAdded: {r: 1, g: 0.8370731, b: 0.4764151, a: 1}
-  alreadyInCarColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  alreadyInCarColor: {r: 0, g: 0, b: 0, a: 1}
   accessoryIcon: {fileID: 7427546092083578227}
 --- !u!1 &4917856481081693621
 GameObject:
