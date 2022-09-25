@@ -15,7 +15,7 @@ public class InventoryInGame : MonoBehaviour
     [SerializeField]
     private InputActionAsset playerActions;
 
-    private bool inventoryOpened;
+    public bool inventoryOpened;
 
 
     public void OnSelectPressed()

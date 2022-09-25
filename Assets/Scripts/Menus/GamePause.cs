@@ -54,7 +54,7 @@ public class GamePause : MonoBehaviour
     // Let ctx there so it can be += and -= to avoid a nullPointer when reloading scenes. Dont make questions
     void Pause(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if (paused == false)
+        if (paused == false && !inventoryGame.inventoryOpened)
         {
             paused = true;
 
@@ -133,6 +133,6 @@ public class GamePause : MonoBehaviour
     }
     void Inventory(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        inventoryGame.OnSelectPressed();
+        if(!paused) inventoryGame.OnSelectPressed();
     }
 }

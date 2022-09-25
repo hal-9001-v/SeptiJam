@@ -187,6 +187,7 @@ public class CarShop : MonoBehaviour
             isOpen = true;
             rotatePlatform = false;
 
+            FindObjectOfType<GamePause>().input.UI.Disable();
 
             gameCamera.UseCamera(showcaseCamera);
 
@@ -234,7 +235,8 @@ public class CarShop : MonoBehaviour
 
             carshopCanvas.gameObject.SetActive(false);
             FindObjectOfType<Speedometer>().ShowUI();
-            
+            FindObjectOfType<GamePause>().input.UI.Enable();
+
 
             StartCoroutine(CarshopExitTimeline());
         }
