@@ -3,37 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Anchor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Anchor.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Barril.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Barril.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Beach Ball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Beach Ball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Bowling ball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Bowling ball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Butano.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Butano.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Coconut.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Coconut.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/ColaCao.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/ColaCao.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Fan.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Fan.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Flemish.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Flemish.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Float.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Float.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hamster Ball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hamster Ball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hookah.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hookah.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Jagger Bottle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Jagger Bottle.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Madrid Water.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Madrid Water.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/MicroWave.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/MicroWave.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Monster.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Monster.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Nokia.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Nokia.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Olive Oil.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Olive Oil.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Paellera.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Paellera.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/PetaZeta.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/PetaZeta.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Play Controller.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Play Controller.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Potato.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Potato.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/RTX 4090.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/RTX 4090.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rubber Chicken.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rubber Chicken.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rudder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rudder.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Shovel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Shovel.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Wine Bottle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Wine Bottle.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PruebasArte.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PruebasArte.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TempUi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TempUi.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarModification/Modification/CarAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarModification/Modification/CarAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/TESTUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarModification/Inventory/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarModification/Inventory/PlayerInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +18,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ab7de6937a4448b0a6ccd59e9820599a157200/fa/994b868d/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e7fc0d329e374bffb8063820eaebbaa219a00/86/afb76d4d/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menus/Speedometer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
