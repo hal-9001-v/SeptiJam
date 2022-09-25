@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class InventoryUI : MonoBehaviour
     {
         OnClear();
         OnChangeWindow(CarAccessoryType.None);
+        EventSystem.current.SetSelectedGameObject(inventorySlots[0].gameObject);
     }
     public void OnChangeWindow(CarAccessoryType objectFilter)
     {
@@ -48,8 +50,9 @@ public class InventoryUI : MonoBehaviour
             currentDisplay = filteredAccesories;
 
         }
-       
-      
+        EventSystem.current.SetSelectedGameObject(inventorySlots[0].gameObject);
+
+
     }
     public void OnChangeWindow(int i)
     {

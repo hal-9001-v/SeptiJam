@@ -28,3 +28,4 @@ MonoBehaviour:
   OriginalTransform: {fileID: -8679921383154817045, guid: 337e40a65f5757a4b89d48c6cf3dd5a2,
     type: 3}
   WheelSize: 2
+  AccessoryMeshChasisVariant: {fileID: 0}
