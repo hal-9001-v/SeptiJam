@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5968696231379149304}
   - component: {fileID: 5968696231379149307}
+  - component: {fileID: 6648512747157331021}
+  - component: {fileID: 6124729186556811099}
+  - component: {fileID: -1505771262851185102}
+  - component: {fileID: -1823907415021984594}
   m_Layer: 0
   m_Name: PetaZeta
   m_TagString: Untagged
@@ -48,6 +52,67 @@ MonoBehaviour:
   accesoryInformation: {fileID: 11400000, guid: 959083dd07e20fd43941e3c27ac28aeb,
     type: 2}
   currentPosition: 0
+--- !u!65 &6648512747157331021
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968696231379149305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.91949606, y: 0.5175472, z: 1}
+  m_Center: {x: -0.04025197, y: 0.06775096, z: 0}
+--- !u!114 &6124729186556811099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968696231379149305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab3b78fc6a6a743899fb8d1e9f4a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 1
+  onlyOnce: 0
+  done: 0
+  enterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  stayTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  exitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-1505771262851185102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968696231379149305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d205c132dccc42a489b2759b3eecb9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1823907415021984594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968696231379149305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6a26838c430e0418aadb25206dc5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5968696230586536465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,7 +138,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6de8bee2f61414743a9e0ea25b591ee8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.19104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6de8bee2f61414743a9e0ea25b591ee8,
         type: 3}
@@ -83,7 +148,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6de8bee2f61414743a9e0ea25b591ee8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6549997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6de8bee2f61414743a9e0ea25b591ee8,
         type: 3}

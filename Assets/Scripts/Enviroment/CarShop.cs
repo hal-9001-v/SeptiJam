@@ -76,7 +76,7 @@ public class CarShop : MonoBehaviour
 
     private void Start()
     {
-        carshopCanvas.alpha = 0;
+        carshopCanvas.gameObject.SetActive(false);
     }
 
     public void SetInput(PlayerInput input)
@@ -203,7 +203,7 @@ public class CarShop : MonoBehaviour
     }
 
     [ContextMenu("Exit CarShop")]
-    void StopWorkShop()
+    public void StopWorkShop()
     {
         if (isOpen)
         {
@@ -232,7 +232,7 @@ public class CarShop : MonoBehaviour
             }
             gameCamera.UseDefaultCamera();
 
-            carshopCanvas.alpha = 0;
+            carshopCanvas.gameObject.SetActive(false);
 
             StartCoroutine(CarshopExitTimeline());
         }
@@ -247,7 +247,7 @@ public class CarShop : MonoBehaviour
         rotatePlatform = true;
         car.transform.parent = carPivot;
         this.car = car;
-        carshopCanvas.alpha = 1;
+        carshopCanvas.gameObject.SetActive(true);
         inventoryUI.OnOpen();
 
     }

@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 1218598753463409198}
   - component: {fileID: 1218598753463409199}
   - component: {fileID: 1218598753463409196}
+  - component: {fileID: 3895313467177437023}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -329,6 +330,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  car: {fileID: 0}
+  respawnTime: 2
 --- !u!114 &1218598753463409199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +358,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 2.5
   color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &3895313467177437023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218598753463409172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ce8a8d23a0b9844a6858dee3f7d25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1218598754115138295
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896d47a7b62c69147a271ade9974556a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultCamera: {fileID: 0}
 --- !u!1 &1218598754620277777
 GameObject:
   m_ObjectHideFlags: 0

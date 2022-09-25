@@ -19621,11 +19621,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 08b39ec807ccd054bb775eca8788713e, type: 2}
+    - target: {fileID: 1203380587277085057, guid: 9c1f800f2242f484bb2ab717ef657dd5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1203380587542279091, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: tracker
       value: 
       objectReference: {fileID: 1253523171}
+    - target: {fileID: 1203380587542279091, guid: 9c1f800f2242f484bb2ab717ef657dd5,
+        type: 3}
+      propertyPath: CenterOfMass.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1203380587542279091, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: carModifierInfo.wheelSize
@@ -19654,17 +19664,17 @@ PrefabInstance:
     - target: {fileID: 1203380587542279100, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -299.7
+      value: -124.8
       objectReference: {fileID: 0}
     - target: {fileID: 1203380587542279100, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 74.3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1203380587542279100, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.9
+      value: -221.9
       objectReference: {fileID: 0}
     - target: {fileID: 1203380587542279100, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
@@ -19719,17 +19729,17 @@ PrefabInstance:
     - target: {fileID: 2740647063747028453, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: carAttributes.Array.data[2].BaseValue
-      value: 3000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2740647063747028453, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: carAttributes.Array.data[3].BaseValue
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7209008848090211812, guid: 9c1f800f2242f484bb2ab717ef657dd5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c1f800f2242f484bb2ab717ef657dd5, type: 3}

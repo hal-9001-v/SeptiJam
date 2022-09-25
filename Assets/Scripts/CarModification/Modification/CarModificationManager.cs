@@ -145,7 +145,7 @@ public class CarModificationManager : MonoBehaviour
         {
             myCar.carModifierInfo.wheelSize = accesoriesAssigned[CarAccessoryType.Wheels].AccesoryInformation.WheelSize;
         }
-        myCar.UdpateCarDebug();
+        myCar.OnChangeCarPiece();
     }
 
 }

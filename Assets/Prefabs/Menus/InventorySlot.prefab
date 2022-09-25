@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 1eb87f8ec1e69ad4cbbab6b7eff172af, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
   onSelectFrame: {fileID: 5858700038712587067}
   onAddedFrame: {fileID: 4917856481081693621}
   colorAdded: {r: 1, g: 0.8370731, b: 0.4764151, a: 1}
-  alreadyInCarColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  alreadyInCarColor: {r: 0, g: 0, b: 0, a: 1}
   accessoryIcon: {fileID: 7427546092083578227}
 --- !u!1 &4917856481081693621
 GameObject:
@@ -156,7 +156,7 @@ RectTransform:
   m_GameObject: {fileID: 4917856481081693621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5083132, y: 1.5083132, z: 1.5083132}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2399286729060956176}
@@ -232,7 +232,7 @@ RectTransform:
   m_GameObject: {fileID: 5858700038712587067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5083132, y: 1.5083132, z: 1.5083132}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2399286729060956176}
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4009434, g: 0.7562094, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -317,7 +317,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1068650185746860514
 CanvasRenderer:

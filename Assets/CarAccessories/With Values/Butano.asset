@@ -26,9 +26,7 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 3
-    - ParameterType: 2
-      ModificationValue: 4
-    ForwardInPosition: 2
+    ForwardInPosition: 0
     UpInPosition: 6
   - TypeOfTheAccesory: 6
     ModificationsInThisType:
@@ -46,3 +44,4 @@ MonoBehaviour:
   OriginalTransform: {fileID: -8679921383154817045, guid: 2adcc05a18753094eb57da6481e549be,
     type: 3}
   WheelSize: 2
+  AccessoryMeshChasisVariant: {fileID: 0}

@@ -344,7 +344,7 @@ public class Car : MonoBehaviour
 
 
 //Call this when modifying any car attribs
-    void OnChangeCarPiece()
+   public void OnChangeCarPiece()
     {
         //Car stats
         Rigidbody.mass = carModifierInfo.carMass;
@@ -372,7 +372,7 @@ public class Car : MonoBehaviour
                 break;
         }
 
-        ModifyWheelStats(carModifierInfo.springForce, carModifierInfo.damp, carModifierInfo.springLength, wheelRadius,
+        ModifyWheelStats(carModifierInfo.springForce, wheelRadius,
             carModifierInfo.squareWheels);
     }
 
@@ -401,21 +401,19 @@ public class Car : MonoBehaviour
         }
     }
 
-    private void ModifyWheelStats(float spring, float damp, float springLength, float wheelRadius, bool squareWheels)
+    private void ModifyWheelStats(float spring, float wheelRadius, bool squareWheels)
     {
         for (int i = 0; i < Wheels.Length; i++)
         {
             var wheelColliderSuspensionSpring = Wheels[i].WheelCollider.suspensionSpring;
 
             wheelColliderSuspensionSpring.spring = spring;
-            wheelColliderSuspensionSpring.damper = damp;
             wheelColliderSuspensionSpring.targetPosition = Wheels[i].WheelCollider.suspensionSpring.targetPosition;
 
             Wheels[i].WheelCollider.suspensionSpring = wheelColliderSuspensionSpring;
             Wheels[i].WheelCollider.radius = wheelRadius;
-            Wheels[i].WheelCollider.suspensionDistance = springLength;
 
-            Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
+          //  Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
 
             if (squareWheels)
             {
@@ -454,16 +452,8 @@ public class Car : MonoBehaviour
         public float turboLength;
 
         [Header("Wheel Stats")] public float springForce; //base force 35.000
-        public float damp; //base damp 4.500
-        public float springLength; //base length 1
         public WheelSize wheelSize;
         public bool squareWheels;
     }
-
-
-    [ContextMenu("UpdateCar")]
-    public void UdpateCarDebug()
-    {
-        OnChangeCarPiece();
-    }
+    
 }

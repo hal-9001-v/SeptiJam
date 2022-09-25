@@ -73,7 +73,7 @@ public class GamePause : MonoBehaviour
 
     void Open()
     {
-        canvasGroup.alpha = 1;
+        canvasGroup.transform.GetChild(0).gameObject.SetActive(true);
         canvasGroup.blocksRaycasts = true;
 
 
@@ -105,7 +105,7 @@ public class GamePause : MonoBehaviour
 
     void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.transform.GetChild(0).gameObject.SetActive(false);
         canvasGroup.blocksRaycasts = false;
     }
 
