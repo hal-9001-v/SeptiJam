@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CarModificationManager : MonoBehaviour
 {
@@ -23,10 +24,13 @@ public class CarModificationManager : MonoBehaviour
     private Car myCar;
 
     public static Action<CarAccessoryType, CarAccessory> OnCarModification;
+    public static Action<Car> OnCarUpdate;
+    public static Action<Car, CarAccessory, Car.CarModifierInfo, CarAccessoryType, CarModifier[]> OnAccesorySelectedAction;
+    public static Action OnAccessoryDeselected;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -68,7 +72,7 @@ public class CarModificationManager : MonoBehaviour
     }
     public bool OnAddAccesory(CarAccessory accessory, CarAccessoryType typeOfAccessory)
     {
-      
+
         if (!accessory.CanGoThere(typeOfAccessory))
         {
             Debug.Log("This accessory can't go here");
@@ -93,6 +97,8 @@ public class CarModificationManager : MonoBehaviour
         Debug.Log(accessory.AccesoryInformation.AccessoryName + " Added");
         accessory.currentPosition = typeOfAccessory;
         OnCarModification?.Invoke(typeOfAccessory, accessory);
+        OnCarUpdate?.Invoke(myCar);
+        OnAccessoryDeselected?.Invoke();
         return true;
 
     }
@@ -118,7 +124,25 @@ public class CarModificationManager : MonoBehaviour
         UpdateCarInformation();
         result.currentPosition = CarAccessoryType.None;
         OnCarModification?.Invoke(typeOfAccessory, null);
+        OnCarUpdate?.Invoke(myCar);
         return result;
+    }
+    public static void UpdateCar()
+    {
+        OnCarUpdate?.Invoke(instance.myCar);
+    }
+
+    public void OnAccesorySelected(CarAccessory accessory, CarAccessoryType type)
+    {
+        if (!type.Equals(CarAccessoryType.None) && accesoriesAssigned[type])
+        {
+            OnAccesorySelectedAction?.Invoke(myCar, accessory, myCar.carModifierInfo, type, accesoriesAssigned[type].ModifiersInPosition(type));
+        }
+        else
+        {
+            OnAccesorySelectedAction?.Invoke(myCar, accessory, myCar.carModifierInfo, type, null);
+        }
+
     }
     public CarAttributeInformation[] GetModificatorsInformation()
     {
@@ -133,7 +157,10 @@ public class CarModificationManager : MonoBehaviour
         }
         return carInformation;
     }
-
+    public static bool IsValidCar()
+    {
+        return instance.accesoriesAssigned[CarAccessoryType.Wheels] && instance.accesoriesAssigned[CarAccessoryType.Engine];
+    }
     //Update the real information for the physics
     private void UpdateCarInformation()
     {
@@ -144,6 +171,7 @@ public class CarModificationManager : MonoBehaviour
         if (accesoriesAssigned[CarAccessoryType.Wheels])
         {
             myCar.carModifierInfo.wheelSize = accesoriesAssigned[CarAccessoryType.Wheels].AccesoryInformation.WheelSize;
+            myCar.carModifierInfo.squareWheels = accesoriesAssigned[CarAccessoryType.Wheels].AccesoryInformation.IsSquareWheel;
         }
         myCar.OnChangeCarPiece();
     }

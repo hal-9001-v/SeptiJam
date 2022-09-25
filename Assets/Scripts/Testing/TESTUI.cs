@@ -16,6 +16,7 @@ using UnityEngine.UI;
         [SerializeField] TextMeshProUGUI velText;
         [SerializeField] TextMeshProUGUI steerText;
         [SerializeField] TextMeshProUGUI maxVelText;
+        [SerializeField] TextMeshProUGUI turboText;
         [SerializeField] Slider slider;
         [SerializeField] Car car;
         private float speed;
@@ -33,6 +34,7 @@ using UnityEngine.UI;
             velText.text = car.GetSpeedStars().ToString();
             steerText.text = car.GetSteerStars().ToString();
             maxVelText.text = ((int)car.GetMaxVelocity()).ToString();
+            turboText.text = (Mathf.Round(car.GetCurrentTurbo * 10)/10).ToString(CultureInfo.InvariantCulture);
         }
         
 

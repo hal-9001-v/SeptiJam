@@ -17,12 +17,14 @@ public class GamePause : MonoBehaviour
     SettingsMenu settingsMenu => FindObjectOfType<SettingsMenu>();
     LevelLoader levelLoader => FindObjectOfType<LevelLoader>();
 
+    InventoryInGame inventoryGame => FindObjectOfType<InventoryInGame>();
+
     EventSystem eventSystem => FindObjectOfType<EventSystem>();
 
     public Action pauseCallback;
     public Action resumeCallback;
 
-    PlayerInput input;
+    public PlayerInput input;
 
     bool paused;
 
@@ -35,6 +37,7 @@ public class GamePause : MonoBehaviour
         input = new PlayerInput();
 
         input.UI.Pause.performed += Pause;
+        input.UI.OpenInventory.performed += Inventory;
         input.Enable();
 
 
@@ -51,7 +54,7 @@ public class GamePause : MonoBehaviour
     // Let ctx there so it can be += and -= to avoid a nullPointer when reloading scenes. Dont make questions
     void Pause(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if (paused == false)
+        if (paused == false && !inventoryGame.inventoryOpened)
         {
             paused = true;
 
@@ -59,7 +62,7 @@ public class GamePause : MonoBehaviour
             {
                 pauseCallback.Invoke();
             }
-
+            FindObjectOfType<Speedometer>().HideUI();
             Time.timeScale = 0;
 
             Open();
@@ -87,12 +90,12 @@ public class GamePause : MonoBehaviour
         if (paused)
         {
             paused = false;
-
+            
             if (resumeCallback != null)
             {
                 resumeCallback.Invoke();
             }
-
+            FindObjectOfType<Speedometer>().ShowUI();
             Time.timeScale = 1;
 
             //Settings.close() and then this.Close(). Otherwise, settingsMenu.close will open this menu with its close callback
@@ -123,10 +126,13 @@ public class GamePause : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        input.UI.Pause.performed -= Pause;
+        input.UI.Pause.performed -= Pause; 
+        input.UI.OpenInventory.performed -= Inventory;
 
         levelLoader.LoadLevel(LevelLoader.Levels.MainMenu);
     }
-
-
+    void Inventory(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        if(!paused) inventoryGame.OnSelectPressed();
+    }
 }

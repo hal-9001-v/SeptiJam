@@ -18,7 +18,7 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 1
-    - ParameterType: 0
+    - ParameterType: 2
       ModificationValue: 2
     ForwardInPosition: 2
     UpInPosition: 6
@@ -26,7 +26,7 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 1
-    - ParameterType: 0
+    - ParameterType: 2
       ModificationValue: 2
     ForwardInPosition: 0
     UpInPosition: 6

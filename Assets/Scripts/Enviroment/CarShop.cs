@@ -174,19 +174,16 @@ public class CarShop : MonoBehaviour
         //Reset Camera
         cameraFollower.rotation = Quaternion.AngleAxis(-cameraDegrees, Vector3.up) * cameraFollower.rotation;
         cameraDegrees = 0;
-
-
-
     }
 
     void StartWorkShop(Car car)
     {
-
         if (isOpen == false)
         {
             isOpen = true;
             rotatePlatform = false;
 
+            FindObjectOfType<GamePause>().input.UI.Disable();
 
             gameCamera.UseCamera(showcaseCamera);
 
@@ -199,12 +196,17 @@ public class CarShop : MonoBehaviour
 
             StartCoroutine(CarshopEnterTimeline(time, car));
         }
-
     }
 
     [ContextMenu("Exit CarShop")]
     public void StopWorkShop()
     {
+        //TODO: if it doesn't have anything, no exit
+
+        if (!CarModificationManager.IsValidCar())
+        {
+            return;
+        }
         if (isOpen)
         {
             isOpen = false;
@@ -233,6 +235,9 @@ public class CarShop : MonoBehaviour
             gameCamera.UseDefaultCamera();
 
             carshopCanvas.gameObject.SetActive(false);
+            FindObjectOfType<Speedometer>().ShowUI();
+            FindObjectOfType<GamePause>().input.UI.Enable();
+
 
             StartCoroutine(CarshopExitTimeline());
         }

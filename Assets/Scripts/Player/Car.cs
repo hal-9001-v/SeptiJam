@@ -68,8 +68,7 @@ public class Car : MonoBehaviour
         {
             if (Rigidbody.velocity.magnitude > 1)
                 return Rigidbody.velocity.magnitude;
-            else
-                return 0;
+            return 0;
         }
     }
 
@@ -98,8 +97,8 @@ public class Car : MonoBehaviour
     [Range(0, 15)] public float Grip = 5f;
 
 
-    [HideInInspector] private float currentTurbo;
-    [HideInInspector] public InputStr Input;
+    private float currentTurbo;
+    public InputStr Input;
 
     bool followingCurve;
     CurveFollower curveFollower;
@@ -413,7 +412,7 @@ public class Car : MonoBehaviour
             Wheels[i].WheelCollider.suspensionSpring = wheelColliderSuspensionSpring;
             Wheels[i].WheelCollider.radius = wheelRadius;
 
-          //  Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
+           Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
 
             if (squareWheels)
             {
@@ -424,7 +423,41 @@ public class Car : MonoBehaviour
         }
     }
 
+    // Modifier Auxiliar for UI statistics
+    public float GetMaxVelocityAux(CarModifierInfo carModifierInfo)
+    {
+        // + 100km h + 20 km/h of min velocity
+        maxSpeed = (carModifierInfo.motorForce - MIN_MOTORFORCE) / (MAX_MOTORFORCE - MIN_MOTORFORCE) * 100 + MIN_SPEED;
+        return maxSpeed;
+    }
+    public int GetAccelerationStarsAux(CarModifierInfo carModifierInfo)
+    {
+        float normalizedMotor = ProcessAndNormalize(carModifierInfo.motorForce, MAX_MOTORFORCE, MIN_MOTORFORCE, MAX_STAR_VAL);
+        float normalizedMass = ProcessAndNormalize(carModifierInfo.carMass, MAX_MASS, MIN_MASS, MAX_STAR_VAL);
 
+        float wheelModifier = carModifierInfo.wheelSize == WheelSize.BIG ? 0.75f :
+            carModifierInfo.wheelSize == WheelSize.SMALL ? 1.25f : 1f;
+
+        float acceleration = (normalizedMotor * normalizedMotor / normalizedMass) * wheelModifier;
+
+        float normalizedAcc = ProcessAndNormalize(acceleration, MAX_ACCELERATION, MIN_ACCELERATION, MAX_STAR_VAL);
+        return Mathf.RoundToInt(normalizedAcc);
+    }
+
+    public int GetSpeedStarssAux(CarModifierInfo carModifierInfo)
+    {
+        return Mathf.RoundToInt(ProcessAndNormalize(carModifierInfo.motorForce, MAX_MOTORFORCE, MIN_MOTORFORCE, MAX_STAR_VAL));
+    }
+
+    public int GetMassStarssAux(CarModifierInfo carModifierInfo)
+    {
+        return Mathf.RoundToInt(ProcessAndNormalize(carModifierInfo.carMass, MAX_MASS, MIN_MASS, MAX_STAR_VAL));
+    }
+
+    public int GetSteerStarssAux(CarModifierInfo carModifierInfo)
+    {
+        return Mathf.RoundToInt(ProcessAndNormalize(carModifierInfo.steerAngle, MAX_STEER, MIN_STEER, MAX_STAR_VAL));
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

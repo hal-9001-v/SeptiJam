@@ -19,8 +19,8 @@ public class PlayerInventory : MonoBehaviour
         {
             instance = this;
             playerInventory = new List<CarAccessory>();
-            //DEBUG
-            for(int i =0; i< transform.childCount; i++)
+            ////DEBUG
+            for (int i = 0; i < transform.childCount; i++)
             {
                 OnAddObject(transform.GetChild(i).GetComponent<CarAccessory>());
             }
