@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1288729983182669514}
   - component: {fileID: 1288729983182669513}
+  - component: {fileID: -8205060143469941628}
+  - component: {fileID: -8263595728103101976}
+  - component: {fileID: -3707792990299498554}
+  - component: {fileID: 1941565332356980343}
   m_Layer: 0
   m_Name: Pollo
   m_TagString: Untagged
@@ -48,6 +52,67 @@ MonoBehaviour:
   accesoryInformation: {fileID: 11400000, guid: 9a37cde2238914c4a96d0360b0ff1df4,
     type: 2}
   currentPosition: 0
+--- !u!65 &-8205060143469941628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288729983182669515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3980713, y: 0.73535156, z: 0.4837513}
+  m_Center: {x: 0.05340576, y: 0.053955078, z: 0.051534653}
+--- !u!114 &-8263595728103101976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288729983182669515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab3b78fc6a6a743899fb8d1e9f4a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 1
+  onlyOnce: 0
+  done: 0
+  enterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  stayTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  exitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-3707792990299498554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288729983182669515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d205c132dccc42a489b2759b3eecb9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1941565332356980343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288729983182669515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6a26838c430e0418aadb25206dc5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1288729982675138884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,12 +138,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d9ac617899457aa43873382a58b38b73,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.55895996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9ac617899457aa43873382a58b38b73,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6170044
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9ac617899457aa43873382a58b38b73,
         type: 3}

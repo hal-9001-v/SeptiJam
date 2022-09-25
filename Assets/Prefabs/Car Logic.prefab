@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 1203380587542279088}
   - component: {fileID: 5249898368410617669}
   - component: {fileID: 9181321704101547859}
+  - component: {fileID: 6763771614111023642}
   m_Layer: 0
   m_Name: Car Logic
   m_TagString: Untagged
@@ -825,6 +826,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnOffset: {x: 0, y: 0.5, z: 0}
   currentCheckPoint: {fileID: 0}
+--- !u!114 &6763771614111023642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203380587542279101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ce8a8d23a0b9844a6858dee3f7d25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1203380587622693600
 GameObject:
   m_ObjectHideFlags: 0
