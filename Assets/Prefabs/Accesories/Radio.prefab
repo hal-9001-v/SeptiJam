@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2697569461608036979}
+  - component: {fileID: 6620256528574395305}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6620256528574395305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697569461608036988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2697569463502682397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +76,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0952af36c0d96da49a2702a2da68b53b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0952af36c0d96da49a2702a2da68b53b,
         type: 3}

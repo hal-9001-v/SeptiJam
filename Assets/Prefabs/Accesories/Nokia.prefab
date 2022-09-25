@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5610108467349773584}
   - component: {fileID: 5610108467349773587}
+  - component: {fileID: -5984835945999052141}
+  - component: {fileID: -7788738036495539553}
+  - component: {fileID: -8482729237990060768}
+  - component: {fileID: -4469714141880655014}
   m_Layer: 0
   m_Name: Nokia
   m_TagString: Untagged
@@ -48,6 +52,67 @@ MonoBehaviour:
   accesoryInformation: {fileID: 11400000, guid: 28f6f5d92652a5c49b7729e2284511a7,
     type: 2}
   currentPosition: 0
+--- !u!65 &-5984835945999052141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5610108467349773585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6999048, y: 0.45675772, z: 0.76462114}
+  m_Center: {x: 0.01470609, y: 0.020606935, z: -0.017713964}
+--- !u!114 &-7788738036495539553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5610108467349773585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab3b78fc6a6a743899fb8d1e9f4a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 1
+  onlyOnce: 0
+  done: 0
+  enterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  stayTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  exitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-8482729237990060768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5610108467349773585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d205c132dccc42a489b2759b3eecb9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4469714141880655014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5610108467349773585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6a26838c430e0418aadb25206dc5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5610108466479569574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,7 +133,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 276407c105100d246ab93f0cf626a428,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3929443
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 276407c105100d246ab93f0cf626a428,
         type: 3}
@@ -78,7 +143,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 276407c105100d246ab93f0cf626a428,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5819998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 276407c105100d246ab93f0cf626a428,
         type: 3}

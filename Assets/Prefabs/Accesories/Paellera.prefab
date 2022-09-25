@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7401058935011277203}
   - component: {fileID: 7401058935011277200}
+  - component: {fileID: -2013903864769303448}
+  - component: {fileID: 8027621751652435885}
+  - component: {fileID: -7350047568968733886}
+  - component: {fileID: -7083394674946199690}
   m_Layer: 0
   m_Name: Paellera
   m_TagString: Untagged
@@ -48,6 +52,67 @@ MonoBehaviour:
   accesoryInformation: {fileID: 11400000, guid: 269755b9aaf28b74797777d6b14f9b54,
     type: 2}
   currentPosition: 0
+--- !u!65 &-2013903864769303448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401058935011277202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.40898868, z: 1}
+  m_Center: {x: 0, y: 0.073689535, z: 0}
+--- !u!114 &8027621751652435885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401058935011277202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab3b78fc6a6a743899fb8d1e9f4a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 1
+  onlyOnce: 0
+  done: 0
+  enterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  stayTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  exitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-7350047568968733886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401058935011277202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d205c132dccc42a489b2759b3eecb9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7083394674946199690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401058935011277202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6a26838c430e0418aadb25206dc5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7401058936322623338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,7 +133,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 84f56561498de494cbe18bafd4e9fbde,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8950195
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84f56561498de494cbe18bafd4e9fbde,
         type: 3}
@@ -78,7 +143,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 84f56561498de494cbe18bafd4e9fbde,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7150002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84f56561498de494cbe18bafd4e9fbde,
         type: 3}
