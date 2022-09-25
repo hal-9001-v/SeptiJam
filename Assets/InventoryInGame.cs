@@ -22,6 +22,8 @@ public class InventoryInGame : MonoBehaviour
     {
         inventoryOpened = !inventoryOpened;
         inventoryUIObject.SetActive(inventoryOpened);
+        if(inventoryOpened) FindObjectOfType<Speedometer>().HideUI();
+        else FindObjectOfType<Speedometer>().ShowUI();
         if (inventoryOpened)
         {
             inventoryUI.OnOpen();

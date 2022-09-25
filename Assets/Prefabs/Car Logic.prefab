@@ -742,7 +742,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  yOffset: 2
+  yOffset: 1
   raycastRange: 5
 --- !u!114 &2740647063747028453
 MonoBehaviour:

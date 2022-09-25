@@ -222,6 +222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6981617917014002967, guid: e02d69272ea35214a80c21ef612951c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e02d69272ea35214a80c21ef612951c2, type: 3}
 --- !u!224 &3507927159236998761 stripped
@@ -383,6 +388,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5739616849678304813, guid: 50aa46b76e6083a408efc4d776e5e1f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6459778242653833904, guid: 50aa46b76e6083a408efc4d776e5e1f4,
         type: 3}
       propertyPath: m_fontAsset
@@ -510,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 1030719536540535516, guid: defe5eeb3cea5da4cb4f9c214ac4d47f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 490.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1030719536540535516, guid: defe5eeb3cea5da4cb4f9c214ac4d47f,
         type: 3}
@@ -531,6 +541,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172089342916171025, guid: defe5eeb3cea5da4cb4f9c214ac4d47f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172089342916171025, guid: defe5eeb3cea5da4cb4f9c214ac4d47f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172089342916171025, guid: defe5eeb3cea5da4cb4f9c214ac4d47f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defe5eeb3cea5da4cb4f9c214ac4d47f, type: 3}
@@ -705,6 +730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Carshop
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466050261463677723, guid: 7de64d742f4111641a6ce060efa92d64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3180409164885991477, guid: 7de64d742f4111641a6ce060efa92d64,
         type: 3}
@@ -893,6 +923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523173902003620222, guid: b8b817c049bc59f46b5730026cc5c8e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6523173902003620223, guid: b8b817c049bc59f46b5730026cc5c8e5,
         type: 3}

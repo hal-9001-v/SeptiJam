@@ -26,6 +26,8 @@ public class InventoryUI : MonoBehaviour
     public void OnOpen()
     {
         OnClear();
+        FindObjectOfType<GamePause>().input.UI.Disable();
+        FindObjectOfType<Speedometer>().HideUI();
         OnChangeWindow(CarAccessoryType.None);
         EventSystem.current.SetSelectedGameObject(inventorySlots[0].gameObject);
     }

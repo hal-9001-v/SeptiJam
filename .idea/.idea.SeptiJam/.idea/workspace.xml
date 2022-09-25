@@ -3,14 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/California Vibes SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/California Vibes SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InventoryInGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InventoryInGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car Logic.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Menus/AllCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Menus/AllCanvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Menus/PauseMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Menus/PauseMenu.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CarStatisticsUI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CarStatisticsUI.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Menus/SettingsMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Menus/SettingsMenu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PruebasArte.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PruebasArte.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarModification/Modification/CarModifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarModification/Modification/CarModifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarModification/Inventory/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarModification/Inventory/InventoryUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enviroment/CarShop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enviroment/CarShop.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/GamePause.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/GamePause.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/Speedometer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/Speedometer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/SettingsMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/SettingsMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ab7de6937a4448b0a6ccd59e9820599a157200/fa/994b868d/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e7fc0d329e374bffb8063820eaebbaa219a00/86/afb76d4d/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menus/Speedometer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

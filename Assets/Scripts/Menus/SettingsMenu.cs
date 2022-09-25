@@ -18,7 +18,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Button english;
     [SerializeField] Button spanish;
 
-    [SerializeField] TextMeshProUGUI currentVolumeText;
+    [SerializeField] Slider currentVolume;
 
     public Action closeCallback;
 

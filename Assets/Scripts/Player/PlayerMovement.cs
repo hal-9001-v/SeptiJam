@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     Quaternion targetRotation;
 
     //Input
-    PlayerInput input;
+    public PlayerInput input;
     [SerializeField] Car car;
 
     bool axisInUse;

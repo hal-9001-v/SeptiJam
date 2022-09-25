@@ -766,6 +766,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5304721-2c46-49aa-9d74-ef3136d6129b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1065,6 +1074,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87a00126-6ea4-4c4d-9589-5cb4247e9d29"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b3899c2-3446-4cae-bb67-7d0d54b89dbc"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1094,15 +1125,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""ExitCarshop"",
                     ""type"": ""Button"",
                     ""id"": ""bbdaa39e-f536-4f13-beb3-804c55b4ebd6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""OpenInventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""f44fd5e7-ec0e-4091-b59f-3d0adf9999c0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1241,28 +1263,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""ExitCarshop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5d376a2f-c27d-4cbf-a1af-fbece50cbd58"",
-                    ""path"": ""<Gamepad>/select"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenInventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2bf3584b-c6b6-4ebe-96e6-a1c0f17b9da9"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenInventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1298,12 +1298,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
+        m_UI_OpenInventory = m_UI.FindAction("OpenInventory", throwIfNotFound: true);
         // Carshop
         m_Carshop = asset.FindActionMap("Carshop", throwIfNotFound: true);
         m_Carshop_RotateCar = m_Carshop.FindAction("RotateCar", throwIfNotFound: true);
         m_Carshop_RotateCamera = m_Carshop.FindAction("RotateCamera", throwIfNotFound: true);
         m_Carshop_ExitCarshop = m_Carshop.FindAction("ExitCarshop", throwIfNotFound: true);
-        m_Carshop_OpenInventory = m_Carshop.FindAction("OpenInventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1527,6 +1527,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_ScrollWheel;
     private readonly InputAction m_UI_MiddleClick;
     private readonly InputAction m_UI_RightClick;
+    private readonly InputAction m_UI_OpenInventory;
     public struct UIActions
     {
         private @PlayerInput m_Wrapper;
@@ -1541,6 +1542,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+        public InputAction @OpenInventory => m_Wrapper.m_UI_OpenInventory;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1580,6 +1582,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RightClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRightClick;
                 @RightClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRightClick;
                 @RightClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRightClick;
+                @OpenInventory.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOpenInventory;
+                @OpenInventory.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOpenInventory;
+                @OpenInventory.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOpenInventory;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1614,6 +1619,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RightClick.started += instance.OnRightClick;
                 @RightClick.performed += instance.OnRightClick;
                 @RightClick.canceled += instance.OnRightClick;
+                @OpenInventory.started += instance.OnOpenInventory;
+                @OpenInventory.performed += instance.OnOpenInventory;
+                @OpenInventory.canceled += instance.OnOpenInventory;
             }
         }
     }
@@ -1625,7 +1633,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Carshop_RotateCar;
     private readonly InputAction m_Carshop_RotateCamera;
     private readonly InputAction m_Carshop_ExitCarshop;
-    private readonly InputAction m_Carshop_OpenInventory;
     public struct CarshopActions
     {
         private @PlayerInput m_Wrapper;
@@ -1633,7 +1640,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @RotateCar => m_Wrapper.m_Carshop_RotateCar;
         public InputAction @RotateCamera => m_Wrapper.m_Carshop_RotateCamera;
         public InputAction @ExitCarshop => m_Wrapper.m_Carshop_ExitCarshop;
-        public InputAction @OpenInventory => m_Wrapper.m_Carshop_OpenInventory;
         public InputActionMap Get() { return m_Wrapper.m_Carshop; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1652,9 +1658,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ExitCarshop.started -= m_Wrapper.m_CarshopActionsCallbackInterface.OnExitCarshop;
                 @ExitCarshop.performed -= m_Wrapper.m_CarshopActionsCallbackInterface.OnExitCarshop;
                 @ExitCarshop.canceled -= m_Wrapper.m_CarshopActionsCallbackInterface.OnExitCarshop;
-                @OpenInventory.started -= m_Wrapper.m_CarshopActionsCallbackInterface.OnOpenInventory;
-                @OpenInventory.performed -= m_Wrapper.m_CarshopActionsCallbackInterface.OnOpenInventory;
-                @OpenInventory.canceled -= m_Wrapper.m_CarshopActionsCallbackInterface.OnOpenInventory;
             }
             m_Wrapper.m_CarshopActionsCallbackInterface = instance;
             if (instance != null)
@@ -1668,9 +1671,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ExitCarshop.started += instance.OnExitCarshop;
                 @ExitCarshop.performed += instance.OnExitCarshop;
                 @ExitCarshop.canceled += instance.OnExitCarshop;
-                @OpenInventory.started += instance.OnOpenInventory;
-                @OpenInventory.performed += instance.OnOpenInventory;
-                @OpenInventory.canceled += instance.OnOpenInventory;
             }
         }
     }
@@ -1706,12 +1706,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
     }
     public interface ICarshopActions
     {
         void OnRotateCar(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnExitCarshop(InputAction.CallbackContext context);
-        void OnOpenInventory(InputAction.CallbackContext context);
     }
 }

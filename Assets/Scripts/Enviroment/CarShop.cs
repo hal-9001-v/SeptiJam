@@ -233,6 +233,8 @@ public class CarShop : MonoBehaviour
             gameCamera.UseDefaultCamera();
 
             carshopCanvas.gameObject.SetActive(false);
+            FindObjectOfType<Speedometer>().ShowUI();
+            
 
             StartCoroutine(CarshopExitTimeline());
         }

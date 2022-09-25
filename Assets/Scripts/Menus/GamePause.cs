@@ -24,7 +24,7 @@ public class GamePause : MonoBehaviour
     public Action pauseCallback;
     public Action resumeCallback;
 
-    PlayerInput input;
+    public PlayerInput input;
 
     bool paused;
 
@@ -37,7 +37,7 @@ public class GamePause : MonoBehaviour
         input = new PlayerInput();
 
         input.UI.Pause.performed += Pause;
-        input.Carshop.OpenInventory.performed += Inventory;
+        input.UI.OpenInventory.performed += Inventory;
         input.Enable();
 
 
@@ -127,7 +127,7 @@ public class GamePause : MonoBehaviour
         Time.timeScale = 1;
 
         input.UI.Pause.performed -= Pause; 
-        input.Carshop.OpenInventory.performed -= Inventory;
+        input.UI.OpenInventory.performed -= Inventory;
 
         levelLoader.LoadLevel(LevelLoader.Levels.MainMenu);
     }

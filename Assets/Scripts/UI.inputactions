@@ -6,15 +6,6 @@
             "id": "1fa0b9d6-0ce6-4599-8c37-54065982fb9d",
             "actions": [
                 {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "857b62fb-eaf4-483a-baed-8235b3ada93d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Back",
                     "type": "Button",
                     "id": "3b3e621d-7931-4127-ab14-691e36ba6170",
@@ -97,28 +88,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "c64785d6-8902-4950-b273-36442a6adad7",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d5350f48-427b-4213-8ce5-bb7c473307df",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "f9f80382-213e-4ae6-805b-0cd4f8ce8046",

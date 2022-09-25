@@ -744,6 +744,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "f5304721-2c46-49aa-9d74-ef3136d6129b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1043,6 +1052,28 @@
                     "action": "RightClick",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87a00126-6ea4-4c4d-9589-5cb4247e9d29",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b3899c2-3446-4cae-bb67-7d0d54b89dbc",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1072,15 +1103,6 @@
                     "name": "ExitCarshop",
                     "type": "Button",
                     "id": "bbdaa39e-f536-4f13-beb3-804c55b4ebd6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OpenInventory",
-                    "type": "Button",
-                    "id": "f44fd5e7-ec0e-4091-b59f-3d0adf9999c0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1217,28 +1239,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExitCarshop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5d376a2f-c27d-4cbf-a1af-fbece50cbd58",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2bf3584b-c6b6-4ebe-96e6-a1c0f17b9da9",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
