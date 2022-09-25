@@ -557,6 +557,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7213643258506748172, guid: defe5eeb3cea5da4cb4f9c214ac4d47f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defe5eeb3cea5da4cb4f9c214ac4d47f, type: 3}
 --- !u!224 &3558532100747356613 stripped
@@ -732,6 +737,11 @@ PrefabInstance:
       value: Carshop
       objectReference: {fileID: 0}
     - target: {fileID: 1466050261463677723, guid: 7de64d742f4111641a6ce060efa92d64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378040534021831536, guid: 7de64d742f4111641a6ce060efa92d64,
         type: 3}
       propertyPath: m_IsActive
       value: 1
