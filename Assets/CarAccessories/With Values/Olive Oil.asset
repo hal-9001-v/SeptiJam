@@ -30,7 +30,7 @@ MonoBehaviour:
       ModificationValue: 3
     ForwardInPosition: 1
     UpInPosition: 6
-  AccessoryIcon: {fileID: 21300000, guid: abf799838fd9b044a8ab905d71931ea6, type: 3}
+  AccessoryIcon: {fileID: 21300000, guid: 6bcb6f3ee1c5bfb4e8a9f808f44f906c, type: 3}
   MeshMaterials:
   - {fileID: 2100000, guid: 445b714689930394b967924156efbe34, type: 2}
   AccessoryMesh: {fileID: 2534964839176971238, guid: 0559e35f7ab1d2c4eb678a7bcd631a1d,
@@ -38,3 +38,4 @@ MonoBehaviour:
   OriginalTransform: {fileID: -8679921383154817045, guid: 0559e35f7ab1d2c4eb678a7bcd631a1d,
     type: 3}
   WheelSize: 2
+  AccessoryMeshChasisVariant: {fileID: 0}
