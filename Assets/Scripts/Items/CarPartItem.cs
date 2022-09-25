@@ -6,10 +6,8 @@ using UnityEngine;
 
 public class CarPartItem : MonoBehaviour
 {
-
-    //[SerializeField] CarPartScriptableObject carPart;
     PickableItem pickableItem => GetComponent<PickableItem>();
-    CarAccessory carAccesory;
+    [SerializeField] CarAccessory carAccesory;
 
     private void Awake()
     {
@@ -20,7 +18,6 @@ public class CarPartItem : MonoBehaviour
 
     void AddCarPart(ItemCollector collector)
     {
-        //collector.AddCarPart(carPart);
         collector.AddCarPart(carAccesory);
 
         pickableItem.StandardHide();
