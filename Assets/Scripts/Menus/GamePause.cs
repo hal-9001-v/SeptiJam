@@ -62,7 +62,7 @@ public class GamePause : MonoBehaviour
             {
                 pauseCallback.Invoke();
             }
-
+            FindObjectOfType<Speedometer>().HideUI();
             Time.timeScale = 0;
 
             Open();
@@ -90,12 +90,12 @@ public class GamePause : MonoBehaviour
         if (paused)
         {
             paused = false;
-
+            
             if (resumeCallback != null)
             {
                 resumeCallback.Invoke();
             }
-
+            FindObjectOfType<Speedometer>().ShowUI();
             Time.timeScale = 1;
 
             //Settings.close() and then this.Close(). Otherwise, settingsMenu.close will open this menu with its close callback

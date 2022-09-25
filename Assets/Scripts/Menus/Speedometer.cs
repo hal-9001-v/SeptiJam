@@ -18,10 +18,13 @@ public class Speedometer : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI speedTmpro;
     [SerializeField] private Image turboImage;
+    [SerializeField] GameObject gameUI;
     private Car _car;
-
+    
     private float speedMax;
     private float speed;
+    
+    
     
     private void Awake()
     {
@@ -38,6 +41,8 @@ public class Speedometer : MonoBehaviour
 
     private void Update()
     {
+        if (_car.GetCurrentSpeed > speedMax+20) speed = speedMax;
+        else speed = _car.GetCurrentSpeed;
         turboImage.fillAmount = _car.GetCurrentTurbo / _car.GetTurboLength;
         needle.eulerAngles = new Vector3(0, 0, GetSpeedRotation());
     }
@@ -54,9 +59,19 @@ public class Speedometer : MonoBehaviour
     private float GetSpeedRotation()
     {
         float totalAngleSize = ZERO_SPEED_ANGLE - MAX_SPEED_ANGLE;
-        float speedNormalized = _car.GetCurrentSpeed /  speedMax;
+        float speedNormalized = speed /  speedMax;
 
         return ZERO_SPEED_ANGLE - speedNormalized * totalAngleSize;
+    }
+
+    public void HideUI()
+    {
+        gameUI.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        gameUI.SetActive(true);
     }
 
 
