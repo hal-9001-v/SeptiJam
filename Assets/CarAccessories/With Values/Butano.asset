@@ -26,8 +26,6 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 3
-    - ParameterType: 2
-      ModificationValue: 4
     ForwardInPosition: 0
     UpInPosition: 6
   - TypeOfTheAccesory: 6

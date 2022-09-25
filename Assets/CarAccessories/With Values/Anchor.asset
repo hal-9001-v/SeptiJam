@@ -18,6 +18,8 @@ MonoBehaviour:
     ModificationsInThisType:
     - ParameterType: 0
       ModificationValue: 4
+    - ParameterType: 1
+      ModificationValue: 2
     ForwardInPosition: 2
     UpInPosition: 6
   AccessoryIcon: {fileID: 21300000, guid: 5b10455114edcf34b884e9ce4a5595d9, type: 3}

@@ -9,10 +9,10 @@ public class CarAttribute
 {
     //Tocar esto para nivelar 
     private static Dictionary<CarVarsType, float> CAR_VAR_MULTIPLIERS = new Dictionary<CarVarsType, float>() {
-        { CarVarsType.MotorForce, 1125 },
+        { CarVarsType.MotorForce, 562.5f },
         { CarVarsType.SteerAngle, 5 },
-        { CarVarsType.Weight, 166 },
-        {CarVarsType.Turbo,0.3f }
+        { CarVarsType.Weight, 166.666f },
+        {CarVarsType.Turbo,0.24f }
     };
 
     public CarVarsType ParameterType;
