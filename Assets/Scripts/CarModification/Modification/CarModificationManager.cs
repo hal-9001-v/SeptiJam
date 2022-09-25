@@ -157,7 +157,10 @@ public class CarModificationManager : MonoBehaviour
         }
         return carInformation;
     }
-
+    public static bool IsValidCar()
+    {
+        return instance.accesoriesAssigned[CarAccessoryType.Wheels] && instance.accesoriesAssigned[CarAccessoryType.Engine];
+    }
     //Update the real information for the physics
     private void UpdateCarInformation()
     {

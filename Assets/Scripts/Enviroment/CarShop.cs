@@ -206,6 +206,12 @@ public class CarShop : MonoBehaviour
     [ContextMenu("Exit CarShop")]
     public void StopWorkShop()
     {
+        //TODO: if it doesn't have anything, no exit
+
+        if (!CarModificationManager.IsValidCar())
+        {
+            return;
+        }
         if (isOpen)
         {
             isOpen = false;

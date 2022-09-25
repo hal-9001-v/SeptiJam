@@ -35,6 +35,6 @@ MonoBehaviour:
     type: 3}
   OriginalTransform: {fileID: -8679921383154817045, guid: c72f0791e0ff9164db6dd096f5f1d596,
     type: 3}
-  WheelSize: 3
+  WheelSize: 1
   AccessoryMeshChasisVariant: {fileID: 0}
   IsSquareWheel: 1
