@@ -363,6 +363,7 @@ MonoBehaviour:
   cameraFollower: {fileID: 8548982648976946672}
   showcaseCamera: {fileID: 8548982649787178523}
   carshopCanvas: {fileID: 0}
+  inventoryUI: {fileID: 0}
   carRotationSpeed: 60
   passiveCarRotationSpeed: 20
   cameraRotationSpeed: 50

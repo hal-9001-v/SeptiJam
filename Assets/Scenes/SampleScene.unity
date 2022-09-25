@@ -2197,8 +2197,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.22099629, y: -0.25467855, z: 0.0599057, w: 0.9395269}
-  m_LocalPosition: {x: 35.353264, y: 16.739208, z: -54.310036}
+  m_LocalRotation: {x: 0.07379746, y: 1e-45, z: 0, w: 0.99727327}
+  m_LocalPosition: {x: 38.36, y: 3.7046, z: -30.425964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9270,22 +9270,22 @@ PrefabInstance:
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22099629
+      value: 0.22099628
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.25467855
+      value: -0.25467852
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754115138293, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0599057
+      value: 0.05990568
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754620277802, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
       propertyPath: m_PathPosition
-      value: 0.2897438
+      value: 1.120703
       objectReference: {fileID: 0}
     - target: {fileID: 1218598754766276448, guid: 5964848cfb39749478684bf7f229a3c3,
         type: 3}
@@ -9361,21 +9361,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 129457930}
-    - target: {fileID: 821327133926025901, guid: 7de64d742f4111641a6ce060efa92d64,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopWorkShop
-      objectReference: {fileID: 0}
-    - target: {fileID: 821327133926025901, guid: 7de64d742f4111641a6ce060efa92d64,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CarShop, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 821327133926025901, guid: 7de64d742f4111641a6ce060efa92d64,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1466050261463677722, guid: 7de64d742f4111641a6ce060efa92d64,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9485,11 +9470,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Carshop
-      objectReference: {fileID: 0}
-    - target: {fileID: 1466050261463677723, guid: 7de64d742f4111641a6ce060efa92d64,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de64d742f4111641a6ce060efa92d64, type: 3}
