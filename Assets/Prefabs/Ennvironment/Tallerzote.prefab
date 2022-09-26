@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1500566361853259498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.31946006, y: 0.31946, z: 0.31946006}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3336310430508301024}
@@ -315,28 +315,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000116947995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7419899
+      value: 5.4942546
       objectReference: {fileID: 0}
     - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.83895445
+      value: -2.626172
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9976407
       objectReference: {fileID: 0}
     - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07379746
+      value: 0.06865086
       objectReference: {fileID: 0}
     - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.0000005960464
       objectReference: {fileID: 0}
     - target: {fileID: 8548982649787178524, guid: e7b85b77d5b1101439d877c8689f5ab3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.00000004097819
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7b85b77d5b1101439d877c8689f5ab3, type: 3}
