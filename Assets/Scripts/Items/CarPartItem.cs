@@ -6,11 +6,39 @@ using UnityEngine;
 
 public class CarPartItem : MonoBehaviour
 {
+    public float amplitud;
+    public float velocidad;
+    private float tiempo;
+    private float tiempoAcumulado;
+    private bool bajada;
     PickableItem pickableItem => GetComponent<PickableItem>();
     [SerializeField] CarAccessory carAccesory;
 
+    private void Update()
+    {
+        if (bajada)
+        {
+            transform.position += Vector3.up * velocidad * Time.deltaTime;
+        }
+        else
+        {
+            transform.position -= Vector3.up * velocidad * Time.deltaTime;
+
+        }
+
+        tiempoAcumulado += Time.deltaTime;
+
+        if (tiempoAcumulado >= tiempo)
+        {
+            tiempoAcumulado = 0;
+            bajada = !bajada;
+        }
+
+    }
+
     private void Awake()
     {
+        tiempo = amplitud / velocidad;
         pickableItem.collectedCallback += AddCarPart;
         carAccesory = GetComponent<CarAccessory>();
     }
