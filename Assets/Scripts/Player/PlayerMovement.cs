@@ -12,8 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
-    [Header("References")] [Header("Settings")] [SerializeField] [Range(1, 20)]
-    float speed = 10;
+    [Header("References")]
+    [SerializeField] Transform model;
+    [Header("Settings")]
+    [SerializeField] [Range(1, 20)] float speed = 10;
 
     [SerializeField] [Range(1, 20)] float gravity = 10;
 
@@ -27,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     Quaternion startingRotation;
     Quaternion targetRotation;
-
-    //Input
-    PlayerInput input;
-    [SerializeField] Car car;
 
     bool axisInUse;
     Vector2 movementInput;
@@ -56,9 +54,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    PlayerAnimations playerAnimations => FindObjectOfType<PlayerAnimations>();
+
     private void Awake()
     {
-        input = new PlayerInput();
+        SetTargetRotation(transform.rotation, 1);
+    }
+
+    public void SetInput(PlayerInput input)
+    {
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
@@ -69,76 +73,58 @@ public class PlayerMovement : MonoBehaviour
             movementInput = Vector2.zero;
             axisInUse = false;
         };
-        input.Car.MovementAxis.performed += (axis) =>
-        {
-            car.Input.Steer = axis.ReadValue<Vector2>().x;
-            car.Input.Forward = axis.ReadValue<Vector2>().y;
-            axisInUse = true;
-        };
-        input.Car.MovementAxis.canceled += (axis) =>
-        {
-            car.Input.Steer = 0f;
-            car.Input.Forward = 0f;
-            axisInUse = false;
-        };
-        input.Car.Turbo.performed += (ctx) =>
-        {
-            car.HandleTurbo();
-        };
-        input.Car.Turbo.canceled += (ctx) =>
-        {
-            car.StopTurbo();
-        };
-        
+
         input.Character.Jump.performed += (ctx) => { Jump(jumpHeight, false); };
 
         input.Character.Respawn.performed += (ctx) => { respawning = true; };
 
-        input.Character.Respawn.canceled += (ctx) => { respawning = false; };
-        input.Car.Respawn.performed += (ctx) => { respawning = true; };
-        input.Car.Respawn.canceled += (ctx) => { respawning = false; };
-        input.Character.Interact.performed += (ctx) => { ChangeControllerType(input); };
-        input.Car.LeaveCar.performed += (ctx) => { ChangeControllerType(input); };
-        
-
-        input.Enable();
-        input.Car.Disable();
-        
-        SetTargetRotation(transform.rotation, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //PLAYER INPUT
-        UpdateGrounded();
-
-        Vector3 velocity = Vector3.zero;
-
-        velocity += GravityVelocity();
-        velocity += AxisMovementVelocity();
-
-        characterController.Move(velocity * Time.deltaTime);
-
-        LerpRotation();
-
-        RespawnCountdown();
-    }
-
-    void ChangeControllerType(PlayerInput input)
-    {
-        if (input.Character.enabled)
+        if (movingInCurve == false)
         {
-            input.Car.Enable();
-            input.Character.Disable();
-            
+            //PLAYER INPUT
+            UpdateGrounded();
+
+            Vector3 velocity = Vector3.zero;
+
+            velocity += GravityVelocity();
+            velocity += AxisMovementVelocity();
+
+            characterController.Move(velocity * Time.deltaTime);
+
+            LerpRotation();
+
+            RespawnCountdown();
         }
         else
         {
-            input.Character.Enable();
-            input.Car.Disable();
+            path.follower.UpdateTimeWithDistance(speed * Time.deltaTime);
+            transform.position = path.follower.transform.position;
+
         }
     }
+
+    public void Move(Vector3 vel)
+    {
+        characterController.Move(vel);
+    }
+
+    CurvePath path;
+    bool movingInCurve = false;
+    public void MoveInCurve(CurvePath curve)
+    {
+        movingInCurve = true;
+        path = curve;
+    }
+
+    public void StopMoveInCurve()
+    {
+        movingInCurve = false;
+    }
+
 
     void RespawnCountdown()
     {
@@ -160,6 +146,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (axisInUse)
         {
+            playerAnimations.SetWalkSpeed(movementInput.magnitude);
+            playerAnimations.StartWalking();
+
             var direction = gameCamera.InputDirectionUnNormalized(movementInput, floorUp);
 
             var horizontalDirection = direction;
@@ -168,6 +157,11 @@ public class PlayerMovement : MonoBehaviour
             SetTargetRotation(Quaternion.LookRotation(horizontalDirection, Vector3.up), 0.25f);
 
             return direction * speed;
+        }
+        else
+        {
+            playerAnimations.SetWalkSpeed(0);
+            playerAnimations.StopWalking();
         }
 
         return Vector3.zero;
@@ -189,8 +183,8 @@ public class PlayerMovement : MonoBehaviour
 
     void SetTargetRotation(Quaternion target, float lerpFactor)
     {
-        targetRotation = Quaternion.Lerp(transform.rotation, target, lerpFactor);
-        startingRotation = transform.rotation;
+        targetRotation = Quaternion.Lerp(model.transform.rotation, target, lerpFactor);
+        startingRotation = model.transform.rotation;
 
         rotationTime = Quaternion.Angle(startingRotation, targetRotation) / rotationSpeed;
         rotationElapsedTime = 0;
@@ -207,12 +201,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rotationElapsedTime > rotationTime)
         {
-            transform.rotation = targetRotation;
+            model.transform.rotation = targetRotation;
         }
         else
         {
             rotationElapsedTime += Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(startingRotation, targetRotation, rotationElapsedTime / rotationTime);
+            model.transform.rotation = Quaternion.Lerp(startingRotation, targetRotation, rotationElapsedTime / rotationTime);
         }
     }
 
@@ -228,6 +222,8 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
             floorUp = Vector3.up;
         }
+
+        playerAnimations.SetGroundBool(isGrounded);
     }
 
     public void Jump(float height, bool force)
@@ -235,7 +231,16 @@ public class PlayerMovement : MonoBehaviour
         if ((isGrounded && ySpeed <= 0) || force)
         {
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
+            playerAnimations.Jump();
         }
+
+    }
+
+    public void Jump()
+    {
+        Jump(jumpHeight, true);
+
+        playerAnimations.Jump();
     }
 
     private void OnDrawGizmos()

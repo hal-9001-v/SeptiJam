@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe5fd6fcfce2904bb87a274f96a2363, type: 3}
+  m_Name: RTX 4090
+  m_EditorClassIdentifier: 
+  AccessoryName: 
+  AccessoryPositionInfo:
+  - TypeOfTheAccesory: 1
+    ModificationsInThisType:
+    - ParameterType: 0
+      ModificationValue: 2
+    - ParameterType: 2
+      ModificationValue: 2
+    ForwardInPosition: 0
+    UpInPosition: 2
+  - TypeOfTheAccesory: 3
+    ModificationsInThisType:
+    - ParameterType: 0
+      ModificationValue: 2
+    - ParameterType: 3
+      ModificationValue: 4
+    ForwardInPosition: 0
+    UpInPosition: 1
+  AccessoryIcon: {fileID: 21300000, guid: 386aefc11e07cc24d8a7a99e2248bf8e, type: 3}
+  MeshMaterials:
+  - {fileID: 2100000, guid: 69eefd18981d1ba458d86aca1c0b799b, type: 2}
+  AccessoryMesh: {fileID: 4493585093827132993, guid: ec5842f8c4c7d7f4ea7dd0d7aee9ff07,
+    type: 3}
+  OriginalTransform: {fileID: -8679921383154817045, guid: ec5842f8c4c7d7f4ea7dd0d7aee9ff07,
+    type: 3}
+  WheelSize: 2
+  AccessoryMeshChasisVariant: {fileID: 0}

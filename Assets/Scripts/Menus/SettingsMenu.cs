@@ -18,7 +18,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Button english;
     [SerializeField] Button spanish;
 
-    [SerializeField] TextMeshProUGUI currentVolumeText;
+    [SerializeField] Slider currentVolume;
 
     public Action closeCallback;
 
@@ -76,7 +76,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.transform.GetChild(0).gameObject.SetActive(false);
         canvasGroup.blocksRaycasts = false;
 
         if (closeCallback != null)
@@ -87,7 +87,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void Open()
     {
-        canvasGroup.alpha = 1;
+        canvasGroup.transform.GetChild(0).gameObject.SetActive(true);
         canvasGroup.blocksRaycasts = true;
 
         eventSystem.SetSelectedGameObject(null);

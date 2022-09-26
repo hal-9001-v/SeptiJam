@@ -39,6 +39,14 @@ public class CarAccessory : MonoBehaviour
         }
         return new CarModifier[0];
     }
+    public (AccessoryOrientation,AccessoryOrientation)  GetOrientationInPosition(CarAccessoryType accessoryType)
+    {
+        if (informationPerPositionMap.TryGetValue(accessoryType, out CarAccessoryInPositionInfo value))
+        {
+            return (value.ForwardInPosition ,value.UpInPosition);
+        }
+        return( AccessoryOrientation.None, AccessoryOrientation.None);
+    }
 }
 public enum CarAccessoryType
 {
@@ -56,9 +64,22 @@ public struct CarAccesoryPosition
     public CarAccessoryType AccessoryType;
     public Vector3 position; //O un transform 
 }
+public enum AccessoryOrientation
+{
+    XPositive,
+    YPositive,
+    ZPositive,
+    xNegative,
+    YNegative,
+    ZNegative,
+    None
+}
 [Serializable]
 public struct CarAccessoryInPositionInfo
 {
     public CarAccessoryType TypeOfTheAccesory;
     public CarModifier[] ModificationsInThisType;
+    public AccessoryOrientation ForwardInPosition;
+    public AccessoryOrientation UpInPosition;
+
 }

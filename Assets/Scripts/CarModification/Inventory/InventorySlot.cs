@@ -60,12 +60,20 @@ public class InventorySlot : Button
     {
         base.OnSelect(eventData);
         onSelectFrame.SetActive(true);
+        if (accesoryReference)
+        {
+            CarModificationManager.instance.OnAccesorySelected(accesoryReference, currentPosition);
+        }
 
     }
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
         onSelectFrame.SetActive(false);
+        if (accesoryReference)
+        {
+            CarModificationManager.OnAccessoryDeselected?.Invoke();
+        }
     }
     private void OnClick()
     {
@@ -99,6 +107,7 @@ public class InventorySlot : Button
         CurrentSlotState = SlotState.Empty;
         accesoryReference = null;
         accessoryIcon.sprite = null;
+        accessoryIcon.color = new Color(0, 0, 0, 0);
     }
 
     private void OnChangeState()

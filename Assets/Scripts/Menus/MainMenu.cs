@@ -52,13 +52,13 @@ public class MainMenu : MonoBehaviour
 
     void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.gameObject.SetActive(false);
         canvasGroup.blocksRaycasts = false;
     }
 
     void Open()
     {
-        canvasGroup.alpha = 1;
+        canvasGroup.gameObject.SetActive(true);
         canvasGroup.blocksRaycasts = true;
 
         eventSystem.SetSelectedGameObject(null);

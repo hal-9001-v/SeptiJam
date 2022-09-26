@@ -1423,6 +1423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velText: {fileID: 519673292}
   massText: {fileID: 1204347526}
+  acccText: {fileID: 0}
   slider: {fileID: 0}
   car: {fileID: 1305420874}
 --- !u!1001 &320057115
@@ -6991,6 +6992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Car Logic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112772004725370495, guid: 9c1f800f2242f484bb2ab717ef657dd5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c1f800f2242f484bb2ab717ef657dd5, type: 3}

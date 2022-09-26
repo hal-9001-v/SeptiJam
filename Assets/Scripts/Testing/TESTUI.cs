@@ -1,26 +1,52 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
     public class TESTUI : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI velText;
+        [SerializeField] private TextMeshProUGUI accText;
+        [SerializeField] TextMeshProUGUI speedText;
         [SerializeField] TextMeshProUGUI massText;
-        [SerializeField] private TextMeshProUGUI acccText;
+        [SerializeField] TextMeshProUGUI velText;
+        [SerializeField] TextMeshProUGUI steerText;
+        [SerializeField] TextMeshProUGUI maxVelText;
+        [SerializeField] TextMeshProUGUI turboText;
         [SerializeField] Slider slider;
         [SerializeField] Car car;
-
-
-        private Vector2 lastVelocity;
+        private float speed;
+        
+        private void Start()
+        {
+            StartCoroutine(UpdateUI());
+        }
 
         private void FixedUpdate()
         {
-            acccText.text = ((int)((car.GetCurrentVelocity - lastVelocity) / Time.deltaTime).magnitude).ToString();
-            velText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
-            massText.text = car.GetCurrentWeight.ToString(CultureInfo.InvariantCulture);
-            slider.value = car.GetCurrentTurbo/car.GetTurboLength;
-
-            lastVelocity = car.GetCurrentVelocity;
+            slider.value = car.GetCurrentTurbo / car.GetTurboLength;
+            massText.text = car.GetMassStars().ToString();
+            accText.text = car.GetAccelerationStars().ToString();
+            velText.text = car.GetSpeedStars().ToString();
+            steerText.text = car.GetSteerStars().ToString();
+            maxVelText.text = ((int)car.GetMaxVelocity()).ToString();
+            turboText.text = (Mathf.Round(car.GetCurrentTurbo * 10)/10).ToString(CultureInfo.InvariantCulture);
         }
+        
+
+        IEnumerator UpdateUI()
+         {
+             while (true)
+             {
+                 yield return new WaitForSeconds(0.1f);
+                 speedText.text = ((int)car.GetCurrentSpeed).ToString(CultureInfo.InvariantCulture);
+             }
+         }
+
+
+
     }
