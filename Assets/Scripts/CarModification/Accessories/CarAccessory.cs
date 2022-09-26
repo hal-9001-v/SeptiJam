@@ -27,6 +27,8 @@ public class CarAccessory : MonoBehaviour
              }
         }
     }
+    
+
     public bool CanGoThere(CarAccessoryType accessoryType)
     {
         return informationPerPositionMap.ContainsKey(accessoryType);
@@ -83,3 +85,4 @@ public struct CarAccessoryInPositionInfo
     public AccessoryOrientation UpInPosition;
 
 }
+

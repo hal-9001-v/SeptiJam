@@ -39,3 +39,6 @@ MonoBehaviour:
     type: 3}
   WheelSize: 2
   AccessoryMeshChasisVariant: {fileID: 0}
+  IsSquareWheel: 0
+  englishName: Rubber Duck
+  spanishName: Patito de Goma

@@ -39,3 +39,7 @@ MonoBehaviour:
     type: 3}
   WheelSize: 3
   AccessoryMeshChasisVariant: {fileID: 0}
+  IsSquareWheel: 0
+  englishName: Fan
+  spanishName: Ventilador Jones
+  carpart: 7
