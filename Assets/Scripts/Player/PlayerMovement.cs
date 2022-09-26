@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] LayerMask groundMask;
 
+
+
     Quaternion startingRotation;
     Quaternion targetRotation;
 
@@ -59,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     PlayerAnimations playerAnimations => FindObjectOfType<PlayerAnimations>();
+
+    public AudioClip jumpClip;
+    AudioSource audioSource => GetComponent<AudioSource>();
 
     bool inCar;
 
@@ -259,6 +264,8 @@ public class PlayerMovement : MonoBehaviour
         {
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
             playerAnimations.Jump();
+
+            audioSource.PlayOneShot(jumpClip);
         }
 
     }
