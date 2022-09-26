@@ -975,7 +975,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  yOffset: 1
+  yOffset: 2
   raycastRange: 5
   enterCurve: {fileID: 1961108591}
 --- !u!114 &2740647063747028453

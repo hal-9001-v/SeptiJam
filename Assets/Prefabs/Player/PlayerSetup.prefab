@@ -759,13 +759,10 @@ GameObject:
   - component: {fileID: 1218598753463409199}
   - component: {fileID: 1218598753463409196}
   - component: {fileID: 3895313467177437023}
-  - component: {fileID: 1253523171}
   - component: {fileID: 1253523181}
   - component: {fileID: 1253523183}
   - component: {fileID: 424072772143601895}
   - component: {fileID: 1253523184}
-  - component: {fileID: 281167599401893577}
-  - component: {fileID: 5915352261991750628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -935,20 +932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ce8a8d23a0b9844a6858dee3f7d25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1253523171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218598753463409172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202a095b0b3b69f4497950d2b65127f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnOffset: {x: 0, y: 0.5, z: 0}
-  currentCheckPoint: {fileID: 0}
 --- !u!114 &1253523181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,34 +984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1af95930f344f344830f132ddc8b8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &281167599401893577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218598753463409172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202a095b0b3b69f4497950d2b65127f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnOffset: {x: 0, y: 0.5, z: 0}
-  currentCheckPoint: {fileID: 0}
---- !u!114 &5915352261991750628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218598753463409172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202a095b0b3b69f4497950d2b65127f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnOffset: {x: 0, y: 0.5, z: 0}
-  currentCheckPoint: {fileID: 0}
 --- !u!1 &1218598754115138295
 GameObject:
   m_ObjectHideFlags: 0
