@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -45,6 +46,13 @@ public class Popup : MonoBehaviour
     public Sprite[] engLishimages;
     public Image popupImage;
     public string name;
+
+
+    private void Awake()
+    {
+        DisablePopup();
+    }
+
     public void EnablePopup(CarAccessory accessory)
     {
         Language lang = FindObjectOfType<LanguageNotifier>().CurrentLanguage;
