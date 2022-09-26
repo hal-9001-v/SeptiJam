@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amplitud: 0
+  velocidad: 0
   carAccesory: {fileID: 0}
 --- !u!1001 &1482410314188219057
 PrefabInstance:
@@ -220,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 5206484473328526359, guid: 251a64d06e103d34196c5836b01f4013,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.012998
+      value: 7.8
       objectReference: {fileID: 0}
     - target: {fileID: 5206484473328526359, guid: 251a64d06e103d34196c5836b01f4013,
         type: 3}
