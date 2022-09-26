@@ -62,24 +62,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RotateCamera"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""d337e40c-28db-49dd-b08e-d56fe1b2893b"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MouseRotateCamera"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""2b0163d1-7636-421f-b5d0-2a5ff9782060"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -313,50 +295,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""MovementAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""488aec05-538b-40ad-a9b9-9943aacdb2b4"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateCamera"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5c30f9c4-b0bb-4e3f-8613-c2f4e0d3961b"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""4de096ce-7ed7-4608-b8cc-891c463fa032"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""78116217-12c4-444d-8943-9db241097698"",
-                    ""path"": ""<Mouse>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MouseRotateCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1265,6 +1203,76 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Camera"",
+            ""id"": ""f938130d-b653-4c10-87fb-1688008db628"",
+            ""actions"": [
+                {
+                    ""name"": ""RotateCamera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d75d1956-8613-45da-ab45-e5be3cecb9a4"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseRotateCamera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fa21ce75-5ea0-46f6-b783-36e4066f30ea"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""0b0368e5-2751-4852-90e2-9367b93aa997"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""212c6e73-7423-49a8-9036-a07ecd5a1226"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""b38262b0-5f17-4235-a157-ec5809a8dffc"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cf07539-a299-4fc9-846c-687045b6397c"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseRotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -1275,8 +1283,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
         m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
         m_Character_Respawn = m_Character.FindAction("Respawn", throwIfNotFound: true);
-        m_Character_RotateCamera = m_Character.FindAction("RotateCamera", throwIfNotFound: true);
-        m_Character_MouseRotateCamera = m_Character.FindAction("MouseRotateCamera", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_MovementAxis = m_Car.FindAction("MovementAxis", throwIfNotFound: true);
@@ -1304,6 +1310,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Carshop_RotateCar = m_Carshop.FindAction("RotateCar", throwIfNotFound: true);
         m_Carshop_RotateCamera = m_Carshop.FindAction("RotateCamera", throwIfNotFound: true);
         m_Carshop_ExitCarshop = m_Carshop.FindAction("ExitCarshop", throwIfNotFound: true);
+        // Camera
+        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Camera_RotateCamera = m_Camera.FindAction("RotateCamera", throwIfNotFound: true);
+        m_Camera_MouseRotateCamera = m_Camera.FindAction("MouseRotateCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1367,8 +1377,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_Jump;
     private readonly InputAction m_Character_Interact;
     private readonly InputAction m_Character_Respawn;
-    private readonly InputAction m_Character_RotateCamera;
-    private readonly InputAction m_Character_MouseRotateCamera;
     public struct CharacterActions
     {
         private @PlayerInput m_Wrapper;
@@ -1377,8 +1385,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Character_Jump;
         public InputAction @Interact => m_Wrapper.m_Character_Interact;
         public InputAction @Respawn => m_Wrapper.m_Character_Respawn;
-        public InputAction @RotateCamera => m_Wrapper.m_Character_RotateCamera;
-        public InputAction @MouseRotateCamera => m_Wrapper.m_Character_MouseRotateCamera;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1400,12 +1406,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Respawn.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRespawn;
                 @Respawn.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRespawn;
                 @Respawn.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRespawn;
-                @RotateCamera.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRotateCamera;
-                @RotateCamera.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRotateCamera;
-                @RotateCamera.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRotateCamera;
-                @MouseRotateCamera.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMouseRotateCamera;
-                @MouseRotateCamera.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMouseRotateCamera;
-                @MouseRotateCamera.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMouseRotateCamera;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -1422,12 +1422,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Respawn.started += instance.OnRespawn;
                 @Respawn.performed += instance.OnRespawn;
                 @Respawn.canceled += instance.OnRespawn;
-                @RotateCamera.started += instance.OnRotateCamera;
-                @RotateCamera.performed += instance.OnRotateCamera;
-                @RotateCamera.canceled += instance.OnRotateCamera;
-                @MouseRotateCamera.started += instance.OnMouseRotateCamera;
-                @MouseRotateCamera.performed += instance.OnMouseRotateCamera;
-                @MouseRotateCamera.canceled += instance.OnMouseRotateCamera;
             }
         }
     }
@@ -1675,14 +1669,53 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public CarshopActions @Carshop => new CarshopActions(this);
+
+    // Camera
+    private readonly InputActionMap m_Camera;
+    private ICameraActions m_CameraActionsCallbackInterface;
+    private readonly InputAction m_Camera_RotateCamera;
+    private readonly InputAction m_Camera_MouseRotateCamera;
+    public struct CameraActions
+    {
+        private @PlayerInput m_Wrapper;
+        public CameraActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @RotateCamera => m_Wrapper.m_Camera_RotateCamera;
+        public InputAction @MouseRotateCamera => m_Wrapper.m_Camera_MouseRotateCamera;
+        public InputActionMap Get() { return m_Wrapper.m_Camera; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraActions instance)
+        {
+            if (m_Wrapper.m_CameraActionsCallbackInterface != null)
+            {
+                @RotateCamera.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotateCamera;
+                @MouseRotateCamera.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnMouseRotateCamera;
+                @MouseRotateCamera.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnMouseRotateCamera;
+                @MouseRotateCamera.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnMouseRotateCamera;
+            }
+            m_Wrapper.m_CameraActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @RotateCamera.started += instance.OnRotateCamera;
+                @RotateCamera.performed += instance.OnRotateCamera;
+                @RotateCamera.canceled += instance.OnRotateCamera;
+                @MouseRotateCamera.started += instance.OnMouseRotateCamera;
+                @MouseRotateCamera.performed += instance.OnMouseRotateCamera;
+                @MouseRotateCamera.canceled += instance.OnMouseRotateCamera;
+            }
+        }
+    }
+    public CameraActions @Camera => new CameraActions(this);
     public interface ICharacterActions
     {
         void OnMovementAxis(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnRespawn(InputAction.CallbackContext context);
-        void OnRotateCamera(InputAction.CallbackContext context);
-        void OnMouseRotateCamera(InputAction.CallbackContext context);
     }
     public interface ICarActions
     {
@@ -1713,5 +1746,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnRotateCar(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnExitCarshop(InputAction.CallbackContext context);
+    }
+    public interface ICameraActions
+    {
+        void OnRotateCamera(InputAction.CallbackContext context);
+        void OnMouseRotateCamera(InputAction.CallbackContext context);
     }
 }

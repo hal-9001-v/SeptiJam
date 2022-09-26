@@ -20,32 +20,23 @@ public class PlayerFollowCamera : MonoBehaviour
 
     Vector3 closestPathPoint;
 
-    PlayerInput playerInput;
-
     float cameraInput;
-
-    private void Awake()
-    {
-        playerInput = new PlayerInput();
-        SetInput(playerInput);
-        playerInput.Enable();
-    }
 
     public void SetInput(PlayerInput input)
     {
 
-        input.Character.MouseRotateCamera.performed += (ctx) =>
+        input.Camera.MouseRotateCamera.performed += (ctx) =>
         {
             RotateCamera(ctx.ReadValue<float>() * mouseRotationSpeed);
 
         };
 
-        input.Character.RotateCamera.performed += (ctx) =>
+        input.Camera.RotateCamera.performed += (ctx) =>
         {
             cameraInput = ctx.ReadValue<float>();
         };
 
-        input.Character.RotateCamera.canceled += (ctx) =>
+        input.Camera.RotateCamera.canceled += (ctx) =>
         {
             cameraInput = 0;
         };

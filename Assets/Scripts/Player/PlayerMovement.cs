@@ -7,10 +7,12 @@ using static DataFileManager;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController characterController => GetComponent<CharacterController>();
+    public CharacterController characterController => GetComponent<CharacterController>();
     CheckPointTracker checkPointTracker => GetComponent<CheckPointTracker>();
 
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
+
+    public Collider collider => GetComponent<Collider>();
 
     [Header("References")]
     [SerializeField] Transform model;
@@ -19,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] [Range(1, 20)] float gravity = 10;
 
-    [SerializeField] [Range(1, 20)] float jumpHeight = 10;
+    [Range(1, 20)] public float jumpHeight = 10;
 
-    [SerializeField] [Range(0.1f, 2)] float groundRaycastRange = 2;
+    [SerializeField] [Range(0.1f, 10)] float groundRaycastRange = 2;
 
     [SerializeField] [Range(1, 360)] float rotationSpeed = 90f;
 
@@ -56,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerAnimations playerAnimations => FindObjectOfType<PlayerAnimations>();
 
+    bool inCar;
+
     private void Awake()
     {
         SetTargetRotation(transform.rotation, 1);
@@ -83,28 +87,44 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movingInCurve == false)
+        if (inCar == false)
         {
-            //PLAYER INPUT
-            UpdateGrounded();
+            if (movingInCurve == false)
+            {
+                //PLAYER INPUT
+                UpdateGrounded();
 
-            Vector3 velocity = Vector3.zero;
+                Vector3 velocity = Vector3.zero;
 
-            velocity += GravityVelocity();
-            velocity += AxisMovementVelocity();
+                velocity += GravityVelocity();
+                velocity += AxisMovementVelocity();
 
-            characterController.Move(velocity * Time.deltaTime);
+                characterController.Move(velocity * Time.deltaTime);
 
-            LerpRotation();
+                LerpRotation();
 
-            RespawnCountdown();
+                RespawnCountdown();
+            }
+            else
+            {
+                path.follower.UpdateTimeWithDistance(speed * Time.deltaTime);
+                transform.position = path.follower.transform.position;
+
+            }
         }
-        else
-        {
-            path.follower.UpdateTimeWithDistance(speed * Time.deltaTime);
-            transform.position = path.follower.transform.position;
+    }
 
-        }
+
+    public void GetInCar()
+    {
+        inCar = true;
+        characterController.enabled = false;
+    }
+
+    public void OutOfCar()
+    {
+        inCar = false;
+        characterController.enabled = true;
     }
 
     public void Move(Vector3 vel)

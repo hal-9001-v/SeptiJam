@@ -27,6 +27,8 @@ public class Car : MonoBehaviour
     private bool braking;
     private Vector2 currentMaxVel;
 
+    public Transform sitPivot;
+
     //Turbo
     private bool activeTurbo;
     private bool usingTurbo;

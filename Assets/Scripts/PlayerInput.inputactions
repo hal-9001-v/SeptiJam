@@ -40,24 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "RotateCamera",
-                    "type": "PassThrough",
-                    "id": "d337e40c-28db-49dd-b08e-d56fe1b2893b",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MouseRotateCamera",
-                    "type": "PassThrough",
-                    "id": "2b0163d1-7636-421f-b5d0-2a5ff9782060",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -291,50 +273,6 @@
                     "action": "MovementAxis",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "488aec05-538b-40ad-a9b9-9943aacdb2b4",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "5c30f9c4-b0bb-4e3f-8613-c2f4e0d3961b",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "4de096ce-7ed7-4608-b8cc-891c463fa032",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "78116217-12c4-444d-8943-9db241097698",
-                    "path": "<Mouse>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseRotateCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1239,6 +1177,76 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExitCarshop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "f938130d-b653-4c10-87fb-1688008db628",
+            "actions": [
+                {
+                    "name": "RotateCamera",
+                    "type": "PassThrough",
+                    "id": "d75d1956-8613-45da-ab45-e5be3cecb9a4",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseRotateCamera",
+                    "type": "PassThrough",
+                    "id": "fa21ce75-5ea0-46f6-b783-36e4066f30ea",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "0b0368e5-2751-4852-90e2-9367b93aa997",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCamera",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "212c6e73-7423-49a8-9036-a07ecd5a1226",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b38262b0-5f17-4235-a157-ec5809a8dffc",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8cf07539-a299-4fc9-846c-687045b6397c",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseRotateCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
