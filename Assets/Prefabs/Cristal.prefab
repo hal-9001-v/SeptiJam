@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 2971600558238169631}
   - component: {fileID: 6633428812079980462}
   - component: {fileID: 418705114076084114}
-  - component: {fileID: 2952785622927045596}
+  - component: {fileID: 308494017020420111}
+  - component: {fileID: 2326998280884279062}
+  - component: {fileID: 6318129770242751551}
+  - component: {fileID: 7013582709424332427}
+  - component: {fileID: 6294699837276088688}
   m_Layer: 0
   m_Name: Cristal
   m_TagString: Untagged
@@ -84,8 +88,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2952785622927045596
-MeshCollider:
+--- !u!65 &308494017020420111
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +98,74 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2954858793080512207, guid: 1a26326eb83bf78448799c01624aee29, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.3285474, y: 0.015644796, z: 0.2456875}
+  m_Center: {x: 0.0000000062394525, y: -0.0000000010603539, z: 0.12284375}
+--- !u!114 &2326998280884279062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926770959022690678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab3b78fc6a6a743899fb8d1e9f4a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 1
+  onlyOnce: 0
+  done: 0
+  enterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  stayTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  exitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6318129770242751551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926770959022690678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba04de231d8fb694eb97b66e9a71b2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredWeight: 3
+  speedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7013582709424332427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926770959022690678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc38589211646e545bbf438751585f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &6294699837276088688
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926770959022690678}
+  serializedVersion: 2
+  m_Mass: 1500
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
