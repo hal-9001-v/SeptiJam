@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     PlayerAnimations playerAnimations => GetComponentInChildren<PlayerAnimations>();
 
+    PlayerFollowCamera cameraFollow => GetComponentInChildren<PlayerFollowCamera>();
+
     Collider collider => GetComponent<Collider>();
     public enum PlayerState
     {
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
 
         car.SetInput(input);
         movement.SetInput(input);
+        cameraFollow.SetInput(input);
 
         input.Enable();
 
@@ -50,7 +53,13 @@ public class Player : MonoBehaviour
             car.enterCurve.pointA.position = transform.position;
             car.enterCurve.follower.t = 0;
 
+            transform.position = car.sitPivot.position;
+
             collider.enabled = false;
+
+            transform.parent = car.transform;
+
+            movement.GetInCar();
             //movement.MoveInCurve(car.enterCurve);   
         }
     }
@@ -65,12 +74,23 @@ public class Player : MonoBehaviour
 
         playerAnimations.LeaveCar();
 
-        collider.enabled = true;
         movement.enabled = true;
+
+        transform.parent = null;
+
+        movement.OutOfCar();
+
         movement.StopMoveInCurve();
-        movement.Jump();
+        movement.Jump(movement.jumpHeight * 2, true);
+
+        StartCoroutine(EnableCollider(1));
     }
 
 
-
+    public IEnumerator EnableCollider(float time)
+    {
+        movement.collider.enabled = false;
+        yield return new WaitForSeconds(time);
+        movement.collider.enabled = true;
+    }
 }
