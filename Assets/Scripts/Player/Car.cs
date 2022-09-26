@@ -18,6 +18,7 @@ public enum WheelSize
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CheckPointTracker))]
 [RequireComponent(typeof(PassiveInteractable))]
+[RequireComponent(typeof(AudioSource))]
 public class Car : MonoBehaviour
 {
     //Input
@@ -27,6 +28,9 @@ public class Car : MonoBehaviour
     private bool braking;
     private Vector2 currentMaxVel;
 
+    public AudioClip startClip;
+
+    AudioSource audioSource => GetComponent<AudioSource>();
     public Transform sitPivot;
 
     //Turbo
@@ -117,6 +121,10 @@ public class Car : MonoBehaviour
 
     public CurvePath enterCurve;
 
+    public AudioClip startCar;
+    public AudioClip engine;
+    public AudioClip endEngine;
+
 
     public struct InputStr
     {
@@ -174,7 +182,17 @@ public class Car : MonoBehaviour
         if (player)
         {
             player.EnterCar();
+
         }
+    }
+
+    IEnumerator PlaySoundAfterTime(float time, AudioClip clip)
+    {
+        yield return new WaitForSeconds(time);
+        audioSource.clip = clip;
+
+        audioSource.Play();
+
     }
 
     void FixedUpdate()
@@ -244,6 +262,22 @@ public class Car : MonoBehaviour
 
     public void Hurt()
     {
+    }
+
+    public void TurnOn()
+    {
+        audioSource.PlayOneShot(startCar, 1);
+
+        StartCoroutine(PlaySoundAfterTime(startCar.length, engine));
+        audioSource.loop = true;
+    }
+
+    public void TurnOff()
+    {
+
+        audioSource.clip = endEngine;
+        audioSource.Play();
+        audioSource.loop = false;
     }
 
     public float EnterCarshop(CurveFollower follower)

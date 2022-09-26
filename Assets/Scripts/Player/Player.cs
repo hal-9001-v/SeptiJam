@@ -60,7 +60,9 @@ public class Player : MonoBehaviour
             transform.parent = car.transform;
 
             movement.GetInCar();
-            //movement.MoveInCurve(car.enterCurve);   
+            //movement.MoveInCurve(car.enterCurve);
+            //
+            car.TurnOn();
         }
     }
 
@@ -84,7 +86,10 @@ public class Player : MonoBehaviour
         movement.Jump(movement.jumpHeight * 2, true);
 
         StartCoroutine(EnableCollider(1));
+
+        car.TurnOff();
     }
+
 
 
     public IEnumerator EnableCollider(float time)

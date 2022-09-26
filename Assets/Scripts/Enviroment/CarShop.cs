@@ -44,6 +44,10 @@ public class CarShop : MonoBehaviour
     Vector3 platformStartingPosition;
     Vector3 platformTargetPosition;
 
+    [Header("Sounds")]
+    public AudioClip enterWorkshopAudioClip;
+    AudioSource audioSource => GetComponent<AudioSource>();
+
     public bool isOpen { private set; get; }
 
     Quaternion closeStartingRotation;
@@ -245,10 +249,9 @@ public class CarShop : MonoBehaviour
 
     IEnumerator CarshopEnterTimeline(float time, Car car)
     {
-
-        //Stop Car Input Here!
-
         yield return new WaitForSeconds(time);
+        audioSource.PlayOneShot(enterWorkshopAudioClip);
+
         rotatePlatform = true;
         car.transform.parent = carPivot;
         this.car = car;
