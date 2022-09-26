@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Transform model;
-    [Header("Settings")] 
+    [Header("Settings")]
     [SerializeField] [Range(1, 20)] float speed = 10;
 
     [SerializeField] [Range(1, 20)] float gravity = 10;
@@ -29,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     Quaternion startingRotation;
     Quaternion targetRotation;
-
-    //Input
-    public PlayerInput input;
-    [SerializeField] Car car;
 
     bool axisInUse;
     Vector2 movementInput;
@@ -60,7 +56,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        input = new PlayerInput();
+       
+
+        SetTargetRotation(transform.rotation, 1);
+    }
+
+    public void SetInput(PlayerInput input)
+    {
         input.Character.MovementAxis.performed += (axis) =>
         {
             movementInput = axis.ReadValue<Vector2>();
@@ -71,42 +73,11 @@ public class PlayerMovement : MonoBehaviour
             movementInput = Vector2.zero;
             axisInUse = false;
         };
-        input.Car.MovementAxis.performed += (axis) =>
-        {
-            car.Input.Steer = axis.ReadValue<Vector2>().x;
-            car.Input.Forward = axis.ReadValue<Vector2>().y;
-            axisInUse = true;
-        };
-        input.Car.MovementAxis.canceled += (axis) =>
-        {
-            car.Input.Steer = 0f;
-            car.Input.Forward = 0f;
-            axisInUse = false;
-        };
-        input.Car.Turbo.performed += (ctx) =>
-        {
-            car.HandleTurbo();
-        };
-        input.Car.Turbo.canceled += (ctx) =>
-        {
-            car.StopTurbo();
-        };
-        
+
         input.Character.Jump.performed += (ctx) => { Jump(jumpHeight, false); };
 
         input.Character.Respawn.performed += (ctx) => { respawning = true; };
 
-        input.Character.Respawn.canceled += (ctx) => { respawning = false; };
-        input.Car.Respawn.performed += (ctx) => { respawning = true; };
-        input.Car.Respawn.canceled += (ctx) => { respawning = false; };
-        input.Character.Interact.performed += (ctx) => { ChangeControllerType(input); };
-        input.Car.LeaveCar.performed += (ctx) => { ChangeControllerType(input); };
-        
-
-        input.Enable();
-        input.Car.Disable();
-        
-        SetTargetRotation(transform.rotation, 1);
     }
 
     // Update is called once per frame
@@ -125,21 +96,6 @@ public class PlayerMovement : MonoBehaviour
         LerpRotation();
 
         RespawnCountdown();
-    }
-
-    void ChangeControllerType(PlayerInput input)
-    {
-        if (input.Character.enabled)
-        {
-            input.Car.Enable();
-            input.Character.Disable();
-            
-        }
-        else
-        {
-            input.Character.Enable();
-            input.Car.Disable();
-        }
     }
 
     void RespawnCountdown()

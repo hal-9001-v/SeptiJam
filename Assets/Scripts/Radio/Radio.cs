@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Radio : MonoBehaviour
 {
-
     [SerializeField] List<RadioClip> radioClips;
     [SerializeField] AudioSource radioSource;
     [SerializeField] AudioSource ambientSource;
@@ -33,7 +32,6 @@ public class Radio : MonoBehaviour
         var curveValue = curve.Evaluate(Vector3.Distance(listener.transform.position, transform.position) / radioSource.maxDistance);
 
         ambientSource.volume = (1 - curveValue) * originalAmbientVolume;
-        Debug.Log(ambientSource.volume + " " + originalAmbientVolume);
     }
 
     public void SetInput(PlayerInput input)
@@ -97,7 +95,5 @@ public class Radio : MonoBehaviour
         radioSource.volume = clip.volume;
         radioSource.Play();
     }
-
-
 
 }

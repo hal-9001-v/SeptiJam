@@ -17,6 +17,7 @@ public enum WheelSize
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CheckPointTracker))]
+[RequireComponent(typeof(PassiveInteractable))]
 public class Car : MonoBehaviour
 {
     //Input
@@ -25,7 +26,6 @@ public class Car : MonoBehaviour
     private float maxSpeed = 100;
     private bool braking;
     private Vector2 currentMaxVel;
-
 
     //Turbo
     private bool activeTurbo;
@@ -50,17 +50,22 @@ public class Car : MonoBehaviour
     public const float MAX_STAR_VAL = 4;
 
     public const float MIN_SPEED = 20f;
-    
 
-    [Header("Car Modifiers")] public CarModifierInfo carModifierInfo;
 
-    [Header("Spawn")] [SerializeField] Vector3 spawnOffset;
+    [Header("Car Modifiers")]
+    public CarModifierInfo carModifierInfo;
+
+    [Header("Spawn")]
+    [SerializeField] Vector3 spawnOffset;
     [SerializeField] CheckPointTracker tracker;
+
+    Player player => FindObjectOfType<Player>();
+    PassiveInteractable interactable => GetComponent<PassiveInteractable>();
 
     protected Rigidbody Rigidbody;
 
-    [Header("Wheels")] public WheelInfo[] Wheels;
-
+    [Header("Wheels")]
+    public WheelInfo[] Wheels;
 
     public float GetCurrentSpeed
     {
@@ -87,7 +92,8 @@ public class Car : MonoBehaviour
 
     public float GetTurboLength => turboLength;
 
-    [Header("Car Physics Variables")] [SerializeField]
+    [Header("Car Physics Variables")]
+    [SerializeField]
     Vector3 CenterOfMass;
 
     [SerializeField] float MotorPower = 5000f;
@@ -120,9 +126,51 @@ public class Car : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.centerOfMass = CenterOfMass;
 
+        interactable.passiveCallback += CheckPlayer;
+
         // SetCarModifierInfoDefaultStats();
         OnChangeCarPiece();
         OnValidate();
+    }
+
+    public void SetInput(PlayerInput input)
+    {
+
+        input.Car.LeaveCar.performed += (ctx) =>
+        {
+            player.ExitCar();
+        };
+
+        input.Car.MovementAxis.performed += (axis) =>
+        {
+            Input.Steer = axis.ReadValue<Vector2>().x;
+            Input.Forward = axis.ReadValue<Vector2>().y;
+            axisInUse = true;
+        };
+        input.Car.MovementAxis.canceled += (axis) =>
+        {
+            Input.Steer = 0f;
+            Input.Forward = 0f;
+            axisInUse = false;
+        };
+        input.Car.Turbo.performed += (ctx) =>
+        {
+            HandleTurbo();
+        };
+        input.Car.Turbo.canceled += (ctx) =>
+        {
+            StopTurbo();
+        };
+    }
+
+    void CheckPlayer(Interactor interactor)
+    {
+        var player = interactor.GetComponent<Player>();
+
+        if (player)
+        {
+            player.EnterCar();
+        }
     }
 
     void FixedUpdate()
@@ -297,13 +345,13 @@ public class Car : MonoBehaviour
     public int GetAccelerationStars()
     {
         float normalizedMotor = ProcessAndNormalize(carModifierInfo.motorForce, MAX_MOTORFORCE, MIN_MOTORFORCE, MAX_STAR_VAL);
-        float normalizedMass = ProcessAndNormalize(carModifierInfo.carMass,MAX_MASS, MIN_MASS,MAX_STAR_VAL);
-        
+        float normalizedMass = ProcessAndNormalize(carModifierInfo.carMass, MAX_MASS, MIN_MASS, MAX_STAR_VAL);
+
         float wheelModifier = carModifierInfo.wheelSize == WheelSize.BIG ? 0.75f :
             carModifierInfo.wheelSize == WheelSize.SMALL ? 1.25f : 1f;
 
         float acceleration = (normalizedMotor * normalizedMotor / normalizedMass) * wheelModifier;
-        
+
         float normalizedAcc = ProcessAndNormalize(acceleration, MAX_ACCELERATION, MIN_ACCELERATION, MAX_STAR_VAL);
         return Mathf.RoundToInt(normalizedAcc);
     }
@@ -342,8 +390,8 @@ public class Car : MonoBehaviour
     }
 
 
-//Call this when modifying any car attribs
-   public void OnChangeCarPiece()
+    //Call this when modifying any car attribs
+    public void OnChangeCarPiece()
     {
         //Car stats
         Rigidbody.mass = carModifierInfo.carMass;
@@ -412,7 +460,7 @@ public class Car : MonoBehaviour
             Wheels[i].WheelCollider.suspensionSpring = wheelColliderSuspensionSpring;
             Wheels[i].WheelCollider.radius = wheelRadius;
 
-           Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
+            Wheels[i].WheelCollider.GetComponentInChildren<BoxCollider>().enabled = squareWheels;
 
             if (squareWheels)
             {
@@ -488,5 +536,5 @@ public class Car : MonoBehaviour
         public WheelSize wheelSize;
         public bool squareWheels;
     }
-    
+
 }
