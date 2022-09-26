@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
         car.SetInput(input);
         movement.SetInput(input);
         cameraFollow.SetInput(input);
-
         input.Enable();
 
         ExitCar();
@@ -71,6 +70,7 @@ public class Player : MonoBehaviour
         currentState = PlayerState.Ground;
 
         input.Car.Disable();
+        input.Carshop.Disable();
         input.Character.Enable();
         Debug.Log("Exit car");
 

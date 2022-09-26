@@ -184,6 +184,7 @@ public class CarShop : MonoBehaviour
     {
         if (isOpen == false)
         {
+            //input.Carshop.Enable();
             isOpen = true;
             rotatePlatform = false;
 
@@ -209,7 +210,8 @@ public class CarShop : MonoBehaviour
 
         if (!CarModificationManager.IsValidCar())
         {
-            FindObjectOfType<Popup>().EnablePopup(PopupType.warning);
+            if(isOpen)
+                FindObjectOfType<Popup>().EnablePopup(PopupType.warning);
             return;
         }
         if (isOpen)
