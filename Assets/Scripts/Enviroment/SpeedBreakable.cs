@@ -15,7 +15,7 @@ public class SpeedBreakable : MonoBehaviour
     void CarHit(Car car)
     {
         //Break!
-        gameObject.SetActive(false);
+       // gameObject.SetActive(false);
 
 
     }

@@ -8,18 +8,23 @@ using UnityEngine.Events;
 public class SpeedChecker : MonoBehaviour
 {
     CollisionInteractable interactable => GetComponentInChildren<CollisionInteractable>();
+    Rigidbody[] rigidbodies => GetComponentsInChildren<Rigidbody>();
 
     [Header("Settings")]
-    [SerializeField] [Range(0, 200)] float requiredSpeed;
-    [SerializeField] [Range(0, 200)] float requiredWeight;
+    [SerializeField] [Range(1, 5)] float requiredWeight;
 
     public UnityEvent speedEvent;
     public Action<Car> speedCallback;
-
+    
 
     private void Awake()
     {
         interactable.enterTriggerCallback += CheckSpeed;
+
+        foreach (Rigidbody r in rigidbodies)
+        {
+            r.isKinematic = true;
+        }
     }
 
     void CheckSpeed(Interactor interactor)
@@ -28,11 +33,14 @@ public class SpeedChecker : MonoBehaviour
 
         if (car)
         {
-            if (car.GetCurrentSpeed >= requiredSpeed && car.GetCurrentWeight >= requiredWeight)
+            if (car.GetMassStars() >= requiredWeight)
             {
-
+        
                 speedEvent.Invoke();
-
+                foreach (Rigidbody r in rigidbodies)
+                {
+                    r.isKinematic = false;
+                }
                 if (speedCallback != null)
                 {
                     speedCallback.Invoke(car);
