@@ -44,3 +44,7 @@ MonoBehaviour:
   WheelSize: 3
   AccessoryMeshChasisVariant: {fileID: -7387706064836869012, guid: 540c556293485694f8ff3f6aeabd90fc,
     type: 3}
+  IsSquareWheel: 0
+  englishName: Barrel
+  spanishName: Barril
+  carpart: 1

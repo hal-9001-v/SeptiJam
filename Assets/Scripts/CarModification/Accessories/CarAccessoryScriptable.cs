@@ -12,13 +12,14 @@ public class CarAccessoryScriptable : ScriptableObject
     public CarAccessoryInPositionInfo[] AccessoryPositionInfo;
 
     public Sprite AccessoryIcon;
-    public Material[] MeshMaterials; //Quizás esto no haga falta, pero por si acaso
+    public Material[] MeshMaterials; //Quizï¿½s esto no haga falta, pero por si acaso
     public Mesh AccessoryMesh;
     public Transform OriginalTransform;
     public WheelSize WheelSize;
     public Mesh AccessoryMeshChasisVariant;
     public bool IsSquareWheel;
-
-
+    public string englishName;
+    public string spanishName;
+    public CarParts carpart;
 }
 

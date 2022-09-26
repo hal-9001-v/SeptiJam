@@ -14,6 +14,7 @@ public class ItemCollector : MonoBehaviour
 
     public void AddCarPart(CarAccessory accesory)
     {
+        FindObjectOfType<Popup>().EnablePopup(accesory);
         PlayerInventory.OnAddObject(accesory);
         Debug.LogWarning("Collected!");
     }

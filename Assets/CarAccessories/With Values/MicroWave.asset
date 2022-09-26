@@ -38,3 +38,6 @@ MonoBehaviour:
   WheelSize: 1
   AccessoryMeshChasisVariant: {fileID: 0}
   IsSquareWheel: 1
+  englishName: Microwave
+  spanishName: Microondas
+  carpart: 16

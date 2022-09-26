@@ -29,3 +29,7 @@ MonoBehaviour:
     type: 3}
   WheelSize: 2
   AccessoryMeshChasisVariant: {fileID: 0}
+  IsSquareWheel: 0
+  englishName: Mercadona's Cart
+  spanishName: Carrito de Mercadona
+  carpart: 15

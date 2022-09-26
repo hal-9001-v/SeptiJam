@@ -37,3 +37,7 @@ MonoBehaviour:
     type: 3}
   WheelSize: 3
   AccessoryMeshChasisVariant: {fileID: 0}
+  IsSquareWheel: 0
+  englishName: Beach Ball
+  spanishName: Pelota de Playa
+  carpart: 2

@@ -31,3 +31,6 @@ MonoBehaviour:
     type: 3}
   WheelSize: 3
   AccessoryMeshChasisVariant: {fileID: 0}
+  IsSquareWheel: 0
+  englishName: Anchor
+  spanishName: Ancla
