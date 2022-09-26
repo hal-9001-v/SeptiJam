@@ -3,42 +3,54 @@
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Anchor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Anchor.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Barril.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Barril.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Beach Ball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Beach Ball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Bowling ball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Bowling ball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Butano.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Butano.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Coconut.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Coconut.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/ColaCao.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/ColaCao.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Fan.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Fan.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Flemish.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Flemish.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Float.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Float.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hamster Ball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hamster Ball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hookah.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Hookah.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Jagger Bottle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Jagger Bottle.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Laptop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Laptop.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Madrid Water.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Madrid Water.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Mercadona.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Mercadona.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/MicroWave.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/MicroWave.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Monster.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Monster.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Nokia.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Nokia.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Olive Oil.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Olive Oil.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Paellera.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Paellera.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/PetaZeta.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/PetaZeta.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Play Controller.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Play Controller.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Potato.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Potato.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/RTX 4090.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/RTX 4090.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/10_flotador.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/10_flotador.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/11_hamster.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/11_hamster.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/12_caximba.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/12_caximba.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/13_jagger.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/13_jagger.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/14_pece.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/14_pece.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/15_awa.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/15_awa.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/16_carrito.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/16_carrito.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/17_microondas.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/17_microondas.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/18_monster.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/18_monster.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/19_nokia.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/19_nokia.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/1_ancla.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/1_ancla.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/20_aceite.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/20_aceite.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/21_paellera.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/21_paellera.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/22_petaz.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/22_petaz.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/23_mando.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/23_mando.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/24_patara.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/24_patara.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/25_rtx.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/25_rtx.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/26_pollo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/26_pollo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/27_timon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/27_timon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/28_pala.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/28_pala.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/29_surf.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/29_surf.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/2_barril.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/2_barril.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/30_tofu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/30_tofu.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/31_vino.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/31_vino.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/3_bola.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/3_bola.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/4_bolos.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/4_bolos.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/5_butano.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/5_butano.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/6_coco.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/6_coco.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/7_colacao.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/7_colacao.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/8_ventilador.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/8_ventilador.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/9_flamenco.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/9_flamenco.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rubber Chicken.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rubber Chicken.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rudder.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Rudder.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Shovel.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Shovel.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Surf Table.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Surf Table.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Tofu.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Tofu.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Wine Bottle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarAccessories/With Values/Wine Bottle.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/chinese rocks rg SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/chinese rocks rg SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ennvironment/Tallerzote.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ennvironment/Tallerzote.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Car Logic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Car Logic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/PlayerSetup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/PlayerSetup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PopUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PopUp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestingScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarModification/Accessories/CarAccessory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarModification/Accessories/CarAccessory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarModification/Accessories/CarAccessoryScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarModification/Accessories/CarAccessoryScriptable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemCollector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemCollector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/Popup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/Popup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +59,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/10/a84072fa/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b7/c23faf75/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ab7de6937a4448b0a6ccd59e9820599a157200/3d/51341049/Sprite.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ab7de6937a4448b0a6ccd59e9820599a157200/fa/994b868d/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e7fc0d329e374bffb8063820eaebbaa219a00/86/afb76d4d/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />

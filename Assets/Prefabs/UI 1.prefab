@@ -299,7 +299,6 @@ GameObject:
   - component: {fileID: 8744867823408234647}
   - component: {fileID: 5800709883094902142}
   - component: {fileID: 6990077117931456785}
-  - component: {fileID: 6734669130732072572}
   m_Layer: 5
   m_Name: Speedometer
   m_TagString: Untagged
@@ -368,21 +367,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6734669130732072572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6734669130732072571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdceb22f26584444f84f2a00e44d4076, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needle: {fileID: 4517306307630969660}
-  speedTmpro: {fileID: 2371877872092166718}
-  turboImage: {fileID: 2371877871849917854}
 --- !u!1 &6981617917014002967
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3912521992490793647}
+  - component: {fileID: 4633866915337133266}
   m_Layer: 5
   m_Name: UI 1
   m_TagString: Untagged
@@ -420,6 +405,22 @@ RectTransform:
   m_AnchoredPosition: {x: -52, y: -61}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4633866915337133266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981617917014002967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdceb22f26584444f84f2a00e44d4076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needle: {fileID: 4517306307630969660}
+  speedTmpro: {fileID: 2371877872092166718}
+  turboImage: {fileID: 2371877871849917854}
+  gameUI: {fileID: 6734669130732072571}
 --- !u!1 &9052443945399452335
 GameObject:
   m_ObjectHideFlags: 0
