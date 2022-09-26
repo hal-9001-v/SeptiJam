@@ -247,11 +247,11 @@ MonoBehaviour:
   popups:
   - {fileID: 21300000, guid: b39088f3cd1c0a84da149cf0a970edfd, type: 3}
   - {fileID: 21300000, guid: d7a5850533536ab42a69dcfd5ebcac16, type: 3}
-  - {fileID: 21300000, guid: 170faf8c6da48d94a90be366b076db2e, type: 3}
-  - {fileID: 21300000, guid: e927d1322100b3e449309b7d4a3d7224, type: 3}
+  - {fileID: 21300000, guid: 8b61a1f5cb67e374a8e46ebc823f7520, type: 3}
+  - {fileID: 21300000, guid: 40f942243b6eef2498c90b80d60fc119, type: 3}
   popupsEng:
   - {fileID: 21300000, guid: b39088f3cd1c0a84da149cf0a970edfd, type: 3}
-  - {fileID: 21300000, guid: d7a5850533536ab42a69dcfd5ebcac16, type: 3}
+  - {fileID: 21300000, guid: 4ed7e652fee8b14498630e330c8c324f, type: 3}
   - {fileID: 21300000, guid: 170faf8c6da48d94a90be366b076db2e, type: 3}
   - {fileID: 21300000, guid: e927d1322100b3e449309b7d4a3d7224, type: 3}
   popupImage: {fileID: 2854533739762111802}

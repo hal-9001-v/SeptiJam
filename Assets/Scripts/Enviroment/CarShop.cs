@@ -209,6 +209,7 @@ public class CarShop : MonoBehaviour
 
         if (!CarModificationManager.IsValidCar())
         {
+            FindObjectOfType<Popup>().EnablePopup(PopupType.warning);
             return;
         }
         if (isOpen)
