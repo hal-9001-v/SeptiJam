@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 1288902428626295426}
   m_LocalRotation: {x: -0, y: -0, z: 0.20282993, w: 0.979214}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.258328, y: 1.258328, z: 1.258328}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3935709062417919020}
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.405}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54, y: 174}
+  m_AnchoredPosition: {x: 56.999947, y: 194.00005}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4205205900164846911
@@ -68,8 +68,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xA1Y Encima hasta tira!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7f3e50fdce9f2e4db37044981ea4938, type: 2}
+  m_sharedMaterial: {fileID: 4825477212957720493, guid: c7f3e50fdce9f2e4db37044981ea4938,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -446,7 +447,7 @@ RectTransform:
   m_GameObject: {fileID: 5071073466464746925}
   m_LocalRotation: {x: -0, y: -0, z: 0.20282993, w: 0.979214}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4773002, y: 1.4773002, z: 1.4773}
+  m_LocalScale: {x: 1.858928, y: 1.858928, z: 1.8589278}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3935709062417919020}
@@ -454,7 +455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.405}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -172.00002, y: 219.99998}
+  m_AnchoredPosition: {x: -61, y: 240}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1447536798251523958
@@ -487,8 +488,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Somehow it works!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7f3e50fdce9f2e4db37044981ea4938, type: 2}
+  m_sharedMaterial: {fileID: 4825477212957720493, guid: c7f3e50fdce9f2e4db37044981ea4938,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

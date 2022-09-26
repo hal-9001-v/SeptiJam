@@ -646,15 +646,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 592686916, guid: 5964848cfb39749478684bf7f229a3c3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.01289711
+      value: -0.012897119
       objectReference: {fileID: 0}
     - target: {fileID: 592686916, guid: 5964848cfb39749478684bf7f229a3c3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.94875914
+      value: 0.9487591
       objectReference: {fileID: 0}
     - target: {fileID: 592686916, guid: 5964848cfb39749478684bf7f229a3c3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.25627854
+      value: -0.25627857
       objectReference: {fileID: 0}
     - target: {fileID: 1492205882, guid: 5964848cfb39749478684bf7f229a3c3, type: 3}
       propertyPath: m_RootOrder
@@ -2874,12 +2874,12 @@ PrefabInstance:
     - target: {fileID: 2023117707715329723, guid: 548417ef2d0a39945bddd37c0ed54bcd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.06865088
+      value: -0.06865089
       objectReference: {fileID: 0}
     - target: {fileID: 2023117707715329723, guid: 548417ef2d0a39945bddd37c0ed54bcd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.000000029802326
       objectReference: {fileID: 0}
     - target: {fileID: 2023117707715329723, guid: 548417ef2d0a39945bddd37c0ed54bcd,
         type: 3}
@@ -2959,7 +2959,7 @@ PrefabInstance:
     - target: {fileID: 2023117708726387291, guid: 548417ef2d0a39945bddd37c0ed54bcd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.068650894
+      value: 0.06865087
       objectReference: {fileID: 0}
     - target: {fileID: 2023117708726387291, guid: 548417ef2d0a39945bddd37c0ed54bcd,
         type: 3}
@@ -7420,6 +7420,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1431407351}
     m_Modifications:
+    - target: {fileID: 2854533739762111802, guid: f432ef635b655eb4eafa2bde0cd4ef21,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e28901b96bbd04e43b54e60b8629d3d6,
+        type: 3}
     - target: {fileID: 2854533739856470697, guid: f432ef635b655eb4eafa2bde0cd4ef21,
         type: 3}
       propertyPath: m_Pivot.x
