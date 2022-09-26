@@ -39,12 +39,19 @@ public enum CarParts
     wine
 
 }
-
+public enum PopupType{
+    triptico,
+    warning,
+    controles,
+    controlescoche,
+}
 
 public class Popup : MonoBehaviour
 {
     public Sprite[] images;
     public Sprite[] engLishimages;
+    public Sprite[] popups;
+    public Sprite[] popupsEng;
     public Image popupImage;
     public string name;
 
@@ -73,6 +80,24 @@ public class Popup : MonoBehaviour
 
     }
 
+    public void EnablePopup(PopupType popupType)
+    {
+        Language lang = FindObjectOfType<LanguageNotifier>().CurrentLanguage;
+        if(lang == Language.English)
+        {
+            popupImage.sprite = popupsEng[(int)popupType];
+        }
+        else
+        {
+            popupImage.sprite = popups[(int)popupType];
+        }
+        popupImage.gameObject.SetActive(true);
+    }
+    
+    
+    
+    
+    
     public void DisablePopup()
     {
         popupImage.gameObject.SetActive(false);
@@ -89,6 +114,5 @@ public class Popup : MonoBehaviour
     {
         popupImage.sprite = engLishimages[(int)car+1];
     }
-    
     
 }

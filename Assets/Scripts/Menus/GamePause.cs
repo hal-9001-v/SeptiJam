@@ -29,17 +29,19 @@ public class GamePause : MonoBehaviour
     public PlayerInput input;
 
     bool paused;
-
+    private Popup popup;
     private void Awake()
     {
+        popup = FindObjectOfType<Popup>();
         resumeButton.onClick.AddListener(ResumeGame);
         settingsButton.onClick.AddListener(DisplaySettings);
         backToMenuButton.onClick.AddListener(GetToMainMenu);
-
+        
         input = new PlayerInput();
 
         input.UI.Pause.performed += Pause;
         input.UI.OpenInventory.performed += Inventory;
+        input.UI.Back.performed += ClosePopup;
         input.Enable();
 
 
@@ -47,6 +49,7 @@ public class GamePause : MonoBehaviour
 
     }
 
+    
     private void Start()
     {
         settingsMenu.closeCallback += Open;
@@ -56,6 +59,7 @@ public class GamePause : MonoBehaviour
     // Let ctx there so it can be += and -= to avoid a nullPointer when reloading scenes. Dont make questions
     void Pause(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
+        
         if (paused == false && !inventoryGame.inventoryOpened)
         {
             paused = true;
@@ -75,6 +79,12 @@ public class GamePause : MonoBehaviour
         }
 
     }
+    
+    void ClosePopup(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        popup.DisablePopup();
+    }
+
 
     void Open()
     {

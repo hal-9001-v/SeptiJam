@@ -244,6 +244,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 388d9b7e94f9a694eaf7c542873a7e1d, type: 3}
   - {fileID: 21300000, guid: b5288df26547c4b4c9f7f1f837c6d0f5, type: 3}
   - {fileID: 21300000, guid: f88b515aaf81da84cba56bd802cc523e, type: 3}
+  popups:
+  - {fileID: 21300000, guid: b39088f3cd1c0a84da149cf0a970edfd, type: 3}
+  - {fileID: 21300000, guid: d7a5850533536ab42a69dcfd5ebcac16, type: 3}
+  - {fileID: 21300000, guid: 170faf8c6da48d94a90be366b076db2e, type: 3}
+  - {fileID: 21300000, guid: e927d1322100b3e449309b7d4a3d7224, type: 3}
+  popupsEng:
+  - {fileID: 21300000, guid: b39088f3cd1c0a84da149cf0a970edfd, type: 3}
+  - {fileID: 21300000, guid: d7a5850533536ab42a69dcfd5ebcac16, type: 3}
+  - {fileID: 21300000, guid: 170faf8c6da48d94a90be366b076db2e, type: 3}
+  - {fileID: 21300000, guid: e927d1322100b3e449309b7d4a3d7224, type: 3}
   popupImage: {fileID: 2854533739762111802}
   name: 
 --- !u!1 &4828550584833275611

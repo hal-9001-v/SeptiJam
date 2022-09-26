@@ -2,45 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b5609a5-b9a6-40f7-b45f-0175420fa387" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/NO PUEDES SALIR.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/NO PUEDES SALIR.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/controles coche.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/controles coche.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/controles personaje.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/controles personaje.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/fondo_notificacion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/fondo_notificacion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/10_flotador.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/10_flotador.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/11_hamster.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/11_hamster.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/12_caximba.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/12_caximba.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/13_jagger.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/13_jagger.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/14_pece.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/14_pece.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/15_awa.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/15_awa.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/16_carrito.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/16_carrito.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/17_microondas.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/17_microondas.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/18_monster.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/18_monster.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/19_nokia.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/19_nokia.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/1_ancla.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/1_ancla.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/20_aceite.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/20_aceite.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/21_paellera.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/21_paellera.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/22_petaz.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/22_petaz.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/23_mando.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/23_mando.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/24_patara.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/24_patara.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/25_rtx.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/25_rtx.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/26_pollo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/26_pollo.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/27_timon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/27_timon.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/28_pala.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/28_pala.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/29_surf.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/29_surf.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/2_barril.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/2_barril.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/30_tofu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/30_tofu.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/31_vino.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/31_vino.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/3_bola.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/3_bola.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/4_bolos.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/4_bolos.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/5_butano.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/5_butano.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/6_coco.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/6_coco.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/7_colacao.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/7_colacao.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/8_ventilador.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/8_ventilador.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/9_flamenco.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/notis/ingles/9_flamenco.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/recomendamo mando señora.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/recomendamo mando señora.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D Assets/triptico.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Assets/triptico.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeptiJam/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PopUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PopUp.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/GamePause.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/GamePause.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/Popup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/Popup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

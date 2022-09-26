@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static DataFileManager;
 
@@ -8,7 +10,7 @@ using static DataFileManager;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController => GetComponent<CharacterController>();
-    CheckPointTracker checkPointTracker => GetComponent<CheckPointTracker>();
+    public CheckPointTracker checkPointTracker;
 
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
@@ -63,6 +65,11 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         SetTargetRotation(transform.rotation, 1);
+    }
+
+    private void Start()
+    {
+        FindObjectOfType<Popup>().EnablePopup(PopupType.triptico);
     }
 
     public void SetInput(PlayerInput input)
