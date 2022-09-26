@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e28901b96bbd04e43b54e60b8629d3d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b39088f3cd1c0a84da149cf0a970edfd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -213,39 +213,37 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 896305f65c0df08489ecd4911e59cafc, type: 3}
   - {fileID: 21300000, guid: 7a1d2395c84b05c45a110fcffac801a7, type: 3}
   engLishimages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d136bf8873d0a8b42b9f4da8df9766fc, type: 3}
+  - {fileID: 21300000, guid: c617f25995d17ac4c896526d0516b6ec, type: 3}
+  - {fileID: 21300000, guid: 0c4eaab81ef0c8f4fa8caf29946665bc, type: 3}
+  - {fileID: 21300000, guid: c4e364720ae0f774088c379a3a6285e4, type: 3}
+  - {fileID: 21300000, guid: 8b1eb615a4b137348834c2981a03717a, type: 3}
+  - {fileID: 21300000, guid: 33ff9d627ac8e864b8837ccb479d956a, type: 3}
+  - {fileID: 21300000, guid: 5aa03f7e9eb3fd34384024e780be385e, type: 3}
+  - {fileID: 21300000, guid: 3e1afd20615d6444d9c19487537e11c6, type: 3}
+  - {fileID: 21300000, guid: 417f3c764a46d6b469b0e3b4a6c2b1b6, type: 3}
+  - {fileID: 21300000, guid: e8507656966ccd045bbad0b694b9f150, type: 3}
+  - {fileID: 21300000, guid: a31f9291012cb934092105b604e2fa35, type: 3}
+  - {fileID: 21300000, guid: 195aa775f141f6d44a2ad4b004d90ca6, type: 3}
+  - {fileID: 21300000, guid: 4495fb96ac9a52a459a15d14bf1412da, type: 3}
+  - {fileID: 21300000, guid: 8e16432276c65eb44b7a55c50096d88b, type: 3}
+  - {fileID: 21300000, guid: 4a6f9b1158519d94fb50f9e54a83fe69, type: 3}
+  - {fileID: 21300000, guid: d8251c82851e42a4e9b1e08782239a2a, type: 3}
+  - {fileID: 21300000, guid: 31ece921925f29b468bf15840d7ac58c, type: 3}
+  - {fileID: 21300000, guid: ca92afb42cea883409efdf2a59360720, type: 3}
+  - {fileID: 21300000, guid: 34b41c0a12d17144fbab06702bd3864f, type: 3}
+  - {fileID: 21300000, guid: e4013ec497784374e8f083883f36a57f, type: 3}
+  - {fileID: 21300000, guid: f14ca31b4a5ae0345a59b196f3247513, type: 3}
+  - {fileID: 21300000, guid: 875ce03fe98f4f24e86904bad3365ee0, type: 3}
+  - {fileID: 21300000, guid: dfa4089731cd5db4d8d81fbda164c41c, type: 3}
+  - {fileID: 21300000, guid: aed4f6574f6aaa641870af58badc0b96, type: 3}
+  - {fileID: 21300000, guid: 429444f39c745b34791a6362e156d0b5, type: 3}
+  - {fileID: 21300000, guid: 641e51c77fe4ffd40b3765edf7ceba7f, type: 3}
+  - {fileID: 21300000, guid: 57f8573b9c984ce49bbd9092ef8e9d90, type: 3}
+  - {fileID: 21300000, guid: 5c70413aef66bc84e8117e88e2778555, type: 3}
+  - {fileID: 21300000, guid: 388d9b7e94f9a694eaf7c542873a7e1d, type: 3}
+  - {fileID: 21300000, guid: b5288df26547c4b4c9f7f1f837c6d0f5, type: 3}
+  - {fileID: 21300000, guid: f88b515aaf81da84cba56bd802cc523e, type: 3}
   popupImage: {fileID: 2854533739762111802}
   name: 
 --- !u!1 &4828550584833275611
@@ -412,7 +410,7 @@ RectTransform:
   m_GameObject: {fileID: 9165122833153207241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.8488653, y: 10.91017, z: 5.1041727}
+  m_LocalScale: {x: 1.9778163, y: 5.606409, z: 2.6228812}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1543626707549713526}
@@ -421,7 +419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1319, y: 934}
+  m_AnchoredPosition: {x: 1558, y: 1098}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4639930330866812587
