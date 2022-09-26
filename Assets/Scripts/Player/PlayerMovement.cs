@@ -54,10 +54,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    PlayerAnimations playerAnimations => FindObjectOfType<PlayerAnimations>();
+
     private void Awake()
     {
-       
-
         SetTargetRotation(transform.rotation, 1);
     }
 
@@ -83,20 +83,48 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //PLAYER INPUT
-        UpdateGrounded();
+        if (movingInCurve == false)
+        {
+            //PLAYER INPUT
+            UpdateGrounded();
 
-        Vector3 velocity = Vector3.zero;
+            Vector3 velocity = Vector3.zero;
 
-        velocity += GravityVelocity();
-        velocity += AxisMovementVelocity();
+            velocity += GravityVelocity();
+            velocity += AxisMovementVelocity();
 
-        characterController.Move(velocity * Time.deltaTime);
+            characterController.Move(velocity * Time.deltaTime);
 
-        LerpRotation();
+            LerpRotation();
 
-        RespawnCountdown();
+            RespawnCountdown();
+        }
+        else
+        {
+            path.follower.UpdateTimeWithDistance(speed * Time.deltaTime);
+            transform.position = path.follower.transform.position;
+
+        }
     }
+
+    public void Move(Vector3 vel)
+    {
+        characterController.Move(vel);
+    }
+
+    CurvePath path;
+    bool movingInCurve = false;
+    public void MoveInCurve(CurvePath curve)
+    {
+        movingInCurve = true;
+        path = curve;
+    }
+
+    public void StopMoveInCurve()
+    {
+        movingInCurve = false;
+    }
+
 
     void RespawnCountdown()
     {
@@ -118,6 +146,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (axisInUse)
         {
+            playerAnimations.SetWalkSpeed(movementInput.magnitude);
+            playerAnimations.StartWalking();
+
             var direction = gameCamera.InputDirectionUnNormalized(movementInput, floorUp);
 
             var horizontalDirection = direction;
@@ -126,6 +157,11 @@ public class PlayerMovement : MonoBehaviour
             SetTargetRotation(Quaternion.LookRotation(horizontalDirection, Vector3.up), 0.25f);
 
             return direction * speed;
+        }
+        else
+        {
+            playerAnimations.SetWalkSpeed(0);
+            playerAnimations.StopWalking();
         }
 
         return Vector3.zero;
@@ -186,6 +222,8 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
             floorUp = Vector3.up;
         }
+
+        playerAnimations.SetGroundBool(isGrounded);
     }
 
     public void Jump(float height, bool force)
@@ -193,7 +231,16 @@ public class PlayerMovement : MonoBehaviour
         if ((isGrounded && ySpeed <= 0) || force)
         {
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
+            playerAnimations.Jump();
         }
+
+    }
+
+    public void Jump()
+    {
+        Jump(jumpHeight, true);
+
+        playerAnimations.Jump();
     }
 
     private void OnDrawGizmos()

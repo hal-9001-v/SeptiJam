@@ -24,6 +24,8 @@ public class GamePause : MonoBehaviour
     public Action pauseCallback;
     public Action resumeCallback;
 
+    Speedometer speedometer => FindObjectOfType<Speedometer>();
+
     public PlayerInput input;
 
     bool paused;
@@ -90,12 +92,15 @@ public class GamePause : MonoBehaviour
         if (paused)
         {
             paused = false;
-            
+
             if (resumeCallback != null)
             {
                 resumeCallback.Invoke();
             }
-            FindObjectOfType<Speedometer>().ShowUI();
+            
+            if (speedometer)
+                speedometer.ShowUI();
+
             Time.timeScale = 1;
 
             //Settings.close() and then this.Close(). Otherwise, settingsMenu.close will open this menu with its close callback
@@ -126,13 +131,13 @@ public class GamePause : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        input.UI.Pause.performed -= Pause; 
+        input.UI.Pause.performed -= Pause;
         input.UI.OpenInventory.performed -= Inventory;
 
         levelLoader.LoadLevel(LevelLoader.Levels.MainMenu);
     }
     void Inventory(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if(!paused) inventoryGame.OnSelectPressed();
+        if (!paused) inventoryGame.OnSelectPressed();
     }
 }

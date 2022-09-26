@@ -113,6 +113,8 @@ public class Car : MonoBehaviour
     public float yOffset;
     public float raycastRange;
 
+    public CurvePath enterCurve;
+
 
     public struct InputStr
     {

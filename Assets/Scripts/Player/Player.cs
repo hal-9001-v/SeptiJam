@@ -7,8 +7,11 @@ public class Player : MonoBehaviour
 {
     Car car => FindObjectOfType<Car>();
 
-    PlayerMovement movement => FindObjectOfType<PlayerMovement>();
+    PlayerMovement movement => GetComponent<PlayerMovement>();
 
+    PlayerAnimations playerAnimations => GetComponentInChildren<PlayerAnimations>();
+
+    Collider collider => GetComponent<Collider>();
     public enum PlayerState
     {
         Car,
@@ -34,11 +37,22 @@ public class Player : MonoBehaviour
 
     public void EnterCar()
     {
-        currentState = PlayerState.Car;
+        if (currentState != PlayerState.Car)
+        {
+            currentState = PlayerState.Car;
 
-        input.Car.Enable();
-        input.Character.Disable();
-        Debug.Log("Enter car");
+            input.Car.Enable();
+            input.Character.Disable();
+            Debug.Log("Enter car");
+
+            //playerAnimations.GetInCar();
+            playerAnimations.Jump();
+            car.enterCurve.pointA.position = transform.position;
+            car.enterCurve.follower.t = 0;
+
+            collider.enabled = false;
+            //movement.MoveInCurve(car.enterCurve);   
+        }
     }
 
     public void ExitCar()
@@ -48,6 +62,13 @@ public class Player : MonoBehaviour
         input.Car.Disable();
         input.Character.Enable();
         Debug.Log("Exit car");
+
+        playerAnimations.LeaveCar();
+
+        collider.enabled = true;
+        movement.enabled = true;
+        movement.StopMoveInCurve();
+        movement.Jump();
     }
 
 

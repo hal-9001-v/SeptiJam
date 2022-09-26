@@ -5,9 +5,9 @@ using UnityEngine;
 public class CurvePath : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform pointA;
-    [SerializeField] Transform pointB;
-    [SerializeField] Transform pointC;
+    public Transform pointA;
+    public Transform pointB;
+    public Transform pointC;
     public CurveFollower curveFollower;
 
 
