@@ -7,7 +7,7 @@ using UnityEngine;
 public class CarPartItem : MonoBehaviour
 {
     public float amplitud;
-    private float velocidad;
+    public float velocidad;
     private float tiempo;
     private float tiempoAcumulado;
     private bool bajada;
