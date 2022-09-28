@@ -37,19 +37,18 @@ public class CarShop : MonoBehaviour
     float carRotationInput;
 
     [SerializeField] [Range(0, 5)] float platformElevation;
-    [SerializeField] [Range(0, 100)] float platformElevationSpeed;
+    [SerializeField] [Range(0, 100)] float platformElevationTime;
 
 
     [SerializeField] [Range(1, 20)] float enterSpeed;
     [Header("Sounds")]
-    public AudioClip enterWorkshopAudioClip;
+    public SoundInfo enterSound;
+    public SoundInfo exitSound;
 
     public string currentState;
 
     DistanceInteractable distanceInteractable => GetComponent<DistanceInteractable>();
     InputComponent inputComponent => GetComponent<InputComponent>();
-    AudioSource audioSource => GetComponent<AudioSource>();
-
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
     Car car => FindObjectOfType<Car>();
     Player player => FindObjectOfType<Player>();
@@ -109,10 +108,9 @@ public class CarShop : MonoBehaviour
             }
         };
 
-
         platformStartingPosition = platform.position;
         platformTargetPosition = platformStartingPosition + platform.up * platformElevation;
-        elevationHelper.targetTime = platformElevation / platformElevationSpeed;
+        elevationHelper.targetTime = platformElevationTime;
 
         CreateMachine();
     }
@@ -122,6 +120,8 @@ public class CarShop : MonoBehaviour
         SetInput(inputComponent.Input);
         carshopCanvas.gameObject.SetActive(false);
 
+        enterSound.Initialize(gameObject);
+        exitSound.Initialize(gameObject);
     }
 
     void CreateMachine()
@@ -151,7 +151,7 @@ public class CarShop : MonoBehaviour
              {
                  if (enterPath.follower.t == 1)
                  {
-                     audioSource.PlayOneShot(enterWorkshopAudioClip);
+                     enterSound.Play();
                      car.transform.parent = carPivot;
 
                      OpenUI();
@@ -375,6 +375,9 @@ public class CarShop : MonoBehaviour
             rotationHelper.Update(1);
             closeStartingRotation = closeTargetRotation;
         }
+
+        enterSound.Play();
+        exitSound.PlayScheduled(enterSound.audioClip.length * 0.9f);
 
     }
 
