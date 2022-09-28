@@ -7,6 +7,7 @@ using static DataFileManager;
 
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(InputComponent))]
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController => GetComponent<CharacterController>();
@@ -67,9 +68,13 @@ public class PlayerMovement : MonoBehaviour
 
     bool inCar;
 
+    InputComponent inputComponent => GetComponent<InputComponent>();
+
     private void Awake()
     {
+        SetInput(inputComponent.Input);
         SetTargetRotation(transform.rotation, 1);
+
     }
 
     private void Start()

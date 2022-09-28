@@ -8,6 +8,7 @@ public class FSMState
     public string name;
     protected Action _action;
     protected Func<bool> _condition;
+    public bool readyForNext = true;
 
     public List<FSMState> children { get; private set; }
 
@@ -20,6 +21,35 @@ public class FSMState
 
         children = new List<FSMState>();
     }
+
+    public FSMState(string name, Action action)
+    {
+        this.name = name;
+
+        _condition = () => { return true; };
+        _action = action;
+
+        children = new List<FSMState>();
+    }
+
+    public FSMState(string name, Func<bool> condition)
+    {
+        this.name = name;
+
+        _condition = condition;
+
+        children = new List<FSMState>();
+    }
+
+    public FSMState(string name)
+    {
+        this.name = name;
+
+        _condition = () => { return true; };
+
+        children = new List<FSMState>();
+    }
+
 
     public bool CheckTransitionToChildren(out FSMState nextState)
     {
@@ -50,4 +80,13 @@ public class FSMState
         return _condition.Invoke();
     }
 
+    public void SetCondition(Func<bool> condition)
+    {
+        _condition = condition;
+    }
+
+    public void SetAction(Action action)
+    {
+        _action = action;
+    }
 }

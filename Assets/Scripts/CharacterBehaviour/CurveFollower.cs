@@ -19,6 +19,9 @@ public class CurveFollower : MonoBehaviour
         }
     }
 
+    bool autoUpdate;
+    float autoSpeed;
+
     public Vector3 direction
     {
         get
@@ -54,6 +57,29 @@ public class CurveFollower : MonoBehaviour
         var change = distance / length;
 
         return SetTime(t + change);
+    }
+
+    private void Update()
+    {
+        MoveWithAutoUpdate();
+    }
+
+    void MoveWithAutoUpdate()
+    {
+        if (autoUpdate)
+        {
+            UpdateTimeWithDistance(autoSpeed * Time.deltaTime);
+
+            if (autoSpeed > 0 && t == 1) autoUpdate = false;
+            if (autoSpeed < 0 && t == 0) autoUpdate = false;
+        }
+    }
+
+    public void SetAutoUpdate(float speed)
+    {
+        autoUpdate = true;
+
+        autoSpeed = speed;
     }
 
 }

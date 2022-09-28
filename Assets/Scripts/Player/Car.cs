@@ -19,6 +19,7 @@ public enum WheelSize
 [RequireComponent(typeof(CheckPointTracker))]
 [RequireComponent(typeof(PassiveInteractable))]
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(InputComponent))]
 public class Car : MonoBehaviour
 {
     //Input
@@ -67,6 +68,8 @@ public class Car : MonoBehaviour
 
     Player player => FindObjectOfType<Player>();
     PassiveInteractable interactable => GetComponent<PassiveInteractable>();
+
+    InputComponent inputComponent => GetComponent<InputComponent>();
 
     protected Rigidbody Rigidbody;
 
@@ -143,6 +146,8 @@ public class Car : MonoBehaviour
         // SetCarModifierInfoDefaultStats();
         OnChangeCarPiece();
         OnValidate();
+
+        SetInput(inputComponent.Input);
     }
 
     public void SetInput(PlayerInput input)
@@ -280,26 +285,13 @@ public class Car : MonoBehaviour
         audioSource.loop = false;
     }
 
-    public float EnterCarshop(CurveFollower follower)
-    {
-        follower.t = 0;
-
-        return FollowCurve(follower);
-    }
-
-    public float FollowCurve(CurveFollower follower)
+    public void EnterCarshop(CurveFollower follower)
     {
         Rigidbody.isKinematic = true;
         curveFollower = follower;
         followingCurve = true;
 
-        return follower.length / workshopSpeed;
-    }
-
-    public void StopCurve()
-    {
-        Rigidbody.isKinematic = false;
-        followingCurve = false;
+        transform.parent = follower.transform;
     }
 
     public void LeaveCarshop()
@@ -308,6 +300,14 @@ public class Car : MonoBehaviour
 
         transform.parent = null;
     }
+
+    public void StopCurve()
+    {
+        Rigidbody.isKinematic = false;
+        followingCurve = false;
+    }
+
+    
 
     public CarData GetCarData()
     {

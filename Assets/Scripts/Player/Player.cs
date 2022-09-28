@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InputComponent))]
 [RequireComponent(typeof(PlayerInteractor))]
 public class Player : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class Player : MonoBehaviour
 
     PlayerAnimations playerAnimations => GetComponentInChildren<PlayerAnimations>();
 
-    PlayerFollowCamera cameraFollow => GetComponentInChildren<PlayerFollowCamera>();
-
     Collider collider => GetComponent<Collider>();
+
+    public bool isInCar { get; private set; }
     public enum PlayerState
     {
         Car,
@@ -23,17 +24,10 @@ public class Player : MonoBehaviour
 
     PlayerState currentState = PlayerState.Ground;
 
-    PlayerInput input;
+    InputComponent inputComponent => GetComponent<InputComponent>();
 
     private void Awake()
     {
-        input = new PlayerInput();
-
-        car.SetInput(input);
-        movement.SetInput(input);
-        cameraFollow.SetInput(input);
-        input.Enable();
-
         ExitCar();
     }
 
@@ -41,10 +35,11 @@ public class Player : MonoBehaviour
     {
         if (currentState != PlayerState.Car)
         {
+            isInCar = true;
             currentState = PlayerState.Car;
 
-            input.Car.Enable();
-            input.Character.Disable();
+            inputComponent.Input.Car.Enable();
+            inputComponent.Input.Character.Disable();
             Debug.Log("Enter car");
 
             //playerAnimations.GetInCar();
@@ -67,12 +62,13 @@ public class Player : MonoBehaviour
 
     public void ExitCar()
     {
+        isInCar = false;
+
         currentState = PlayerState.Ground;
 
-        input.Car.Disable();
-        input.Carshop.Disable();
-        input.Character.Enable();
-        Debug.Log("Exit car");
+        inputComponent.Input.Car.Disable();
+        inputComponent.Input.Carshop.Disable();
+        inputComponent.Input.Character.Enable();
 
         playerAnimations.LeaveCar();
 
@@ -90,7 +86,15 @@ public class Player : MonoBehaviour
         car.TurnOff();
     }
 
+    public void BlockMovement()
+    {
+        inputComponent.Input.Character.Disable();
+    }
 
+    public void FreeMovement()
+    {
+        inputComponent.Input.Character.Enable();
+    }
 
     public IEnumerator EnableCollider(float time)
     {

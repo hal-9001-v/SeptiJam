@@ -6,6 +6,7 @@ using UnityEngine;
 public class Radio : MonoBehaviour
 {
     [SerializeField] List<RadioClip> radioClips;
+
     [SerializeField] AudioSource radioSource;
     [SerializeField] AudioSource ambientSource;
 

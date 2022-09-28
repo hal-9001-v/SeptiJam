@@ -21,7 +21,7 @@ public class FSMachine
     {
         FSMState nextState;
 
-        if (currentState.CheckTransitionToChildren(out nextState))
+        if (currentState.readyForNext && currentState.CheckTransitionToChildren(out nextState))
         {
             SetState(nextState);
         }

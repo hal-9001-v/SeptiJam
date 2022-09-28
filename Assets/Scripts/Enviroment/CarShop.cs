@@ -1,15 +1,16 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InputComponent))]
 public class CarShop : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] CurvePath enterPath;
     [SerializeField] Transform carPivot;
     [SerializeField] Transform exitPosition;
-    [SerializeField] Car car;
 
 
     [SerializeField] Transform platform;
@@ -19,9 +20,6 @@ public class CarShop : MonoBehaviour
 
     [SerializeField] CanvasGroup carshopCanvas;
     [SerializeField] InventoryUI inventoryUI;
-
-    DistanceInteractable distanceInteractable => GetComponent<DistanceInteractable>();
-    GameCamera gameCamera => FindObjectOfType<GameCamera>();
 
     [Header("Settings")]
     [SerializeField] [Range(1, 180)] float carRotationSpeed;
@@ -33,7 +31,6 @@ public class CarShop : MonoBehaviour
 
     [SerializeField] float cameraDegrees = 0;
 
-    PlayerInput input;
 
     [SerializeField] [Range(1, 180)] float closeRotationSpeed;
     float cameraRotationInput;
@@ -41,12 +38,25 @@ public class CarShop : MonoBehaviour
 
     [SerializeField] [Range(0, 5)] float platformElevation;
     [SerializeField] [Range(0, 100)] float platformElevationSpeed;
-    Vector3 platformStartingPosition;
-    Vector3 platformTargetPosition;
 
+
+    [SerializeField] [Range(1, 20)] float enterSpeed;
     [Header("Sounds")]
     public AudioClip enterWorkshopAudioClip;
+
+    public string currentState;
+
+    DistanceInteractable distanceInteractable => GetComponent<DistanceInteractable>();
+    InputComponent inputComponent => GetComponent<InputComponent>();
     AudioSource audioSource => GetComponent<AudioSource>();
+
+    GameCamera gameCamera => FindObjectOfType<GameCamera>();
+    Car car => FindObjectOfType<Car>();
+    Player player => FindObjectOfType<Player>();
+
+
+    Vector3 platformStartingPosition;
+    Vector3 platformTargetPosition;
 
     public bool isOpen { private set; get; }
 
@@ -56,33 +66,151 @@ public class CarShop : MonoBehaviour
     CounterHelper rotationHelper;
     CounterHelper elevationHelper;
 
-    bool rotatePlatform;
+    FSMachine machine;
+
+    bool carInWorkshop;
+    bool playerInWorkshop;
+
+    bool carIsValid;
 
     private void Awake()
     {
-        input = new PlayerInput();
-        SetInput(input);
-        input.Enable();
-
         distanceInteractable.enterCallback += (interactor) =>
         {
+
+            var player = interactor.GetComponent<PlayerInteractor>();
+            if (player)
+            {
+                playerInWorkshop = true;
+            }
+
             var car = interactor.GetComponent<Car>();
             if (car)
             {
-                StartWorkShop(car);
+                carInWorkshop = true;
+            }
+
+            if (carInWorkshop && playerInWorkshop)
+            {
+                StartWorkShop();
             }
         };
+
+        distanceInteractable.exitCallback += (interactor) =>
+        {
+            if (interactor.GetComponent<Car>())
+            {
+                carInWorkshop = false;
+            }
+
+            if (interactor.GetComponent<PlayerInteractor>())
+            {
+                playerInWorkshop = false;
+            }
+        };
+
 
         platformStartingPosition = platform.position;
         platformTargetPosition = platformStartingPosition + platform.up * platformElevation;
         elevationHelper.targetTime = platformElevation / platformElevationSpeed;
+
+        CreateMachine();
     }
 
     private void Start()
     {
+        SetInput(inputComponent.Input);
         carshopCanvas.gameObject.SetActive(false);
+
     }
 
+    void CreateMachine()
+    {
+        FSMState idle = new FSMState("Idle", () =>
+        {
+            return true;
+        }, () => { });
+
+        FSMState enterCar = new FSMState("Enter",
+          () =>
+          {
+              if (isOpen)
+              {
+                  player.BlockMovement();
+                  return true;
+              }
+
+              return false;
+          }, () =>
+          {
+
+          });
+
+        FSMState goingUp = new FSMState("goingUp",
+             () =>
+             {
+                 if (enterPath.follower.t == 1)
+                 {
+                     audioSource.PlayOneShot(enterWorkshopAudioClip);
+                     car.transform.parent = carPivot;
+
+                     OpenUI();
+                     return true;
+                 }
+
+                 return false;
+             },
+            () =>
+            {
+                PlatformElevation(true);
+                OpenRotations();
+            });
+
+        FSMState goingDown = new FSMState("goingDown");
+        goingDown.SetCondition(() =>
+        {
+            if (isOpen == false)
+            {
+                goingDown.readyForNext = false;
+                return true;
+            }
+
+            return false;
+        });
+        goingDown.SetAction(() =>
+        {
+            PlatformElevation(false);
+            CloseRotation();
+
+            if (elevationHelper.normalizedTime == 0 && rotationHelper.normalizedTime >= 1)
+            {
+                goingDown.readyForNext = true;
+
+                if (carIsValid)
+                {
+                    car.LeaveCarshop();
+                }
+                else
+                {
+                    if (player.isInCar)
+                        player.ExitCar();
+                    else
+                        player.FreeMovement();
+                }
+
+                player.FreeMovement();
+
+            }
+        });
+
+
+        idle.children.Add(enterCar);
+        enterCar.children.Add(goingUp);
+        goingUp.children.Add(goingDown);
+        goingDown.children.Add(idle);
+
+        machine = new FSMachine(idle, false);
+    }
     public void SetInput(PlayerInput input)
     {
         input.Carshop.RotateCar.performed += (ctx) =>
@@ -111,16 +239,20 @@ public class CarShop : MonoBehaviour
 
     private void Update()
     {
-        if (rotatePlatform)
+        machine.Update();
+
+        currentState = machine.currentState.name;
+
+        /*if (rotatePlatform)
             OpenRotations();
         else
             CloseRotation();
-
-        PlatformElevation();
+        */
     }
 
     void OpenRotations()
     {
+        //Camera
         if (cameraRotationInput != 0)
         {
             var deltaDegrees = cameraRotationInput * cameraRotationSpeed * Time.deltaTime;
@@ -132,6 +264,7 @@ public class CarShop : MonoBehaviour
             }
         }
 
+        //Platform
         if (carRotationInput != 0)
         {
             carRotationSign = Mathf.Sign(carRotationInput);
@@ -158,9 +291,9 @@ public class CarShop : MonoBehaviour
         }
     }
 
-    void PlatformElevation()
+    void PlatformElevation(bool up)
     {
-        if (rotatePlatform)
+        if (up)
         {
             elevationHelper.Update(Time.deltaTime);
         }
@@ -180,13 +313,12 @@ public class CarShop : MonoBehaviour
         cameraDegrees = 0;
     }
 
-    void StartWorkShop(Car car)
+    void StartWorkShop()
     {
         if (isOpen == false)
         {
             //input.Carshop.Enable();
             isOpen = true;
-            rotatePlatform = false;
 
             FindObjectOfType<GamePause>().input.UI.Disable();
 
@@ -196,85 +328,70 @@ public class CarShop : MonoBehaviour
             enterPath.c = carPivot.position;
             enterPath.SetBInMiddleAlongDirection(car.transform.forward);
 
+            car.EnterCarshop(enterPath.follower);
+            enterPath.follower.t = 0;
 
-            var time = car.EnterCarshop(enterPath.curveFollower);
+            enterPath.follower.SetAutoUpdate(enterSpeed);
 
-            StartCoroutine(CarshopEnterTimeline(time, car));
         }
     }
 
     [ContextMenu("Exit CarShop")]
     public void StopWorkShop()
     {
-        //TODO: if it doesn't have anything, no exit
-
-        if (!CarModificationManager.IsValidCar())
-        {
-            if(isOpen)
-                FindObjectOfType<Popup>().EnablePopup(PopupType.warning);
-            return;
-        }
         if (isOpen)
         {
             isOpen = false;
-            rotatePlatform = false;
 
-            gameCamera.UseDefaultCamera();
+            carIsValid = CarModificationManager.IsValidCar();
 
-            isOpen = false;
-            var toExit = exitPosition.position - platform.transform.position;
-            toExit.y = 0;
-            toExit.Normalize();
-
-            closeTargetRotation = Quaternion.FromToRotation(platform.transform.forward, toExit) * platform.rotation;
-            closeTargetRotation = Quaternion.FromToRotation(car.transform.forward, platform.transform.forward) * closeTargetRotation;
-            closeStartingRotation = platform.rotation;
-
-            rotationHelper.Reset();
-            float closeTime = Quaternion.Angle(closeStartingRotation, closeTargetRotation) / closeRotationSpeed;
-            rotationHelper.targetTime = closeTime;
-            if (closeTime < 0.05f)
+            if (carIsValid == false)
             {
-                rotationHelper.targetTime = 1;
-                rotationHelper.Update(1);
-                closeStartingRotation = closeTargetRotation;
+                FindObjectOfType<Popup>().EnablePopup(PopupType.warning);
             }
             gameCamera.UseDefaultCamera();
+            SetPlatformForExit();
 
-            carshopCanvas.gameObject.SetActive(false);
-            FindObjectOfType<Speedometer>().ShowUI();
-            FindObjectOfType<GamePause>().input.UI.Enable();
-
-
-            StartCoroutine(CarshopExitTimeline());
+            HideUI();
         }
     }
 
-    IEnumerator CarshopEnterTimeline(float time, Car car)
+    void SetPlatformForExit()
     {
-        yield return new WaitForSeconds(time);
-        audioSource.PlayOneShot(enterWorkshopAudioClip);
+        var toExit = exitPosition.position - platform.transform.position;
+        toExit.y = 0;
+        toExit.Normalize();
 
-        rotatePlatform = true;
-        car.transform.parent = carPivot;
-        this.car = car;
+        closeTargetRotation = Quaternion.FromToRotation(platform.transform.forward, toExit) * platform.rotation;
+        closeTargetRotation = Quaternion.FromToRotation(car.transform.forward, platform.transform.forward) * closeTargetRotation;
+        closeStartingRotation = platform.rotation;
+
+        rotationHelper.Reset();
+        float closeTime = Quaternion.Angle(closeStartingRotation, closeTargetRotation) / closeRotationSpeed;
+        rotationHelper.targetTime = closeTime;
+        if (closeTime < 0.05f)
+        {
+            rotationHelper.targetTime = 1;
+            rotationHelper.Update(1);
+            closeStartingRotation = closeTargetRotation;
+        }
+
+    }
+
+    void OpenUI()
+    {
         carshopCanvas.gameObject.SetActive(true);
         inventoryUI.OnOpen();
 
     }
 
-    IEnumerator CarshopExitTimeline()
+    void HideUI()
     {
-        while (elevationHelper.currentTime > 0 || rotationHelper.normalizedTime < 1)
-        {
-            yield return null;
-        }
-
-
-        Debug.Log("End of carshop!");
-
-        car.LeaveCarshop();
+        carshopCanvas.gameObject.SetActive(false);
+        FindObjectOfType<Speedometer>().ShowUI();
+        FindObjectOfType<GamePause>().input.UI.Enable();
     }
+
 
     private void OnDrawGizmos()
     {
