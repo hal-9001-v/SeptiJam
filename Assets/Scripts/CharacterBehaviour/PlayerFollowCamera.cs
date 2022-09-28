@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cinemachine;
 
+[RequireComponent(typeof(InputComponent))]
 public class PlayerFollowCamera : MonoBehaviour
 {
     [Header("Settings")]
@@ -13,6 +14,8 @@ public class PlayerFollowCamera : MonoBehaviour
     [SerializeField] [Range(1, 200)] float minDistance;
 
     GameCamera gameCamera => FindObjectOfType<GameCamera>();
+    InputComponent inputComponent => GetComponent<InputComponent>();
+
 
     bool usingDolly;
 
@@ -21,6 +24,11 @@ public class PlayerFollowCamera : MonoBehaviour
     Vector3 closestPathPoint;
 
     float cameraInput;
+
+    private void Start()
+    {
+        SetInput(inputComponent.Input);
+    }
 
     public void SetInput(PlayerInput input)
     {
@@ -57,6 +65,7 @@ public class PlayerFollowCamera : MonoBehaviour
     {
         RotateCamera(cameraInput * rotationSpeed);
     }
+
     void CheckDistance()
     {
         if (Vector3.Distance(closestPathPoint, transform.position) > minDistance)
@@ -97,6 +106,5 @@ public class PlayerFollowCamera : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + toCamera.normalized * minDistance);
         Gizmos.DrawSphere(transform.position + toCamera.normalized * minDistance, 1);
     }
-
 
 }
