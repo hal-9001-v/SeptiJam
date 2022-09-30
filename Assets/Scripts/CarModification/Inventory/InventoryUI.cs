@@ -13,6 +13,10 @@ public class InventoryUI : MonoBehaviour
     List<CarAccessory> currentDisplay;
 
     CarShop[] carShops;
+
+    [Header("Sounds")]
+    [SerializeField] SoundInfo changePieceSound;
+
     private void Awake()
     {
         inventorySlots = new InventorySlot[transform.childCount];
@@ -25,6 +29,12 @@ public class InventoryUI : MonoBehaviour
         currentDisplay = new List<CarAccessory>();
         carShops = FindObjectsOfType<CarShop>();
     }
+
+    private void Start()
+    {
+        changePieceSound.Initialize(gameObject);
+    }
+
     public void OnOpen()
     {
         OnClear();
@@ -78,6 +88,8 @@ public class InventoryUI : MonoBehaviour
         {
             inventorySlots[i].OnUpdate();
         }
+
+        changePieceSound.Play();
     }
     public void CloseInventory()
     {

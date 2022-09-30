@@ -5,7 +5,7 @@ public class GameCamera : MonoBehaviour
 {
     public CinemachineVirtualCamera defaultCamera;
 
-    CinemachineVirtualCamera currentCamera;
+    public CinemachineVirtualCamera currentCamera;
 
     private void Start()
     {

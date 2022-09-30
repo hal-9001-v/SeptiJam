@@ -6,13 +6,30 @@ using UnityEngine;
 
 public class CarPartItem : MonoBehaviour
 {
+    [Header("Settings")]
     public float amplitud;
     public float velocidad;
     private float tiempo;
     private float tiempoAcumulado;
     private bool bajada;
+
+    [Header("Settings")]
+    [SerializeField] SoundInfo pickedSound;
+
     PickableItem pickableItem => GetComponent<PickableItem>();
     [SerializeField] CarAccessory carAccesory;
+
+    void Start()
+    {
+        pickedSound.Initialize(gameObject);
+
+        tiempo = amplitud / velocidad;
+        pickableItem.collectedCallback += AddCarPart;
+
+        carAccesory = GetComponent<CarAccessory>();
+
+
+    }
 
     private void Update()
     {
@@ -36,19 +53,13 @@ public class CarPartItem : MonoBehaviour
 
     }
 
-    private void Awake()
-    {
-        tiempo = amplitud / velocidad;
-        pickableItem.collectedCallback += AddCarPart;
-        carAccesory = GetComponent<CarAccessory>();
-    }
-
 
     void AddCarPart(ItemCollector collector)
     {
         collector.AddCarPart(carAccesory);
 
         pickableItem.StandardHide();
+        pickedSound.Play();
     }
 
 }

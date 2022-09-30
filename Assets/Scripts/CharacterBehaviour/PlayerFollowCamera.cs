@@ -68,15 +68,19 @@ public class PlayerFollowCamera : MonoBehaviour
 
     void CheckDistance()
     {
-        if (Vector3.Distance(closestPathPoint, transform.position) > minDistance)
+        if (gameCamera.currentCamera == camera || gameCamera.currentCamera == gameCamera.currentCamera == gameCamera.defaultCamera)
         {
-            SetFollowCamera();
-            usingDolly = false;
-        }
-        else
-        {
-            gameCamera.UseDefaultCamera();
-            usingDolly = true;
+
+            if (Vector3.Distance(closestPathPoint, transform.position) > minDistance)
+            {
+                SetFollowCamera();
+                usingDolly = false;
+            }
+            else
+            {
+                gameCamera.UseDefaultCamera();
+                usingDolly = true;
+            }
         }
 
     }

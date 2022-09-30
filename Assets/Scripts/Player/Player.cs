@@ -26,11 +26,6 @@ public class Player : MonoBehaviour
 
     InputComponent inputComponent => GetComponent<InputComponent>();
 
-    private void Awake()
-    {
-        ExitCar();
-    }
-
     public void EnterCar()
     {
         if (currentState != PlayerState.Car)

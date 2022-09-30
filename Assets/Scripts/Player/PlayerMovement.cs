@@ -63,22 +63,19 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerAnimations playerAnimations => FindObjectOfType<PlayerAnimations>();
 
-    public AudioClip jumpClip;
-    AudioSource audioSource => GetComponent<AudioSource>();
+    [SerializeField] SoundInfo jumpSound;
 
     bool inCar;
 
     InputComponent inputComponent => GetComponent<InputComponent>();
 
-    private void Awake()
+    private void Start()
     {
+        jumpSound.Initialize(gameObject);
+
         SetInput(inputComponent.Input);
         SetTargetRotation(transform.rotation, 1);
 
-    }
-
-    private void Start()
-    {
         FindObjectOfType<Popup>().EnablePopup(PopupType.triptico);
     }
 
@@ -270,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
             ySpeed = Mathf.Pow(2 * gravity * height, 0.5f);
             playerAnimations.Jump();
 
-            audioSource.PlayOneShot(jumpClip);
+            jumpSound.Play();
         }
 
     }

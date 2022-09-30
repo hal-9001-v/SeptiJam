@@ -57,8 +57,7 @@ public class SoundDirector : MonoBehaviour
     public void StopSound(SoundInfo soundInfo)
     {
         if (soundCoroutines.TryGetValue(soundInfo, out var coroutine))
-        {
-            soundInfo.Stop();
+        {            
             StopCoroutine(coroutine);
         }
     }
@@ -76,6 +75,8 @@ public class SoundDirector : MonoBehaviour
         soundInfo.source.pitch = soundInfo.pitch;
         soundInfo.source.loop = soundInfo.loop;
 
+        StopSound(soundInfo);
+
         if ((fallInTime + fallOffTime) < duration)
         {
             soundCoroutines[soundInfo] = StartCoroutine(PlaySoundOvertime(soundInfo, duration, fallInTime, fallOffTime, delay));
@@ -85,6 +86,17 @@ public class SoundDirector : MonoBehaviour
             Debug.LogWarning("FallIn and FallOff are greater than duration!");
         }
     }
+
+    public void PauseSound(SoundInfo soundInfo)
+    {
+        soundInfo.source.Pause();
+    }
+
+    public void ResumeSound(SoundInfo soundInfo)
+    {
+        //PlaceHolder!
+    }
+
 
     IEnumerator PlaySoundOvertime(SoundInfo soundInfo, float duration, float fallInTime, float fallOffTime, float delay)
     {
@@ -119,7 +131,7 @@ public class SoundDirector : MonoBehaviour
 
         while (elapsedTime < fallTime)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * soundInfo.timeScale;
             soundInfo.source.volume = FloatLerp(startingValue, targetValue, transitionCurve.Evaluate(elapsedTime / fallTime));
 
             yield return null;

@@ -16,6 +16,8 @@ public class SoundInfo
     public bool playOnAwake;
     public bool shareSource;
 
+    [HideInInspector] public float timeScale = 1;
+
     public AudioSource source { get; private set; }
     SoundDirector director;
 
@@ -52,28 +54,46 @@ public class SoundInfo
 
     }
 
-    public void Stop()
+    public void Stop(float fallOffTime)
     {
         director.StopSound(this);
     }
 
     public void Play()
     {
+        timeScale = 1;
         director.PlaySound(this);
+    }
+
+    public void Pause()
+    {
+        timeScale = 0;
+
+        director.PauseSound(this);
+    }
+
+    public void Resume()
+    {
+        timeScale = 1;
+
+        director.ResumeSound(this);
     }
 
     public void Play(float duration)
     {
+        timeScale = 1;
         director.PlaySound(this, duration, 0);
     }
 
     public void Play(float duration, float fallInTime, float fallOffTime, float delay)
     {
+        timeScale = 1;
         director.PlaySound(this, duration, fallOffTime, fallInTime, delay);
     }
 
     public void PlayScheduled(float delay)
     {
+        timeScale = 1;
         director.PlaySound(this, audioClip.length, delay);
     }
 }

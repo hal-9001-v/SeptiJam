@@ -114,6 +114,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amplitud: 0
+  velocidad: 0
+  pickedSound:
+    audioClip: {fileID: 8300000, guid: 6876f157cf59cc84a980b901c0efe187, type: 3}
+    profile: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    shareSource: 0
   carAccesory: {fileID: 0}
 --- !u!1001 &5702011056547038525
 PrefabInstance:
