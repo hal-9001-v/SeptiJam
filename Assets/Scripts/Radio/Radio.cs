@@ -3,25 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InputComponent))]
 public class Radio : MonoBehaviour
 {
     [SerializeField] List<RadioClip> radioClips;
 
-    [SerializeField] AudioSource radioSource;
-    [SerializeField] AudioSource ambientSource;
+    [Header("Sounds")]
+    [SerializeField] SoundInfo songSound;
+    [SerializeField] SoundInfo cassetteStart;
+    [SerializeField] SoundInfo cassetteEnd;
+
+    [SerializeField] SoundInfo ambientSound;
 
     int currentIndex = 0;
 
     float originalAmbientVolume;
     AudioListener listener => FindObjectOfType<AudioListener>();
+    InputComponent inputComponent => GetComponent<InputComponent>();
 
-    private void Awake()
+    void Start()
     {
-        PlayerInput input = new PlayerInput();
-        SetInput(input);
-        input.Enable();
+        SetInput(inputComponent.Input);
 
-        originalAmbientVolume = ambientSource.volume;
+
+        songSound.Initialize(gameObject);
+
+        cassetteStart.Initialize(gameObject);
+        cassetteEnd.Initialize(gameObject);
+
+        ambientSound.Initialize(gameObject);
+        originalAmbientVolume = ambientSound.source.volume;
 
         StartPlaying();
     }
@@ -29,10 +40,10 @@ public class Radio : MonoBehaviour
 
     private void Update()
     {
-        var curve = radioSource.GetCustomCurve(AudioSourceCurveType.CustomRolloff);
-        var curveValue = curve.Evaluate(Vector3.Distance(listener.transform.position, transform.position) / radioSource.maxDistance);
+        var curve = songSound.source.GetCustomCurve(AudioSourceCurveType.CustomRolloff);
+        var curveValue = curve.Evaluate(Vector3.Distance(listener.transform.position, transform.position) / songSound.source.maxDistance);
 
-        ambientSource.volume = (1 - curveValue) * originalAmbientVolume;
+        ambientSound.source.volume = (1 - curveValue) * originalAmbientVolume;
     }
 
     public void SetInput(PlayerInput input)
@@ -79,22 +90,24 @@ public class Radio : MonoBehaviour
     [ContextMenu("Play Radio")]
     public void StartPlaying()
     {
-        radioSource.clip = radioClips[currentIndex].clip;
-        radioSource.Play();
+        songSound.Play();
     }
 
     [ContextMenu("Stop Radio")]
     public void StopPlaying()
     {
-        radioSource.Stop();
-
+        songSound.Stop(0);
     }
 
     public void PlayClip(RadioClip clip)
     {
-        radioSource.clip = clip.clip;
-        radioSource.volume = clip.volume;
-        radioSource.Play();
+        songSound.audioClip = clip.clip;
+        songSound.volume = clip.volume;
+
+        cassetteEnd.Play(cassetteEnd.audioClip.length, 0.1f, 0.2f, 0);
+        cassetteStart.Play(cassetteStart.audioClip.length, 0.1f, 0.2f, 0.3f);
+        songSound.Play(clip.clip.length, 0.2f, 0.2f, cassetteStart.audioClip.length + 0.3f);
+
     }
 
 }

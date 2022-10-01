@@ -147,7 +147,12 @@ public class Car : MonoBehaviour
         OnChangeCarPiece();
         OnValidate();
 
+    }
+
+    private void Start()
+    {
         SetInput(inputComponent.Input);
+
     }
 
     public void SetInput(PlayerInput input)

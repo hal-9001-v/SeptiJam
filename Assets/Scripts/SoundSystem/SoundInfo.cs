@@ -14,7 +14,7 @@ public class SoundInfo
     [Range(-2, 2)] public float pitch = 1;
     public bool loop;
     public bool playOnAwake;
-    public bool shareSource;
+    public bool ignoreTimeScale;
 
     [HideInInspector] public float timeScale = 1;
 
@@ -27,21 +27,14 @@ public class SoundInfo
 
         if (director == null) Debug.LogError("No Sound Director in scene!");
 
-        if (shareSource)
-        {
-            source = owner.GetComponentInChildren<AudioSource>();
+        source = GameObject.Instantiate(director.GetAudioSource(profile), owner.transform);
 
-            if (source == null)
-            {
-                source = GameObject.Instantiate(director.GetAudioSource(profile), owner.transform);
-            }
-        }
+
+        if (source)
+            source.name = "Audio Source " + audioClip.name;
         else
-        {
-            source = GameObject.Instantiate(director.GetAudioSource(profile), owner.transform);
-        }
+            source.name = "Audio Source of SoundInfo";
 
-        source.name = "Audio Source " + audioClip.name;
         source.transform.localPosition = Vector3.zero;
         source.transform.localScale = Vector3.one;
         source.transform.localRotation = Quaternion.identity;

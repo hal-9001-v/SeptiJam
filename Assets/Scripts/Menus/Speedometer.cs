@@ -15,7 +15,9 @@ public class Speedometer : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI speedTmpro;
     [SerializeField] private Image turboImage;
-    [SerializeField] GameObject gameUI;
+
+    CanvasGroup canvasGroup => GetComponent<CanvasGroup>();
+
     private Car _car;
     
     private float speedMax;
@@ -63,12 +65,12 @@ public class Speedometer : MonoBehaviour
 
     public void HideUI()
     {
-        gameUI.SetActive(false);
+        canvasGroup.alpha = 0;
     }
 
     public void ShowUI()
     {
-        gameUI.SetActive(true);
+        canvasGroup.alpha = 1;
     }
 
 

@@ -14,6 +14,8 @@ public class GamePause : MonoBehaviour
     [SerializeField] Button settingsButton;
     [SerializeField] Button backToMenuButton;
 
+    [SerializeField] SoundInfo soundInfo;
+
     SettingsMenu settingsMenu => FindObjectOfType<SettingsMenu>();
     LevelLoader levelLoader => FindObjectOfType<LevelLoader>();
 
@@ -52,6 +54,8 @@ public class GamePause : MonoBehaviour
     
     private void Start()
     {
+        soundInfo.Initialize(gameObject);
+
         settingsMenu.closeCallback += Open;
 
     }
@@ -60,7 +64,7 @@ public class GamePause : MonoBehaviour
     void Pause(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         
-        if (paused == false && !inventoryGame.inventoryOpened)
+        if (paused == false && !(inventoryGame && inventoryGame.inventoryOpened))
         {
             paused = true;
 
@@ -68,7 +72,7 @@ public class GamePause : MonoBehaviour
             {
                 pauseCallback.Invoke();
             }
-            FindObjectOfType<Speedometer>().HideUI();
+            speedometer.HideUI();
             Time.timeScale = 0;
 
             Open();
@@ -88,7 +92,7 @@ public class GamePause : MonoBehaviour
 
     void Open()
     {
-        canvasGroup.transform.GetChild(0).gameObject.SetActive(true);
+        canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
 
 
@@ -101,6 +105,8 @@ public class GamePause : MonoBehaviour
     {
         if (paused)
         {
+            soundInfo.Play();
+
             paused = false;
 
             if (resumeCallback != null)
@@ -123,12 +129,14 @@ public class GamePause : MonoBehaviour
 
     void Close()
     {
-        canvasGroup.transform.GetChild(0).gameObject.SetActive(false);
+        canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
     }
 
     void DisplaySettings()
     {
+        soundInfo.Play();
+
         if (settingsMenu)
         {
             settingsMenu.Open();
@@ -139,6 +147,8 @@ public class GamePause : MonoBehaviour
 
     void GetToMainMenu()
     {
+        soundInfo.Play();
+
         Time.timeScale = 1;
 
         input.UI.Pause.performed -= Pause;

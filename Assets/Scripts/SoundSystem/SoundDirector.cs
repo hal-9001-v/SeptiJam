@@ -57,7 +57,7 @@ public class SoundDirector : MonoBehaviour
     public void StopSound(SoundInfo soundInfo)
     {
         if (soundCoroutines.TryGetValue(soundInfo, out var coroutine))
-        {            
+        {
             StopCoroutine(coroutine);
         }
     }
@@ -131,7 +131,11 @@ public class SoundDirector : MonoBehaviour
 
         while (elapsedTime < fallTime)
         {
-            elapsedTime += Time.deltaTime * soundInfo.timeScale;
+            if (soundInfo.ignoreTimeScale)
+                elapsedTime += Time.unscaledDeltaTime * soundInfo.timeScale;
+            else
+                elapsedTime += Time.deltaTime * soundInfo.timeScale;
+
             soundInfo.source.volume = FloatLerp(startingValue, targetValue, transitionCurve.Evaluate(elapsedTime / fallTime));
 
             yield return null;
